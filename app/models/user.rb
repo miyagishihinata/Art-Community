@@ -5,13 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_picture
+  has_many :post_illustrations, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
-  def get_profile_image(width,height)
-    unless profile_image.attached?
+
+  def get_profile_picture(width,height)
+    unless profile_picture.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      profile_picture.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width,height]).processed
+    profile_picture.variant(resize_to_limit: [width,height]).processed
   end
 
 end
