@@ -1,7 +1,20 @@
 <div class="container">
-  <%= image_tag @user.get_profile_picture(50,50) %>
-  <h3><%= @user.user_name %></h3>
+  <%= image_tag @user.get_profile_picture(100,100) %>
+  <h4><%= @user.user_name %></h4>
   <h5><%= @user.self_introduction %></h5>
+
+    <%= link_to new_illustration_path do %>
+      <button type="button" class="btn btn-outline-secondary mr-2">
+        新規投稿
+      </button>
+    <% end %>
+
+    <%= link_to edit_user_path do %>
+      <button type="button" class="btn btn-outline-secondary mr-2">
+        ユーザー編集
+      </button>
+    <% end %>
+
 </div>
 
 <div class="container">
