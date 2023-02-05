@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PostLlustrationTest < ActiveSupport::TestCase
+class PostIllustrationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
