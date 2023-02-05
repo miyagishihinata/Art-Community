@@ -13,7 +13,7 @@
 
         <div class="form-group row ml-5">
           <%= link_to '退会しない', user_path(current_user.id), class: "btn btn-primary col-md-3 mr-5 ml-5" %>
-          <%= link_to '退会する', user_withdraw_path, method: :patch, class: "btn btn-danger col-md-3", "data-confirm" => "本当に削除しますか？" %>
+          <%= link_to '退会する', users_withdraw_path, method: :patch, class: "btn btn-danger col-md-3", "data-confirm" => "本当に削除しますか？" %>
         </div>
 
     </div>

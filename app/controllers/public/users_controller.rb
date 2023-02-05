@@ -1,21 +1,21 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+
   def show
     @user = User.find(params[:id])
     #@post_llustration = @user.post_llustration.page(params[:page])
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
-  
+
   def withdraw
     @user = current_user
     @user.update(is_deleted: true)
@@ -25,9 +25,16 @@ class Public::UsersController < ApplicationController
   end
 
   private
-  
-  def user_params
-    params.require(:user).permit(:user_name, :profile_image, :is_deleted)
+
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to user_path(@user.id)
+    end
   end
-  
+
+  def user_params
+    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted)
+  end
+
 end

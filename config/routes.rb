@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   #ユーザー側
   scope module: :public do
     #ユーザーページ
-    get 'users/unsubscribe' => 'customers#unsubscribe'
-    patch 'users/withdraw' => 'customers#withdraw'
+    get 'users/unsubscribe' => 'users#unsubscribe'
+    patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:show, :edit, :update]
 
     #イラストページ

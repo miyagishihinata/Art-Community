@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-4 mb-4 ml-5" style="background-color:#bce2e8;">
+      &emsp;ユーザー情報編集&emsp;
+    </h5>
+  </div>
+
+  <div class="row ml-4">
+    <div class="col-9">
+
+    <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+    
+      <div class="form-group row">
+        <label class="col-md-4">ユーザーID</label>
+          <%= @user.id %>
+      </div>
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
+          <%= f.file_field :image, accept: "image/*", class: "hidden" %>
+      </div>
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4" for="public_user_name">ユーザー名</label>
+        <%= f.text_field :user_name, class: "col-md-6 form-control" %>
+      </div>
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4" for="public_self_introduction">自己紹介</label>
+        <%= f.text_area :self_introduction, class: "col-md-6 form-control" %>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4" for="email">メールアドレス</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-md-6 form-control" %>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
+        <% if @minimum_password_length %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
+      </div>
+
+      <div class="form-group row">
+        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
+      </div>
+      
+      <div class="form-group row">
+        <label class="col-md-4">ユーザーステータス</label>
+
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_deleted, false, checked: true %>
+            <label class="form-check-label" for="inlineRadio1">有効</label>
+          </div>
+
+         <div class="form-check form-check-inline">
+            <%= f.radio_button :is_deleted, true %>
+            <label class="form-check-label" for="inlineRadio2">退会</label>
+         </div>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
+        <%= link_to 'マイページに戻る', user_path(@user.id), class: "btn btn-primary mt-3 ml-3" %>
+      </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>
