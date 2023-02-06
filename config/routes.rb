@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # 管理者側
   namespace :admin do
     #ユーザーページ
-    resources :users, only: [:index, :edit, :show, :update]
+    resources :users, only: [:index, :edit, :show, :update, :destroy]
 
     #イラストページ
     resources :illustrations, only: [:show, :edit, :update]
