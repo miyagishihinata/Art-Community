@@ -30,15 +30,15 @@ Rails.application.routes.draw do
   #ユーザー側
   scope module: :public do
     #ユーザーページ
-    get 'users/unsubscribe' => 'users#unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw'
+    get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
+    patch 'users/withdraw' => 'users#withdraw'     #ユーザー退会処理
     resources :users, only: [:show, :edit, :update]
 
     #イラストページ
-    resources :illustrations, only: [:new, :create, :index, :show, :update, :update]
+    resources :illustrations, only: [:new, :create, :edit, :show, :update]
 
     #トップページ
-    get '/' => 'homes#top'
+    get '/' => 'homes#index'
   end
 
 
