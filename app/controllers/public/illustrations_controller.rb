@@ -4,23 +4,30 @@ class Public::IllustrationsController < ApplicationController
   end
 
   def create
-    @illustration = Illustration.new(item_params)
+    @illustration = Illustration.new(illustration_params)
     @illustration.save
     redirect_to illustration_path(@illustration.id)
   end
 
   def show
-    @item = Item.find(params[:id])
+    @illustration = Illustration.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @illustration = Illustration.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to admin_item_path(item.id)
+    illustration = Illustration.find(params[:id])
+    illustration.update(illustration_params)
+    redirect_to illustration_path(illustration.id)
+  end
+
+  def destroy
+    illustration = Illustration.find(params[:id])
+    illustration.destroy
+    redirect_to user_path(@user.id)
   end
 
   private

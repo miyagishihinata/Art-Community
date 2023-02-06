@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-2"><%# ユーザーアイコン　%>
+    <div class="text-center">
+      <%= image_tag @illustration.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+    </div>
+    <h4 class="text-center"><%= @illustration.user_name %></h4>
+  </div>
+
+  
+  <div class="form-group row">
+    <%= @illustration.name %>
+  </div>
+
+  <div class="form-group row">
+    説明  : <%= @illustration.introduction %>
+  </div>
+  
+  <div class="form-group row">
+    投稿日: <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+  </div>
+    
+  <div class="form-group row">
+      <%= link_to '編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-3 offset-md-4 mt-3" %>
+  </div>
+</div>
+
+<hr color="silver">
+
+<div class="container">
+
+  <div class="row">
+    <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
+      <div class="form-group row">
+        <%= image_tag @illustration.get_image(200,200) %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
 
     #イラストページ
-    resources :illustrations, only: [:new, :create, :edit, :show, :update]
+    resources :illustrations, only: [:new, :create, :edit, :show, :update, :destroy]
 
     #トップページ
     get '/' => 'homes#index'
