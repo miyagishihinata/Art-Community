@@ -30,7 +30,7 @@
         <%= f.submit '変更を保存', class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
 
         <% if @illustration.user == current_user %>
-          <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger offset-md-3 mt-3 ml-3" %>
+          <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger offset-md-3 mt-3 ml-3", "data-confirm" => "本当に削除しますか？" %>
         <% end %>
       </div>
     <% end %>
