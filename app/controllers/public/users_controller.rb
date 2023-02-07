@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@post_llustration = @user.post_llustration.page(params[:page])
+    @llustration = @user.llustration.page(params[:page])
   end
 
   def edit

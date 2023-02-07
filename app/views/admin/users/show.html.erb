@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-2"><%# ユーザーアイコン　%>
+      <div class="text-center">
+        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+      </div>
+      <h4 class="text-center"><%= @user.user_name %></h4>
+    </div>
+
+    <div class="col-5"><%# 自己紹介文　%>
+      <h6 class="mt-5"><%= @user.self_introduction %></h6>
+    </div>
+
+    <div class="col-5">
+      <%= link_to new_illustration_path do %>
+        <button type="button" class="btn btn-outline-secondary mr-5 offset-md-3">
+          新規投稿
+        </button>
+      <% end %>
+      <%= link_to edit_user_path(current_user.id) do %>
+        <button type="button" class="btn btn-outline-secondary">
+          ユーザー編集
+        </button>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<hr color="silver">
+
+<div class="container">
+  <% @illustrations.each do |illustration| %>
+    <%= image_tag illustration.get_image %>
+  <% end %>
+  
+  <%= paginate @illustrations %>
+</div>
