@@ -13,16 +13,18 @@
     </div>
 
     <div class="col-5">
-      <%= link_to new_illustration_path do %>
-        <button type="button" class="btn btn-outline-secondary mr-5 offset-md-3">
-          新規投稿
-        </button>
-      <% end %>
+      <% if @user == current_user %>
+        <%= link_to new_illustration_path do %><%# 新規投稿ボタン　%>
+          <button type="button" class="btn btn-outline-secondary mr-5 offset-md-3">
+            新規投稿
+          </button>
+        <% end %>
 
-      <%= link_to edit_user_path(current_user.id) do %>
-        <button type="button" class="btn btn-outline-secondary">
-          ユーザー編集
-        </button>
+        <%= link_to edit_user_path(current_user.id) do %><%# ユーザー編集ボタン　%>
+          <button type="button" class="btn btn-outline-secondary">
+            ユーザー編集
+          </button>
+        <% end %>
       <% end %>
     </div>
 
@@ -33,4 +35,11 @@
 
 <div class="container">
 
+    <% @illustrations.each do |illustration| %>
+      <%= link_to illustration_path(illustration.id) do %>
+        <%= image_tag illustration.get_image(300,300) %>
+      <% end %>
+    <% end %>
+
+  <%= paginate @illustrations %>
 </div>

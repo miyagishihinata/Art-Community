@@ -32,7 +32,7 @@
 
 <div class="container">
   <% @illustrations.each do |illustration| %>
-    <%= image_tag illustration.get_image %>
+    <%= image_tag illustration.get_image(300,300) %>
   <% end %>
   
   <%= paginate @illustrations %>

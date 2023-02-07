@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_02_06_101216) do
   end
 
   create_table "illustrations", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "title", null: false
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
@@ -65,16 +66,6 @@ ActiveRecord::Schema.define(version: 2023_02_06_101216) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "post_illustrations", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "post_llustrations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

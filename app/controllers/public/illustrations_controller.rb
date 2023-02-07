@@ -1,4 +1,6 @@
 class Public::IllustrationsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @illustration = Illustration.new
   end

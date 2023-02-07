@@ -5,6 +5,7 @@ class Illustration < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+
   validates :title, presence: true
   validates :image, presence:true
 
@@ -13,7 +14,7 @@ class Illustration < ApplicationRecord
   end
 
   def liked_by?(user)
-    lokes.exists?(user_id: user.id)
+    likes.exists?(user_id: user.id)
   end
 
 end
