@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
 
     #イラストページ
-    resources :illustrations, only: [:index, :new, :create, :edit, :show, :update, :destroy]
+    resources :illustrations, only: [:index, :new, :create, :edit, :show, :update, :destroy] do
+      resources :comments, only: [:create, :destroy] #コメント機能
+    end
 
     #フォローページ
     resources :follows, only: [:index]

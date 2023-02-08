@@ -1,6 +1,6 @@
 class Public::IllustrationsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @illustrations = Illustration.page(params[:page])
   end
@@ -18,7 +18,7 @@ class Public::IllustrationsController < ApplicationController
 
   def show
     @illustration = Illustration.find(params[:id])
-    #@post_comment = PostComment.new
+    @comment = Comment.new
   end
 
   def edit

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture #アイコン
   has_many :illustrations, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
 
