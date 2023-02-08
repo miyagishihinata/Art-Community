@@ -61,10 +61,10 @@
 
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted">投稿イラスト</h5>
+    <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
   </div>
 
-  <div class="row">
+  <div class="row mt-3 ml-5">
     <% @illustrations.each do |illustration| %>
       <%= link_to illustration_path(illustration.id) do %>
         <%= image_tag illustration.get_image(300,300) %>

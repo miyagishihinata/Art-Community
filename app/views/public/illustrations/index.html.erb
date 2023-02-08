@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h5 class="font-weight-bold text-muted ml-5">新着イラスト</h5>
+  </div>
+
+  <% @illustrations.each do |illustration| %>
+    <div class="row mt-3 ml-5">
+        <%= link_to illustration_path(illustration.id) do %>
+          <%= image_tag illustration.get_image(250,250) %>
+        <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="container">
+  <%= paginate @illustrations %>
+</div>

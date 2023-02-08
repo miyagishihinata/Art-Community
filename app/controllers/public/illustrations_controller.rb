@@ -1,5 +1,9 @@
 class Public::IllustrationsController < ApplicationController
   before_action :authenticate_user!
+  
+  def index
+    @illustrations = Illustration.page(params[:page])
+  end
 
   def new
     @illustration = Illustration.new
