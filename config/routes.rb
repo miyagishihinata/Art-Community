@@ -36,12 +36,19 @@ Rails.application.routes.draw do
 
     #イラストページ
     resources :illustrations, only: [:new, :create, :edit, :show, :update, :destroy]
+    
+    #フォローページ
+    resources :follows, only: [:index]
+    
+    #フォロワーページ
+    resources :followers, only: [:index]
+    
+    #いいねページ
+    resources :likes, only: [:index]
 
     #トップページ
     get '/' => 'homes#index'
   end
-
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
