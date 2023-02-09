@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@post_llustration = @user.post_llustration.page(params[:page])
+    @llustration = @user.llustration.page(params[:page])
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted)
+    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :image)
   end
 
 end

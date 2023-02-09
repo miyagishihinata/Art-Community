@@ -7,10 +7,12 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-2"><%# ユーザーアイコン　%>
+      <div class="col-2"><%# ユーザー %>
         <div class="text-center">
+          <%# ユーザーアイコン　%>
           <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
         </div>
+        <%# ユーザー名　%>
         <h4 class="text-center"><%= @illustration.user.user_name %></h4>
       </div>
 
@@ -79,35 +81,46 @@
 
   <div class="container"><%# コメント　%>
 
-    <div class="mt-5 offset-md-1">
-      <p>コメント件数：<%= @illustration.comments.count %></p>
-    </div>
+      <div class="col-4">
+        <p>コメント件数：<%= @illustration.comments.count %></p>
+      </div>
 
-    <%# コメント表示 %>
-    <% @illustration.comments.each do |comment| %>
+      <%# コメント表示 %>
+      <% @illustration.comments.each do |comment| %>
 
-      <%# ユーザーアイコン　%>
-      <p><%= image_tag comment.user.get_profile_picture(100,100) %></p>
+      <div class="">
+        <div class="px-10 mx-auto col-12 mt-4>
+        <%# コメント送信フォーム %>
+        <%= form_with model: [@illustration, @comment] do |f| %>
+          <%= f.text_area :post_comment, class: "col-md-5 form-control", placeholder: "コメント記入" %>
+          <%= f.submit "送信する", class: "btn btn-success col-md-1 offset-md-4 mt-3 mb-5" %>
+        <% end %>
+        </div>
+      </div>
 
-      <%# ユーザー名　%>
-      <%= comment.user.user_name %>
+    <div class="row">
+        <div class="col-2"><%# ユーザー　%>
+          <div class="text-center">
+            <%# ユーザーアイコン　%>
+            <%= image_tag comment.user.get_profile_picture(80,80), class: "border border-2 mt-3" %>
+          </div>
 
-      <%# コメント作成日時　%>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.post_comment %>
+            <%# ユーザー名　%>
+            <h4 class="text-center"><%= comment.user.user_name %></h4>
+        </div>
 
-      <%# 削除ボタン　%>
-      <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
-        <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
+        <div class="col-5">
+          <%# コメント作成日時　%>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.post_comment %>
+
+          <%# 削除ボタン　%>
+          <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
+            <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-success col-md-2 offset-md-2 mt-3 mb-5" %>
+          <% end %>
+        </div>
       <% end %>
 
-    <% end %>
-
-
-    <%# コメント送信フォーム %>
-    <%= form_with model: [@illustration, @comment] do |f| %>
-      <%= f.text_area :post_comment, class: "col-md-5 form-control ml-5", placeholder: "コメントをここに" %>
-      <%= f.submit "送信する", class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
-    <% end %>
+    </div>
   </div>
 
 </html>
