@@ -1,79 +1,113 @@
-<div class="container">
-  <div class="row">
+<!DOCTYPE html>
+  <html>
+    <head>
+      <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
+    </head>
 
-    <div class="col-2"><%# ユーザーアイコン　%>
-      <div class="text-center">
-        <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
-      </div>
-      <h4 class="text-center"><%= @illustration.user.user_name %></h4>
-    </div>
+  <div class="container">
+    <div class="row">
 
-    <div class="col-5">
-      <div class="form-group row mt-3">
-       <h4 class="font-weight-bold"><%= @illustration.title %></h4>
-      </div>
-
-      <div class="form-group row">
-        説明  : <%= @illustration.introduction %><br>
-        投稿日: <%= @illustration.created_at.strftime('%Y/%m/%d') %><br>
+      <div class="col-2"><%# ユーザーアイコン　%>
+        <div class="text-center">
+          <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+        </div>
+        <h4 class="text-center"><%= @illustration.user.user_name %></h4>
       </div>
 
-    </div>
+      <div class="col-5">
+        <div class="form-group row mt-3">
+         <h4 class="font-weight-bold"><%= @illustration.title %></h4>
+        </div>
 
-    <div class="col-5"><%# 編集ボタン　%>
-      <div class="form-group row">
-        <% if @illustration.user == current_user %>
-          <%= link_to '編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
-        <% end %>
+        <div class="form-group row">
+          説明  : <%= @illustration.introduction %><br>
+          投稿日: <%= @illustration.created_at.strftime('%Y/%m/%d') %><br>
+        </div>
+
       </div>
-    </div>
 
-  </div>
-</div>
-
-<hr color="silver">
-
-<div class="container"><%# イラスト　%>
-  <div class="row">
-    <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
-
-      <div class="form-group row">
-        <%= image_tag @illustration.get_image(700,700) %>
+      <div class="col-5"><%# 編集ボタン　%>
+        <div class="form-group row">
+          <% if @illustration.user == current_user %>
+            <%= link_to '編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
+          <% end %>
+        </div>
       </div>
 
     </div>
   </div>
-</div>
 
-<div class="container"><%# コメント　%>
+  <hr color="silver">
 
-  <div class="mt-5 offset-md-1">
-    <p>コメント件数：<%= @illustration.comments.count %></p>
+  <div class="container"><%# イラスト　%>
+    <div class="row">
+      <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
+
+        <div class="form-group row">
+          <%= image_tag @illustration.get_image(700,700) %>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-  <%# コメント表示 %>
-  <% @illustration.comments.each do |comment| %>
+  <div class="container"><%# いいね %>
+    いいね
+    <% if @illustration.liked_by?(current_user) %>
+        <p>
+          <%= link_to illustration_likes_path(@illustration), method: :delete do %><%# いいねあり %>
+           <h4>😄</h4>
+          <% end %>
 
-    <%# ユーザーアイコン　%>
-    <p><%= image_tag comment.user.get_profile_picture(100,100) %></p>
+          <% if @illustration.user == current_user %>
+            <%= @illustration.likes.count %>いいね<%# いいね数 %>
+          <% end %>
 
-    <%# ユーザー名　%>
-    <%= comment.user.user_name %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to illustration_likes_path(@illustration), method: :post do %><%# いいねなし %>
+            <h5>😄</h5>
+          <% end %>
 
-    <%# コメント作成日時　%>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.post_comment %>
+          <% if @illustration.user == current_user %>
+            <%= @illustration.likes.count %>いいね<%# いいね数 %>
+          <% end %>
+        </p>
+    <% end %>
+  </div>
 
-    <%# 削除ボタン　%>
-    <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
-      <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
+  <div class="container"><%# コメント　%>
+
+    <div class="mt-5 offset-md-1">
+      <p>コメント件数：<%= @illustration.comments.count %></p>
+    </div>
+
+    <%# コメント表示 %>
+    <% @illustration.comments.each do |comment| %>
+
+      <%# ユーザーアイコン　%>
+      <p><%= image_tag comment.user.get_profile_picture(100,100) %></p>
+
+      <%# ユーザー名　%>
+      <%= comment.user.user_name %>
+
+      <%# コメント作成日時　%>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.post_comment %>
+
+      <%# 削除ボタン　%>
+      <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
+        <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
+      <% end %>
+
     <% end %>
 
-  <% end %>
 
+    <%# コメント送信フォーム %>
+    <%= form_with model: [@illustration, @comment] do |f| %>
+      <%= f.text_area :post_comment, class: "col-md-5 form-control ml-5", placeholder: "コメントをここに" %>
+      <%= f.submit "送信する", class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
+    <% end %>
+  </div>
 
-  <%# コメント送信フォーム %>
-  <%= form_with model: [@illustration, @comment] do |f| %>
-    <%= f.text_area :@comment, class: "col-md-5 form-control ml-5", placeholder: "コメントをここに" %>
-    <%= f.submit "送信する", class: "btn btn-success col-md-1 offset-md-2 mt-3 mb-5" %>
-  <% end %>
-</div>
+</html>

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
     #イラストページ
     resources :illustrations, only: [:index, :new, :create, :edit, :show, :update, :destroy] do
+      resource :likes, only: [:create, :destroy]     #いいね機能
       resources :comments, only: [:create, :destroy] #コメント機能
     end
 
