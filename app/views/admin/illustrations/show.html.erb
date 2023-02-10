@@ -44,27 +44,43 @@
 </div>
 
 <div class="container"><%# コメント %>
+  <div class="row">
+
+    <div class="col-2">
+      <h5 class="font-weight-bold mt-5 ml-5">
+        コメント
+      </h5>
+    </div>
+
+    <div class="col-2">
+      <h6 class="mt-5">
+        コメント件数：<%= @illustration.comments.count %>
+      </h6>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
   <% @illustration.comments.each do |comment| %><%# コメント表示 %>
     <div class="row">
 
-        <div class="col-2">
-          <div class="text-center">
-
-            <%# ユーザーアイコン　%>
-            <%= image_tag comment.user.get_profile_picture(80,80), class: "border border-2 mt-3" %>
-          </div>
-
-            <%# ユーザー名　%>
-            <h4 class="text-center"><%= comment.user.user_name %></h4>
+      <div class="col-2">
+        <div class="text-center">
+          <%# ユーザーアイコン　%>
+          <%= image_tag comment.user.get_profile_picture(70,70), class: "border border-2 mt-3 ml-3" %>
         </div>
+          <%# ユーザー名　%>
+          <h4 class="text-center ml-3"><%= comment.user.user_name %></h4>
+      </div>
 
-        <div class="col-5">
-          <%# コメント作成日時　%>
-          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.post_comment %>
+      <div class="col-10">
+        <%# コメント作成日時　%>                         <%# コメント　%>
+        <%= comment.created_at.strftime('%Y/%m/%d') %> :  <%= comment.post_comment %>
 
-          <%# 削除ボタン　%>
-            <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-md-2 offset-md-2 mt-3 mb-5" %>
-        </div>
+        <%# 削除ボタン　%>
+        <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-md-1 offset-md-3 mt-5 mb-5" %>
+      </div>
 
     </div>
   <% end %>

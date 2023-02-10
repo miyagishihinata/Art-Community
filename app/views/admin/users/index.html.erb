@@ -1,0 +1,50 @@
+<div class="row">
+  <h5 class="offset-md-2 text-center mt-4 mb-4" style="background-color:#dcdcdc;">
+    &emsp;ユーザー覧&emsp;
+  </h5>
+</div>
+
+  <div class="px-5 mx-auto col-2 col-sm-8">
+    <table class="table">
+
+      <thead style="background-color:#f5f5f5;">
+        <tr>
+          <th>ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+           <%= user.id %>
+          </td>
+          <td>
+           <%= link_to admin_user_path(user.id) do %>
+             <%= user.user_name %>
+           <% end %>
+          </td>
+          <td>
+           <%= user.email %>
+          </td>
+          <td>
+           <% if user.is_deleted == true %>
+              退会
+            <% else %>
+              有効
+           <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3">
+    <%= paginate @users %>
+  </div>
+</div>
+
