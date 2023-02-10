@@ -18,6 +18,7 @@ class Public::IllustrationsController < ApplicationController
 
   def show
     @illustration = Illustration.find(params[:id])
+    @user = User.find(params[:id])
     @comment = Comment.new
   end
 
@@ -40,7 +41,7 @@ class Public::IllustrationsController < ApplicationController
   private
 
   def illustration_params
-    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image)
+    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id)
   end
 
 end

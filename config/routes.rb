@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :show, :update, :destroy]
 
     #イラストページ
-    resources :illustrations, only: [:show, :edit, :update]
+    resources :illustrations, only: [:show, :edit, :update] do
+      resources :comments, only: [:create, :destroy] #コメント機能
+    end
 
     #トップページ
     get '/' => 'homes#top'

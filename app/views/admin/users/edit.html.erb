@@ -9,9 +9,9 @@
     <div class="col-9">
 
     <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
-    
+
       <div class="form-group row">
-        <label class="col-md-4">ユーザーID</label>
+        <label class="font-weight-bold text-muted col-md-4">ユーザーID</label>
           <%= @user.id %>
       </div>
 
@@ -48,9 +48,9 @@
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
       </div>
-      
+
       <div class="form-group row">
-        <label class="col-md-4">ユーザーステータス</label>
+        <label class="font-weight-bold text-muted col-md-4">ユーザーステータス</label>
 
           <div class="form-check form-check-inline">
             <%= f.radio_button :is_deleted, false, checked: true %>

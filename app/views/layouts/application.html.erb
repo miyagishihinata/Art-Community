@@ -25,7 +25,7 @@
             <ul class="navbar-nav">
 
             <% if admin_signed_in? %><%# 会員ログイン　%>
-            
+
               <%# ロゴ　%>
               <%= link_to admin_path, class:"navbar-brand" do %>
                 <div class="h1 text-dark mb-2 mr-5">Art Community</div>
@@ -127,19 +127,19 @@
 
               <li>
                 <%= link_to new_user_registration_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5">新規登録</button>
+                  <button type="button" class="btn btn-outline-secondary mr-5 ml-5 mt-3">新規登録</button>
                 <% end %>
               </li>
 
               <li>
                 <%= link_to user_session_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5">ログイン</button>
+                  <button type="button" class="btn btn-outline-secondary mr-5 mt-3">ログイン</button>
                 <% end %>
               </li>
 
               <li>
                 <%#=link_to  do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5">ゲストログイン</button>
+                  <button type="button" class="btn btn-outline-secondary mr-5 mt-3">ゲストログイン</button>
                 <%# end %>
               </li>
 
