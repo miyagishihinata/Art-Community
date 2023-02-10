@@ -5,7 +5,7 @@
 
   <% @illustrations.each do |illustration| %>
     <div class="row mt-3 ml-5">
-      <%= link_to illustration_path(illustration.id) do %>
+      <%= link_to admin_illustration_path(illustration.id) do %>
         <%= image_tag illustration.get_image(250,250) %>
       <% end %>
     </div>

@@ -1,7 +1,7 @@
 class Admin::IllustrationsController < ApplicationController
   def show
     @illustration = Illustration.find(params[:id])
-    @post_comment = PostComment.new
+    @comment = Comment.new
   end
 
   def edit

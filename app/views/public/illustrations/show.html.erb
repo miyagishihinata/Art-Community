@@ -46,7 +46,7 @@
       <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
 
         <div class="form-group row">
-          <%= image_tag @illustration.get_image(700,700) %>
+          <%= image_tag @illustration.get_image(500,500) %>
         </div>
 
       </div>
@@ -79,17 +79,14 @@
     <% end %>
   </div>
 
-  <div class="container"><%# コメント　%>
+  <div class="container"><%# コメント %>
 
       <div class="col-4">
         <p>コメント件数：<%= @illustration.comments.count %></p>
       </div>
 
-      <%# コメント表示 %>
-      <% @illustration.comments.each do |comment| %>
-
       <div class="">
-        <div class="px-10 mx-auto col-12 mt-4>
+        <div class="px-10 mx-auto col-12 mt-4">
         <%# コメント送信フォーム %>
         <%= form_with model: [@illustration, @comment] do |f| %>
           <%= f.text_area :post_comment, class: "col-md-5 form-control", placeholder: "コメント記入" %>
@@ -98,9 +95,13 @@
         </div>
       </div>
 
+
+  <% @illustration.comments.each do |comment| %><%# コメント表示 %>
     <div class="row">
-        <div class="col-2"><%# ユーザー　%>
+
+        <div class="col-2">
           <div class="text-center">
+
             <%# ユーザーアイコン　%>
             <%= image_tag comment.user.get_profile_picture(80,80), class: "border border-2 mt-3" %>
           </div>
@@ -115,12 +116,12 @@
 
           <%# 削除ボタン　%>
           <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
-            <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-success col-md-2 offset-md-2 mt-3 mb-5" %>
+            <%= link_to "削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-danger col-md-2 offset-md-2 mt-3 mb-5" %>
           <% end %>
         </div>
-      <% end %>
 
     </div>
-  </div>
+  <% end %>
 
+  </div>
 </html>
