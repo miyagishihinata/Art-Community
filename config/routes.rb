@@ -36,6 +36,11 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
     patch 'users/withdraw' => 'users#withdraw'     #ユーザー退会処理
     resources :users, only: [:show, :edit, :update] do
+
+      resource :relationships, only: [:create, :destroy]                #フォロー機能
+      get 'followings' => 'relationships#followings', as: 'followings'  #フォロー一覧
+      get 'followers' => 'relationships#followers', as: 'followers'     #フォロワー一覧
+
       member do
         get :likes #いいね一覧
       end
@@ -52,9 +57,6 @@ Rails.application.routes.draw do
 
     #フォロワーページ
     resources :followers, only: [:index]
-
-    #いいねページ
-    resources :likes, only: [:index]
 
   end
 
