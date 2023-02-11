@@ -19,15 +19,12 @@
             新規投稿
           </button>
         <% end %>
-
         <%= link_to edit_user_path(current_user.id) do %><%# ユーザー編集ボタン　%>
           <button type="button" class="btn btn-outline-secondary">
             ユーザー編集
           </button>
         <% end %>
       <% end %>
-
-
       <% if current_user.following?(@user) %>
         <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
       <% else %>
@@ -45,15 +42,15 @@
 <div class="container">
   <div class="row">
     <div class="offset-md-3">
-      <%= link_to follows_path do %>
+      <%#= link_to follows_path do %>
         <h5 class="font-weight-bold text-muted">フォロー</h5>
-      <% end %>
+      <%# end %>
     </div>
 
     <div class="offset-md-1">
-      <%= link_to followers_path do %>
+      <%#= link_to followers_path do %>
         <h5 class="font-weight-bold text-muted">フォロワー</h5>
-      <% end %>
+      <%# end %>
     </div>
 
     <div class="offset-md-1">
@@ -72,13 +69,16 @@
     <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
   </div>
 
-  <div class="row mt-3 ml-5">
     <% @illustrations.each do |illustration| %>
       <%= link_to illustration_path(illustration.id) do %>
-        <%= image_tag illustration.get_image(300,300) %>
+        <%= image_tag illustration.get_image(300,300), class:"ml-5 mt-3" %>
       <% end %>
     <% end %>
 
+</div>
+
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
     <%= paginate @illustrations %>
   </div>
 </div>

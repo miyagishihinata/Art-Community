@@ -52,12 +52,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy] #コメント機能
     end
 
-    #フォローページ
-    resources :follows, only: [:index]
-
-    #フォロワーページ
-    resources :followers, only: [:index]
-
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

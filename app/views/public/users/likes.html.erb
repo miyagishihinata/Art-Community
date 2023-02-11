@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h5 class="font-weight-bold text-muted ml-5">いいね</h5>
+  </div>
+
+  <% @like_posts.each do |post|%>
+    <%= link_to illustration_path(@illustration.id) do %>
+      <%= image_tag post.get_image(300,300), class:"ml-5 mt-3" %>
+    <% end %>
+  <% end %>
+
+</div>
+
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @like_posts %>
+  </div>
+</div>

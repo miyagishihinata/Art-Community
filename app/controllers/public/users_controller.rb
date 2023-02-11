@@ -5,11 +5,12 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @illustrations = @user.illustrations.page(params[:page])
   end
-  
+
   def likes
     @user = User.find(params[:id])
-    likes= Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
+    likes= Like.where(user_id: @user.id).pluck(:illustration_id)
+    @like_posts = Illustration.where(id: likes).page(params[:page])
+    @illustration = Illustration.find(params[:id])
   end
 
   def edit
