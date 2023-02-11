@@ -4,10 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :profile_picture #アイコン
-  has_many :illustrations, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_one_attached :profile_picture            #アイコン
+  has_many :illustrations, dependent: :destroy #イラスト
+  has_many :comments, dependent: :destroy      #イラスト
+  has_many :likes, dependent: :destroy         #いいね
+  
+  # フォローをした、されたの関係
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+ 
+  # フォロー一覧画面,フォロワー一覧画面で使う
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
 
 
   def get_profile_picture(width,height)
