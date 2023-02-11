@@ -19,7 +19,7 @@ class Public::IllustrationsController < ApplicationController
   def show
     @illustration = Illustration.find(params[:id])
     @comment = Comment.new
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit

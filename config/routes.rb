@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     #ユーザーページ
     get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
     patch 'users/withdraw' => 'users#withdraw'     #ユーザー退会処理
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :likes #いいね一覧
+      end
+    end
 
     #イラストページ
     resources :illustrations, only: [:index, :new, :create, :edit, :show, :update, :destroy] do
