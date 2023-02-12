@@ -10,12 +10,12 @@
       <div class="col-2"><%# ユーザー %>
         <div class="text-center">
           <%# ユーザーアイコン　%>
-          <%= link_to user_path(@user.id) do %>
+          <%= link_to user_path(@illustration.user.id) do %>
             <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
           <% end %>
         </div>
         <%# ユーザー名　%>
-        <%= link_to user_path(@user.id) do %>
+        <%= link_to user_path(@illustration.user.id) do %>
           <h4 class="text-center text-dark"><%= @illustration.user.user_name %></h4>
         <% end %>
       </div>
@@ -132,12 +132,12 @@
         <div class="col-2 ml-3">
           <div class="text-center">
             <%# ユーザーアイコン　%>
-            <%= link_to user_path(@user.id) do %>
+            <%= link_to user_path(comment.user.id) do %>
               <%= image_tag comment.user.get_profile_picture(70,70), class: "border border-2 mt-3" %>
             <% end %>
           </div>
             <%# ユーザー名　%>
-            <%= link_to user_path(@user.id) do %>
+            <%= link_to user_path(comment.user.id) do %>
               <h5 class="text-center text-dark mb-3"><%= comment.user.user_name %></h5>
             <% end %>
         </div>

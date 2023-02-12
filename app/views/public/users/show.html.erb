@@ -15,7 +15,7 @@
     <div class="col-5">
       <% if @user == current_user %>
         <%= link_to new_illustration_path do %><%# 新規投稿ボタン　%>
-          <button type="button" class="btn btn-outline-secondary mr-4 offset-md-1">
+          <button type="button" class="btn btn-success mr-3 offset-md-1">
             新規投稿
           </button>
         <% end %>
@@ -26,9 +26,9 @@
         <% end %>
       <% end %>
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
+        <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-dark" %>
       <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-primary" %>
       <% end %>
 
     </div>
@@ -42,9 +42,9 @@
 <div class="container">
   <div class="row">
     <div class="offset-md-3">
-      <%#= link_to follows_path do %>
+      <%= link_to user_followings_path(@user.id) do %>
         <h5 class="font-weight-bold text-muted">フォロー</h5>
-      <%# end %>
+      <% end %>
     </div>
 
     <div class="offset-md-1">
