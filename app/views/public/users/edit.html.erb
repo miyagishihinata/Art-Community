@@ -45,8 +45,13 @@
       </div>
 
       <div class="actions">
+        <%# 保存ボタン %> 
         <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
+        
+        <%# マイページボタン %> 
         <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-3" %>
+        
+        <%# 退会ボタン %> 
         <%= link_to '退会する', users_unsubscribe_path, class: "btn btn-danger mt-3 ml-3" %>
       </div>
     <% end %>

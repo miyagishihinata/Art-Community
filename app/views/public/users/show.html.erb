@@ -1,3 +1,5 @@
+<%# ユーザー詳細画面 %>
+
 <div class="container">
   <div class="row">
 
@@ -55,14 +57,14 @@
 
     <%# フォロー一覧リンク %>
     <div class="offset-md-3">
-      <%= link_to user_followings_path(@user.id) do %>
+      <%= link_to user_followings_path(@user) do %>
         <h5 class="font-weight-bold text-muted">フォロー</h5>
       <% end %>
     </div>
 
     <%# フォロワー一覧リンク %>
     <div class="offset-md-1">
-      <%= link_to user_followers_path(@user.id) do %>
+      <%= link_to user_followers_path(@user) do %>
         <h5 class="font-weight-bold text-muted">フォロワー</h5>
       <% end %>
     </div>
