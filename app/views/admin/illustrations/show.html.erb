@@ -1,11 +1,17 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-2"><%# ユーザーアイコン　%>
+    <div class="col-2"><%# 投稿ユーザー　%>
       <div class="text-center">
-        <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+        <%# ユーザーアイコン　%>
+        <%= link_to admin_user_path(@illustration.user.id) do %>
+          <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+        <% end %>
       </div>
-      <h4 class="text-center"><%= @illustration.user.user_name %></h4>
+        <%# ユーザー名　%>
+        <%= link_to admin_user_path(@illustration.user.id) do %>
+          <h4 class="text-center"><%= @illustration.user.user_name %></h4>
+        <% end %>
     </div>
 
     <div class="col-5">
@@ -68,10 +74,14 @@
       <div class="col-2">
         <div class="text-center">
           <%# ユーザーアイコン　%>
-          <%= image_tag comment.user.get_profile_picture(70,70), class: "border border-2 mt-3 ml-3" %>
+          <%= link_to admin_ser_path(comment.user.id) do %>
+            <%= image_tag comment.user.get_profile_picture(70,70), class: "border border-2 mt-3 ml-3" %>
+          <% end %>
         </div>
           <%# ユーザー名　%>
-          <h4 class="text-center ml-3"><%= comment.user.user_name %></h4>
+          <%= link_to admin_user_path(comment.user.id) do %>
+            <h4 class="text-center ml-3"><%= comment.user.user_name %></h4>
+          <% end %>
       </div>
 
       <div class="col-10">
