@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <h5 class="font-weight-bold text-muted mt-3">
+      タイムライン
+    </h5>
+  </div>
+</div>
+
+<hr color="silver">
+
+<div class="container">
+
+  <% @illustrations.each do |illustration| %>
+    <div class="row">
+
+      <div class="col-2"><%# 投稿ユーザー %>
+        <div class="text-center">
+          <%# ユーザーアイコン %>
+          <%= link_to user_path(illustration.user.id) do %>
+            <%= image_tag illustration.user.get_profile_picture(70,70), class: "border border-2 mt-3" %>
+          <% end %>
+        </div>
+
+          <%# ユーザー名 %>
+          <%= link_to user_path(illustration.user.id) do %>
+            <h5 class="text-center text-dark"><%= illustration.user.user_name %></h5>
+          <% end %>
+      </div>
+
+    <%# イラスト %>
+    <%= link_to illustration_path(illustration.id) do %>
+      <h5 class="text-center font-weight-bold text-dark"><%= illustration.title %></h5>
+      <%= image_tag illustration.get_image(250,250), class:"ml-5 mt-3" %>
+    <% end %>
+
+    </div>
+  <% end %>
+
+</div>
