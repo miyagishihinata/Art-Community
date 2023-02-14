@@ -1,11 +1,10 @@
 <div class="search-form">
-  <%= form_with url: search_path, local: true, method: :get do |f| %>
-    <%= f.text_field :title %>
-    <%= f.select :range, options_for_select([['Illustration']]) %>
-    <%= f.submit "検索", class: "btn btn-primary" %>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
   <% end %>
 </div>
-<div class="illustration-list">
+<div class="post-list">
   <% @illustrations.each do |illustration| %>
     <%= illustration.title %>
   <% end %>

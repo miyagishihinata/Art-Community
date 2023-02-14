@@ -4,4 +4,5 @@ class Public::SearchesController < ApplicationController
     @keyword = params[:keyword]
     render "index"
   end
+
 end

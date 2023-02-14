@@ -8,15 +8,15 @@ class User < ApplicationRecord
   has_many :illustrations, dependent: :destroy #イラスト
   has_many :comments, dependent: :destroy      #イラスト
   has_many :likes, dependent: :destroy         #いいね
-  
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
- 
+
   # フォロー一覧画面,フォロワー一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -29,7 +29,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
 
 
   def get_profile_picture(width,height)

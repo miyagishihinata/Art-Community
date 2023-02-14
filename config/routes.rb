@@ -54,8 +54,9 @@ Rails.application.routes.draw do
 
     #タイムライン
     get 'timelines' => 'timelines#index'
-    
+
     #検索
+    resources :searches, only: [:index, :post]
     get "search" => "searches#search"
 
   end
