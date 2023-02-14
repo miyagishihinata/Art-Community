@@ -54,6 +54,9 @@ Rails.application.routes.draw do
 
     #タイムライン
     get 'timelines' => 'timelines#index'
+    
+    #検索
+    get "search" => "searches#search"
 
   end
 
