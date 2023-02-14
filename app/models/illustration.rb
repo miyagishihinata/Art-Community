@@ -17,4 +17,8 @@ class Illustration < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
+  def self.search(keyword)
+    where(["title like? ", "%#{keyword}%"])
+  end
+
 end
