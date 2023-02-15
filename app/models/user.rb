@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture            #アイコン
   has_many :illustrations, dependent: :destroy #イラスト
-  has_many :comments, dependent: :destroy      #イラスト
+  has_many :comments, dependent: :destroy      #コメント
   has_many :likes, dependent: :destroy         #いいね
 
   # フォローをした、されたの関係
@@ -16,6 +16,11 @@ class User < ApplicationRecord
   # フォロー一覧画面,フォロワー一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  #通知
+  has_many :active_notices, class_name: 'Notice', foreign_key: 'visitor_id', dependent: :destroy  #自分からの通知
+  has_many :passive_notices, class_name: 'Notice', foreign_key: 'visited_id', dependent: :destroy #相手からの通知
+
 
   # フォローしたときの処理
   def follow(user_id)
