@@ -27,20 +27,25 @@
           <% end %>
         </td>
 
-        <td><%# イラスト %>
-          <div class="row">
-            <%= link_to illustration_path(illustration.id) do %>
-              <h5 class="text-center font-weight-bold text-dark"><%= illustration.title %></h5>
-              <%= image_tag illustration.get_image(300,300), class:"mt-2" %>
-            <% end %>
-          </div>
+        <td><%# イラストタイトル %>
+          <%= link_to illustration_path(illustration.id) do %>
+            <h5 class="font-weight-bold text-dark mt-3 mb-2">
+              <%= illustration.title %>
+            </h5>
+          <% end %>
         </td>
 
-        <td><%# イラスト説明 %>
-          <div class="mt-5">
-            説明  : <%= illustration.introduction %><br>
-            投稿日: <%= illustration.created_at.strftime('%Y/%m/%d') %><br>
+        <td><%# イラスト %>
+        <div class="container">
+          <div class="row">
+            <%= link_to illustration_path(illustration.id) do %>
+              <%= image_tag illustration.get_image(300,300), class:"mt-2" %>
+            <% end %>
+            <h6 class="text-dark mt-5 ml-2">
+              投稿日: <%= illustration.created_at.strftime('%Y/%m/%d') %><br>
+            </h6>
           </div>
+        </div>
         </td>
       </tr>
     </tbody>
