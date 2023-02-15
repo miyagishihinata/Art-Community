@@ -21,6 +21,10 @@ class User < ApplicationRecord
   has_many :active_notices, class_name: 'Notice', foreign_key: 'visitor_id', dependent: :destroy  #自分からの通知
   has_many :passive_notices, class_name: 'Notice', foreign_key: 'visited_id', dependent: :destroy #相手からの通知
 
+  #検索
+  def self.search(keyword)
+  where(["user_name like?", "%#{keyword}%"])
+  end
 
   # フォローしたときの処理
   def follow(user_id)
@@ -34,8 +38,8 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
-  
+
+
   #フォロー通知
   def create_notice_follow!(current_user)
     temp = Notice.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])

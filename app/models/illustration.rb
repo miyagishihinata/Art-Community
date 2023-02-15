@@ -22,7 +22,7 @@ class Illustration < ApplicationRecord
 
   #検索
   def self.search(keyword)
-    where(["title like? ", "%#{keyword}%"])
+    where(["title like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
   #いいね通知
@@ -48,7 +48,7 @@ class Illustration < ApplicationRecord
   end
 
   #コメント通知
-  def create_notification_comment!(current_user, comment_id)
+  def create_notice_comment!(current_user, comment_id)
 
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
@@ -63,7 +63,7 @@ class Illustration < ApplicationRecord
   def save_notice_comment!(current_user, comment_id, visited_id)
 
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
-    notification = current_user.active_notifications.new(
+    notice = current_user.active_notices.new(
       illustration_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
