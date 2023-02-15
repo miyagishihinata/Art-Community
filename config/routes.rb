@@ -57,7 +57,10 @@ Rails.application.routes.draw do
 
     #検索
     resources :searches, only: [:index, :post]
-    get "search" => "searches#search"
+    get 'search' => 'searches#search'
+    
+    #通知
+    get 'notices' => 'notices#index'
 
   end
 

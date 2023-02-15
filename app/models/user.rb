@@ -34,8 +34,22 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  
+  #フォロー通知
+  def create_notice_follow!(current_user)
+    temp = Notice.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notice = current_user.active_notices.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notice.save if notice.valid?
+    end
+  end
 
 
+ #アイコン
   def get_profile_picture(width,height)
     unless profile_picture.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
