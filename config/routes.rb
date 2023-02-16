@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     end
 
     #タイムライン
-    get 'timelines' => 'timelines#index'
+    resources :timelines, only: [:index]
 
     #検索
     resources :searches, only: [:index, :post]
