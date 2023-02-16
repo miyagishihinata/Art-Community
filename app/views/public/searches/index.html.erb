@@ -27,18 +27,54 @@
   </div>
 
 
-  <%  if @search_word.present? %>
-    <div class="illustration-list">
+  <%# イラストの検索結果 %>
+  <% if @search_word.present? %>
+    <h6 class="font-weight-bold mt-4 ml-3">
+      <%= @illustrations.count %>件の検索結果(イラスト)
+    </h6>
+
+    <div class="illustration-list mt-5 ml-3">
       <% @illustrations.each do |illustration| %>
         <%= link_to illustration_path(illustration.id) do %>
           <%= image_tag illustration.get_image(300,300) %>
         <% end %>
       <% end %>
     </div>
+  <% end %>
+
+
+  <%# ユーザーの検索結果 %>
+  <% if @search_word.present? %>
+    <h6 class="font-weight-bold mt-4 ml-3">
+      <%= @users.count %>件の検索結果(ユーザー)
+    </h6>
 
     <div class="user-list">
       <% @users.each do |user| %>
-        <%= user.user_name %>
+
+      <div class= "row ml-3">
+        <%# ユーザー名　%>
+        <%= link_to user_path(user.id) do %>
+          <div class="col-3">
+            <h4 class="text-dark mt-5 mr-5">
+              <%= user.user_name %>
+            </h4>
+          </div>
+        <% end %>
+
+        <%# ユーザーアイコン　%>
+        <%= link_to user_path(user.id) do %>
+          <div class="col-2">
+            <%= image_tag user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+          </div>
+        <% end %>
+
+        <%# 自己紹介文　%>
+        <div class="col-8">
+          <h6 class="mt-5"><%= user.self_introduction %></h6>
+        </div>
+      </div>
+
       <% end %>
     </div>
   <% end %>
