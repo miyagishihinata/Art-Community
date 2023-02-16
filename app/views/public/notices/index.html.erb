@@ -1,10 +1,14 @@
+<div class="container">
+  <h4 class="font-weight-bold text-muted mt-4 ml-5">通知</h4>
+</div>
 
-<h3 class="text-center">通知</h3>
-
-<% if @notices.exists? %>
+<div class="container">
+  <% if @notices.exists? %>
     <div class="users-index">
-        <%= render @notices %>
+      <%= render @notices %>
     </div>
-<% else %>
+  <% else %>
     <p>通知はありません</p>
-<% end %>
+  <% end %>
+</div>
+
