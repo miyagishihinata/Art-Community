@@ -2,7 +2,7 @@ class Public::IllustrationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @illustrations = Illustration.page(params[:page])
+    @illustrations = Illustration.page(params[:page]).order(created_at: :desc)
   end
 
   def new

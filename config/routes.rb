@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   }
 
 
+
+
   # 管理者側
   namespace :admin do
     #ユーザーページ
