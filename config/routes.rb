@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'gests/show'
+  end
   #トップページ(ログイン前)
   root to: "public/homes#top"
 
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
 
 
 
@@ -33,6 +35,9 @@ Rails.application.routes.draw do
 
   #ユーザー側
   scope module: :public do
+    # ゲストログイン
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+    resources :gests, only: [:show]
 
     #ユーザーページ
     get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
