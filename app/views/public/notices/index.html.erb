@@ -6,7 +6,7 @@
 <div class="container">
   <% if @notices.exists? %>
     <div class="users-index">
-      <%= render 'public/notices/_notice', notices: @notices %>
+      <%= render partial: 'public/notices/notice', collection: @notices, as: :n %>
     </div>
   <% else %>
     <p>通知はありません</p>

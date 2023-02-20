@@ -1,0 +1,38 @@
+<% visitor = n.visitor %>
+<% visited = n.visited %>
+<div class="col-md-6 mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+        <%= image_tag visitor.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+      <% end %>
+      <%= visitor.user_name %>さんが
+      <% case n.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'like' then %>
+        <%= link_to 'あなたの投稿にいいねしました', n.illustration, style: "font-weight: bold;" %>
+      <% when 'comment' then %>
+
+        <% if n.illustration.user_id == visited.id %>
+          <%= link_to "あなたの投稿", n.illustration, style: "font-weight: bold;" %>
+        <% else %>
+          <span>
+            <%= link_to post_path(notice.post) do %>
+              <%= image_tag user.get_profile_picture_url(notification.post.user).to_s, class: "icon_mini" %>
+            <% end %>
+            <%= n.illustration.user.user_name + 'さんの投稿にコメントしました' %>
+          </span>
+         <p class="text-muted.mb-0">
+           <%= Comment.find_by(id: n.comment_id)&.post_comment %>
+         </p>
+        <% end %>
+
+      <% end %>
+    </span>
+    <div class="small text-muted text-right">
+      <%= time_ago_in_words(n.created_at).upcase %>
+    </div>
+  </div>
+</div>
+<hr>

@@ -3,8 +3,13 @@ class Public::CommentsController < ApplicationController
     illustration = Illustration.find(params[:illustration_id])
     post_comment = current_user.comments.new(comment_params)
     post_comment.illustration_id = illustration.id
-    post_comment.save
-    redirect_to illustration_path(illustration.id)
+    if  illustration = Illustration.find(params[:illustration_id])
+      post_comment.save
+      illustration.create_notice_comment!(current_user, post_comment.id)
+      redirect_to illustration_path(params[:illustration_id])
+    else
+      render 'illustrations/show'
+    end
   end
 
   def destroy
@@ -19,3 +24,4 @@ class Public::CommentsController < ApplicationController
   end
 
 end
+
