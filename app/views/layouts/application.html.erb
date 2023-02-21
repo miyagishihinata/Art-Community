@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
   <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="application.style.css" />
     <title>Art Community</title>
     <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,22 +17,24 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-dark bg-dark">
         <div class="container">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <%# ロゴ　%>
+        <%= link_to admin_path, class:"navbar-brand" do %>
+          <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+        <% end %>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
+        <!-- ハンバーガーメニュー -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ナビゲーションメニュー -->
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
 
             <% if admin_signed_in? %><%# 会員ログイン　%>
-
-              <%# ロゴ　%>
-              <%= link_to admin_path, class:"navbar-brand" do %>
-                <div class="h1 text-white mb-2 mr-5">Art Community</div>
-              <% end %>
 
               <li>
                 <%= link_to admin_users_path do %>
@@ -52,78 +57,76 @@
 
             <% elsif user_signed_in? %><%# ユーザーログイン　%>
 
-            <%# ロゴ　%>
-            <%= link_to illustrations_path, class:"navbar-brand" do %>
-              <div class="h1 text-white mb-2 mr-5">Art Community</div>
-            <% end %>
-
-            <div class="navbar-collapse collapse" id="navbarNav" style>
-              <ul class="navbar-nav">
-
-              <li>
+              <li class="nav-item">
                 <%= link_to illustrations_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
-                    <i class="fa-solid fa-palette"></i>
-                    新着イラスト
-                  </button>
+                  <div class="nav-link ml-5">
+                    <i class="fa-solid fa-house"></i>
+                      新着イラスト(ホーム)
+                  </div>
                 <% end %>
               </li>
 
-              <li>
+              <li class="nav-item">
                 <%= link_to user_path(current_user.id) do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
+                  <div class="nav-link ml-5">
                     <i class="fa-solid fa-user"></i>
                     マイページ
-                  </button>
+                  </div>
                 <% end %>
               </li>
 
-              <li>
+              <li class="nav-item">
                 <%=link_to timelines_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
+                  <div class="nav-link ml-5">
                     <i class="fa-solid fa-clock"></i>
                     タイムライン
-                  </button>
+                  </div>
                 <% end %>
               </li>
 
-              <li>
+              <li class="nav-item">
                 <%=link_to notices_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
-                    <i class="fa-solid fa-bell"></i>
-                    通知
-                  </button>
+                  <div class="nav-link ml-5">
+                   <i class="fa-solid fa-bell"></i>
+                   通知
+                  </div>
                 <% end %>
               </li>
 
-              <li>
+              <li class="nav-item">
                 <%=link_to searches_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
+                  <div class="nav-link ml-5">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     検索
-                  </button>
+                  </div>
                 <% end %>
               </li>
 
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <button type="button" class="btn btn-outline-secondary mr-2">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    ログアウト
-                  </button>
+              <li class="nav-item">
+                <%= link_to new_illustration_path do %>
+                  <div class="nav-link ml-5">
+                    <button type="button" class="btn btn-secondary mr-2">
+                     <i class="fa-solid fa-pen"></i>
+                      新規投稿
+                    </button>
+                  </div>
                 <% end %>
               </li>
 
-              </ul>
-            </div>
+
+              <li class="nav-item">
+               <%= link_to destroy_user_session_path, method: :delete do %>
+                  <div class="nav-link ml-5">
+                    <button type="button" class="btn btn-outline-light mr-2">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                      ログアウト
+                    </button>
+                  </div>
+                <% end %>
+              </li>
 
 
             <% else %><%# ログアウト %>
-
-              <%# ロゴ　%>
-              <%= link_to root_path, class:"navbar-brand" do %>
-                <div class="h1 text-white mb-2 mr-5">Art Community</div>
-              <% end %>
 
               <li>
                 <%= link_to new_user_registration_path do %>
@@ -146,8 +149,8 @@
             <% end %>
 
             </ul>
-          </div>
-        </div>
+          </div><!-- ナビゲーションメニュー -->
+        </div><!-- container -->
       </nav>
     </header>
 
