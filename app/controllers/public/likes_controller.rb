@@ -3,12 +3,11 @@ class Public::LikesController < ApplicationController
     @illustration = Illustration.find(params[:illustration_id])
     like = current_user.likes.new(illustration_id: @illustration.id)
     like.save
-    #通知の作成
+    
+    #いいね通知
     @illustration.create_notice_like!(current_user)
-    respond_to do |format|
-      format.html {redirect_to request.referrer}
-      format.js
-    end
+    redirect_to request.referer
+
   end
 
   def destroy
