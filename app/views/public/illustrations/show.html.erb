@@ -37,7 +37,7 @@
       <div class="col-5"><%# 編集ボタン　%>
         <div class="form-group row">
           <% if @illustration.user == current_user %>
-            <%= link_to '投稿編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
+            <%= link_to '投稿編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-3 offset-md-3 mt-3" %>
           <% end %>
         </div>
       </div>
@@ -61,7 +61,7 @@
 
   <div class="container">
     <div class="row">
-      
+
       <%# いいね %>
       <div class="col-2">
         <h5 class="font-weight-bold mt-5 ml-5">

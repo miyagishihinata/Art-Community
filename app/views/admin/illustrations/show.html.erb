@@ -74,7 +74,7 @@
       <div class="col-2">
         <div class="text-center">
           <%# ユーザーアイコン　%>
-          <%= link_to admin_ser_path(comment.user.id) do %>
+          <%= link_to admin_user_path(comment.user.id) do %>
             <%= image_tag comment.user.get_profile_picture(70,70), class: "border border-2 mt-3 ml-3" %>
           <% end %>
         </div>

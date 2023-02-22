@@ -3,12 +3,12 @@
 
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="application.style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Art Community</title>
     <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -21,9 +21,11 @@
         <div class="container">
 
         <%# ロゴ　%>
-        <%= link_to admin_path, class:"navbar-brand" do %>
+      <div class="logo">
+        <%= link_to root_path, class:"navbar-brand" do %>
           <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
         <% end %>
+      </div>
 
         <!-- ハンバーガーメニュー -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,8 +62,8 @@
               <li class="nav-item">
                 <%= link_to illustrations_path do %>
                   <div class="nav-link ml-5">
-                    <i class="fa-solid fa-house"></i>
-                      新着イラスト(ホーム)
+                    <i class="fa-solid fa-palette"></i>
+                      新着イラスト
                   </div>
                 <% end %>
               </li>
