@@ -78,26 +78,33 @@
     <% end %>
 
     <%# いいねボタン %>
-    <% if @illustration.liked_by?(current_user) %><%# いいねあり %>
-      <%= link_to illustration_likes_path(@illustration), method: :delete do %>
+    <% if @illustration.liked_by?(current_user, 0) %><%# いいねあり %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :delete do %>
         <h4 class="mt-5 mr-4">😊</h4>
       <% end %>
-      <%= link_to illustration_likes_path(@illustration), method: :delete do %>
-         <h4 class="mt-5 mr-4">😍</h4>
+    <% else %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :post do %>
+        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-smile-beam"></i></h4>
       <% end %>
-      <%= link_to illustration_likes_path(@illustration), method: :delete do %>
-         <h4 class="mt-5 mr-5">😭</h4>
-      <% end %>
+    <% end %>
 
-      <% else %><%# いいねなし %>
-      <%= link_to illustration_likes_path(@illustration), method: :post do %>
-         <h4 class="mt-5 mr-5"><i class="fa-regular fa-face-smile-beam"></i></h4>
+    <% if @illustration.liked_by?(current_user, 1) %><%# いいねあり %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :delete do %>
+        <h4 class="mt-5 mr-4">😍</h4>
       <% end %>
-      <%= link_to illustration_likes_path(@illustration), method: :post do %>
-         <h4 class="mt-5 mr-5"><i class="fa-regular fa-face-grin-hearts"></i></h4>
+    <% else %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :post do %>
+        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-grin-hearts"></i></h4>
       <% end %>
-      <%= link_to illustration_likes_path(@illustration), method: :post do %>
-          <h4 class="mt-5 mr-5"><i class="fa-regular fa-face-sad-cry"></i></h4>
+    <% end %>
+
+    <% if @illustration.liked_by?(current_user, 2) %><%# いいねあり %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :delete do %>
+        <h4 class="mt-5 mr-4">😭</h4>
+      <% end %>
+    <% else %>
+      <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :post do %>
+         <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-sad-cry"></i></h4>
       <% end %>
     <% end %>
 

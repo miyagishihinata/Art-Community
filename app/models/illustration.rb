@@ -16,8 +16,8 @@ class Illustration < ApplicationRecord
   end
 
   #いいね
-  def liked_by?(user)
-    likes.exists?(user_id: user.id)
+  def liked_by?(user, like_stamp)
+    likes.exists?(user_id: user.id, like_stamp: like_stamp)
   end
 
   #検索

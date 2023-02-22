@@ -1,6 +1,8 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :illustration
+  
+  enum like_stamps:{smile: 0, heart:1, cry:2}
 
   #いいね通知
   def create
@@ -11,4 +13,6 @@ class Like < ApplicationRecord
     illustration.create_notice_like!(current_user)
     respond_to :js
   end
+  
+  
 end

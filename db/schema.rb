@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_064640) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "illustration_id", null: false
+    t.integer "like_stamp", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
