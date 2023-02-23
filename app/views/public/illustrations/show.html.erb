@@ -13,7 +13,7 @@
         <div class="text-center">
           <%# ユーザーアイコン　%>
           <%= link_to user_path(@illustration.user.id) do %>
-            <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+            <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-4" %>
           <% end %>
         </div>
         <%# ユーザー名　%>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="col-5"><%# タイトル　%>
-        <div class="form-group row mt-3">
+        <div class="form-group row mt-4">
          <h4 class="font-weight-bold"><%= @illustration.title %></h4>
         </div>
 
@@ -37,7 +37,7 @@
       <div class="col-5"><%# 編集ボタン　%>
         <div class="form-group row">
           <% if @illustration.user == current_user %>
-            <%= link_to '投稿編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-3 offset-md-3 mt-3" %>
+            <%= link_to 'イラスト編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-4 offset-md-3 mt-4" %>
           <% end %>
         </div>
       </div>
@@ -64,53 +64,53 @@
 
       <%# いいね %>
       <div class="col-2">
-        <h5 class="font-weight-bold mt-5 ml-5">
+        <h5 class="font-weight-bold text-muted mt-5 ml-5">
           いいね
         </h5>
       </div>
 
     <% if @illustration.user == current_user %>
-      <div class="col-2">
-        <h6 class="mt-5">
-          いいね数 : <%= @illustration.likes.count %><%# いいね数 %>
+      <div class="col-1">
+        <h6 class="mt-5 text-muted">
+          <%= @illustration.likes.count %> 件<%# いいね数 %>
         </h6>
       </div>
     <% end %>
 
     <%# いいねボタン %>
-    <% if @illustration.liked_by?(current_user, 0) %><%# いいねあり %>
+    <% if @illustration.liked_by?(current_user, 0) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :delete do %>
-        <h4 class="mt-5 mr-4">😊</h4>
+        <h4 class="mt-5 mr-4">😊</h4><%# いいねあり %>
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :post do %>
-        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-smile-beam"></i></h4>
+        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-smile-beam"></i></h4><%# いいねなし %>
       <% end %>
     <% end %>
 
-    <% if @illustration.liked_by?(current_user, 1) %><%# いいねあり %>
+    <% if @illustration.liked_by?(current_user, 1) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :delete do %>
-        <h4 class="mt-5 mr-4">😍</h4>
+        <h4 class="mt-5 mr-4">😍</h4><%# いいねあり %>
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :post do %>
-        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-grin-hearts"></i></h4>
+        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-grin-hearts"></i></h4><%# いいねなし %>
       <% end %>
     <% end %>
 
-    <% if @illustration.liked_by?(current_user, 2) %><%# いいねあり %>
+    <% if @illustration.liked_by?(current_user, 2) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :delete do %>
-        <h4 class="mt-5 mr-4">😭</h4>
+        <h4 class="mt-5 mr-4">😭</h4><%# いいねあり %>
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :post do %>
-         <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-sad-cry"></i></h4>
+         <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-sad-cry"></i></h4><%# いいねなし %>
       <% end %>
     <% end %>
 
       <%# 共有 %>
       <div class="col-2">
-        <h5 class="font-weight-bold mt-5 ml-5">
+        <h5 class="font-weight-bold text-muted mt-5 ml-5">
           共有
         </h5>
       </div>
@@ -134,14 +134,14 @@
   <div class="container"><%# コメント %>
     <div class="row">
       <div class="col-2">
-        <h5 class="font-weight-bold mt-5 ml-5">
+        <h5 class="font-weight-bold text-muted mt-5 ml-5">
           コメント
         </h5>
       </div>
 
       <div class="col-2">
-        <h6 class="mt-5">
-          コメント件数：<%= @illustration.comments.count %>
+        <h6 class="mt-5 text-muted">
+          <%= @illustration.comments.count %> 件
         </h6>
       </div>
 

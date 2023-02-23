@@ -35,7 +35,7 @@ class Public::IllustrationsController < ApplicationController
   def destroy
     illustration = Illustration.find(params[:id])
     illustration.destroy
-    redirect_to user_path(user.id)
+    redirect_to user_path(current_user.id)
   end
 
   private

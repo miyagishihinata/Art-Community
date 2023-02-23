@@ -6,7 +6,7 @@
     <%# ユーザーアイコン　%>
     <div class="col-2">
       <div class="text-center">
-        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-4" %>
       </div>
       <h4 class="text-center"><%= @user.user_name %></h4>
     </div>
@@ -21,14 +21,14 @@
 
         <%# 新規投稿ボタン　%>
         <%= link_to new_illustration_path do %>
-          <button type="button" class="btn btn-success mr-3 offset-md-4">
-            新規投稿
+          <button type="button" class="btn btn-success mr-3 offset-md-4 mt-4">
+            イラスト投稿
           </button>
         <% end %>
 
         <%# ユーザー編集ボタン　%>
         <%= link_to edit_user_path(current_user.id) do %>
-          <button type="button" class="btn btn-outline-secondary">
+          <button type="button" class="btn btn-outline-secondary mt-4">
             ユーザー編集
           </button>
         <% end %>
