@@ -69,42 +69,35 @@
         </h5>
       </div>
 
-    <% if @illustration.user == current_user %>
-      <div class="col-1">
-        <h6 class="mt-5 text-muted">
-          <%= @illustration.likes.count %> 件<%# いいね数 %>
-        </h6>
-      </div>
-    <% end %>
-
     <%# いいねボタン %>
     <% if @illustration.liked_by?(current_user, 0) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :delete do %>
-        <h4 class="mt-5 mr-4">😊</h4><%# いいねあり %>
+        <h4 class="mt-5 mr-4 text-muted">😊 <%= @illustration.likes.where(like_stamp: 0).count %></h4><%# いいねあり %>
+
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 0), method: :post do %>
-        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-smile-beam"></i></h4><%# いいねなし %>
+        <h5 class="mt-5 mr-4 text-muted">😊 <%= @illustration.likes.where(like_stamp: 0).count %></h5><%# いいねなし %>
       <% end %>
     <% end %>
 
     <% if @illustration.liked_by?(current_user, 1) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :delete do %>
-        <h4 class="mt-5 mr-4">😍</h4><%# いいねあり %>
+        <h4 class="mt-5 mr-4 text-muted">😍 <%= @illustration.likes.where(like_stamp: 1).count %></h4><%# いいねあり %>
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 1), method: :post do %>
-        <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-grin-hearts"></i></h4><%# いいねなし %>
+        <h5 class="mt-5 mr-4 text-muted">😍 <%= @illustration.likes.where(like_stamp: 1).count %></h5><%# いいねなし %>
       <% end %>
     <% end %>
 
     <% if @illustration.liked_by?(current_user, 2) %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :delete do %>
-        <h4 class="mt-5 mr-4">😭</h4><%# いいねあり %>
+        <h4 class="mt-5 mr-4 text-muted">😭 <%= @illustration.likes.where(like_stamp: 2).count %></h4><%# いいねあり %>
       <% end %>
     <% else %>
       <%= link_to illustration_likes_path(@illustration, like_stamp: 2), method: :post do %>
-         <h4 class="mt-5 mr-4"><i class="fa-regular fa-face-sad-cry"></i></h4><%# いいねなし %>
+         <h5 class="mt-5 mr-4 text-muted">😭 <%= @illustration.likes.where(like_stamp: 2).count %></h5><%# いいねなし %>
       <% end %>
     <% end %>
 

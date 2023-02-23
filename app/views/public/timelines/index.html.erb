@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted mt-2 mb-4">
+    <h4 class="font-weight-bold text-muted mt-4 ml-5 mb-4">
       タイムライン
-    </h5>
+    </h4>
   </div>
 </div>
 
 
-
 <% @illustrations.each do |illustration| %>
-
+  <% if @illustrations.exists? %>
   <table class="table">
     <tbody>
       <tr>
@@ -50,6 +49,11 @@
       </tr>
     </tbody>
   </table>
+  <% else %>
+    <div class="container">
+      <h5 class="ml-5">投稿はありません</h5>
+    </div>
+  <% end %>
 
 <% end %>
 
