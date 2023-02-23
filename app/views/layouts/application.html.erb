@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Art Community</title>
     <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
-   
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,12 +20,30 @@
       <nav class="navbar navbar-dark bg-dark">
         <div class="container">
 
+
         <%# ロゴ　%>
-      <div class="logo">
-        <%= link_to root_path, class:"navbar-brand" do %>
-          <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+        <% if admin_signed_in? %><%# 会員ログイン　%>
+          <div class="logo">
+            <%= link_to admin_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+            <% end %>
+          </div>
+
+        <% elsif user_signed_in? %><%# ユーザーログイン　%>
+          <div class="logo">
+            <%= link_to illustrations_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+            <% end %>
+          </div>
+
+        <% else %><%# ログイン前 %>
+          <div class="logo">
+            <%= link_to root_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
+
 
         <!-- ハンバーガーメニュー -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +80,8 @@
               <li class="nav-item">
                 <%= link_to illustrations_path do %>
                   <div class="nav-link ml-5">
-                    <i class="fa-solid fa-palette"></i>
-                      新着イラスト
+                    <i class="fa-solid fa-house"></i>
+                      新着イラスト(ホーム)
                   </div>
                 <% end %>
               </li>

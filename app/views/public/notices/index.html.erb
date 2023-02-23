@@ -1,15 +1,20 @@
 <%# 通知一覧 %>
 <div class="container">
-  <h4 class="font-weight-bold text-muted mt-4 ml-5">通知</h4>
+  <h3 class="font-weight-bold text-muted mt-4 ml-5">通知</h3>
 </div>
 
-<div class="container">
+<hr>
+
+
   <% if @notices.exists? %>
     <div class="users-index">
       <%= render partial: 'public/notices/notice', collection: @notices, as: :n %>
     </div>
   <% else %>
-    <p>通知はありません</p>
+  <div class="container">
+    <h5 class="ml-5">通知はありません</h5>
+  </div>
   <% end %>
-</div>
+
+
 
