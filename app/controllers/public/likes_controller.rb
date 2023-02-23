@@ -14,7 +14,7 @@ class Public::LikesController < ApplicationController
 
   def destroy
     illustration = Illustration.find(params[:illustration_id])
-    like = current_user.likes.find_by(illustration_id: illustration.id, like_stamp: params[:like1].to_i)
+    like = current_user.likes.find_by(illustration_id: illustration.id, like_stamp: params[:like_stamp].to_i)
     like.destroy
     redirect_to illustration_path(illustration.id)
   end
