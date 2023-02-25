@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :is_guest_user, only: [:create, :destroy]
+
   # フォローするとき
   def create
     current_user.follow(params[:user_id])
@@ -26,6 +28,14 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers.page(params[:page])
   end
+
+  private
+
+  def is_guest_user
+    redirect_to user_path(params[:user_id]) if current_user.guest?
+    flash[:notice] = "ゲストユーザーはフォローできません"
+  end
+
 
 end
 

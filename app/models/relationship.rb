@@ -12,4 +12,10 @@ class Relationship < ApplicationRecord
       format.js
     end
   end
+
+  # ゲストユーザーの判別
+  def guest?
+    email == 'guest@example.com'
+  end
+
 end

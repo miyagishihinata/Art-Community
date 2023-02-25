@@ -69,7 +69,8 @@ class User < ApplicationRecord
       user.user_name = "ゲスト"
     end
   end
-  
+
+  # ゲストユーザーの判別
   def guest?
     email == 'guest@example.com'
   end

@@ -48,6 +48,7 @@ class Public::UsersController < ApplicationController
 
   def is_guest_user
     redirect_to user_path(current_user.id) if current_user.guest?
+    flash[:notice] = "ゲストユーザーはユーザー編集を行うことはできません。"
   end
 
   def user_params
