@@ -25,10 +25,15 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = current_user
+   if @user.email == 'guest@example.com'
+      reset_session
+      redirect_to root_path
+   else
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+   end
   end
 
   private
@@ -41,7 +46,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted)
+    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :email, :password, :password_confirmation)
   end
 
 end

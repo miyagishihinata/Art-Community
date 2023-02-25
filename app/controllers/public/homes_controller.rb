@@ -6,7 +6,7 @@ class Public::HomesController < ApplicationController
   def illustration_params
     params.require(:home).permit(:image)
   end
-  
+
   # ゲストユーザー
   def guest_sign_in
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
@@ -14,7 +14,8 @@ class Public::HomesController < ApplicationController
       user.user_name = "ゲスト"
     end
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    flash[:notice] = 'ゲストユーザーとしてログインしました。'
+    redirect_to illustrations_path
   end
 
 end

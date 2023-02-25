@@ -7,8 +7,14 @@
   </head>
 
   <div class="container">
+
+    <div class="mt-4 ml-4">
+      <%# ゲストユーザーログイン時のメッセージ %>
+      <h5 class="text-muted"><%= flash[:notice] %></h5>
+    </div>
+
     <div class="row">
-      <h4 class="font-weight-bold text-muted ml-5 mt-4">
+      <h4 class="font-weight-bold text-muted ml-4 mt-4">
         新着イラスト
       </h4>
     </div>

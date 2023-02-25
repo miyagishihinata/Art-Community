@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-4 mb-4 ml-5" style="background-color:#bce2e8;">
+    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-5 mb-4 ml-5" style="background-color:silver;">
       &emsp;ユーザー情報編集&emsp;
     </h5>
   </div>
@@ -28,7 +28,7 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4" for="email">メールアドレス</label>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-md-6 form-control" %>
+        <%= f.text_field :email, class: "col-md-6 form-control" %>
       </div>
 
 
@@ -36,22 +36,22 @@
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
         <% if @minimum_password_length %>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
+        <%= f.password_field :password, class: "col-md-6 form-control" %>
       </div>
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
+        <%= f.password_field :password_confirmation,  class: "col-md-6 form-control" %>
       </div>
 
       <div class="actions">
-        <%# 保存ボタン %> 
+        <%# 保存ボタン %>
         <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
-        
-        <%# マイページボタン %> 
+
+        <%# マイページボタン %>
         <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-3" %>
-        
-        <%# 退会ボタン %> 
+
+        <%# 退会ボタン %>
         <%= link_to '退会する', users_unsubscribe_path, class: "btn btn-danger mt-3 ml-3" %>
       </div>
     <% end %>
