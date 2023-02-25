@@ -76,4 +76,9 @@ class Illustration < ApplicationRecord
     notice.save if notice.valid?
   end
 
+  def guest?
+    email == 'guest@example.com'
+  end
+
+
 end

@@ -1,5 +1,6 @@
 class Public::IllustrationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_guest_user, only: [:new, :create]
 
   def index
     @illustrations = Illustration.page(params[:page]).order(created_at: :desc)
@@ -39,6 +40,10 @@ class Public::IllustrationsController < ApplicationController
   end
 
   private
+
+  def is_guest_user
+    redirect_to user_path(current_user.id) if current_user.guest?
+  end
 
   def illustration_params
     params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id)
