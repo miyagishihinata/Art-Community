@@ -201,6 +201,22 @@
           <% end %>
         </div>
 
+      <%= form_with(model:[@illustration,@comment_reply]) do |form| %>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <p><label>リプライ</label></p>
+            <textarea class="form-control input-form" name="comment[post_comment]" rows="2">
+              <%=@comment_reply.post_comment %>
+            </textarea>
+          </div>
+        </div>
+          <%= form.hidden_field :illustration_id, value: @illustration.id %>
+          <%= form.hidden_field :parent_id, value: comment.id%>
+        <div class="actions">
+          <%= form.submit "返信する", class: "btn btn-success col-md-3 mt-4 mb-5" %>
+        </div>
+      <% end %>
+
       </div>
     <% end %>
   </div>
