@@ -1,15 +1,28 @@
+<%# いいね一覧 %>
 <div class="container">
   <div class="row">
     <h5 class="font-weight-bold text-muted ml-5  mt-3">いいね</h5>
   </div>
-
-  <% @like_posts.each do |post|%>
-    <%= link_to illustration_path(@illustration.id) do %>
-      <%= image_tag post.get_image(300,300), class:"ml-5 mt-3" %>
-    <% end %>
-  <% end %>
-
 </div>
+
+<% if @like_posts.exists? %>
+
+  <div class="container">
+    <%# イラスト一覧 %>
+    <% @like_posts.each do |post|%>
+      <%= link_to illustration_path(post.id) do %>
+        <%= image_tag post.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% else %><%# いいねがない場合 %>
+  <div class="container">
+    <h5 class="font-weight-bold text-muted text-center mt-5 ml-5">
+      いいねはありません
+    </h5>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="col-12 offset-md-5 mb-3 mt-3">

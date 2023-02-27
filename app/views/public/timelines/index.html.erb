@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
-    <h4 class="font-weight-bold text-muted mt-4 ml-5 mb-4">
+    <h4 class="font-weight-bold text-muted mt-4 ml-5 mb-2">
       タイムライン
     </h4>
   </div>
 </div>
 
+<hr>
 
-<% @illustrations.each do |illustration| %>
-  <% if @illustrations.exists? %>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><%# 投稿ユーザー %>
+<% if @illustrations.exists? %>
+  <% @illustrations.each do |illustration| %>
+    <div class="container">
+      <div class="row">
+
+      <%# 投稿ユーザー %>
+        <div class="col-2">
           <div class="text-center">
             <%# ユーザーアイコン %>
             <%= link_to user_path(illustration.user.id) do %>
@@ -24,36 +26,46 @@
           <%= link_to user_path(illustration.user.id) do %>
             <h5 class="text-center text-dark ml-5"><%= illustration.user.user_name %></h5>
           <% end %>
-        </td>
+        </div>
 
-        <td><%# イラストタイトル %>
-          <%= link_to illustration_path(illustration.id) do %>
-            <h5 class="font-weight-bold text-dark mt-3 mb-2">
-              <%= illustration.title %>
-            </h5>
-          <% end %>
-        </td>
+         <%# イラストタイトル %>
+           <div class="col-2">
+            <%= link_to illustration_path(illustration.id) do %>
+              <h5 class="font-weight-bold text-dark mt-3 mb-2">
+                <%= illustration.title %>
+              </h5>
+            <% end %>
+          </div>
 
-        <td><%# イラスト %>
-        <div class="container">
-          <div class="row">
+        <%# イラスト %>
+          <div class="col-5">
             <%= link_to illustration_path(illustration.id) do %>
               <%= image_tag illustration.get_image(300,300), class:"mt-2" %>
             <% end %>
-            <h6 class="text-dark mt-5 ml-2">
+            <h6 class="text-muted mt-2 ml-2">
               投稿日: <%= illustration.created_at.strftime('%Y/%m/%d') %><br>
             </h6>
           </div>
-        </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <% else %>
-    <div class="container">
-      <h5 class="ml-5">投稿はありません</h5>
+
+      </div>
     </div>
+    <hr>
   <% end %>
 
+<% else %>
+<div class="container">
+  <h5 class="font-weight-bold text-muted text-center mt-5 ml-5">
+    投稿はありません
+  </h5>
+</div>
+
 <% end %>
+
+<%# ページ %>
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @illustrations %>
+  </div>
+</div>
+
 

@@ -12,9 +12,18 @@
     </div>
   <% else %>
   <div class="container">
-    <h5 class="ml-5">通知はありません</h5>
+    <h5 class="font-weight-bold text-muted text-center mt-5 ml-5">
+      通知はありません
+    </h5>
   </div>
   <% end %>
+  
+<%# ページ %>
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @notices %>
+  </div>
+</div>
 
 
 

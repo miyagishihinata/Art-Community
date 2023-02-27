@@ -1,4 +1,6 @@
 class Public::CommentsController < ApplicationController
+ before_action :is_guest_user, only: [:create, :destroy]
+
   def create
     illustration = Illustration.find(params[:illustration_id])
     post_comment = current_user.comments.new(comment_params)
@@ -18,6 +20,12 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+
+  def is_guest_user
+    redirect_to illustration_path(params[:illustration_id]) if current_user.guest?
+    flash[:notice] = "ゲストユーザーはコメントの投稿を行うことはできません。"
+  end
+
 
   def comment_params
     params.require(:comment).permit(:post_comment)
