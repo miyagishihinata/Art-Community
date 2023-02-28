@@ -2,6 +2,8 @@ class Public::CommentsController < ApplicationController
  before_action :is_guest_user, only: [:create, :destroy]
 
   def show
+    @comment = Comment.find(params[:id])
+    @comment_reply = Comment.new #コメントに対する返信用の変数
   end
 
   def create
@@ -22,6 +24,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
+    flash[:notice] = "コメントを削除しました"
     redirect_to illustration_path(params[:illustration_id])
   end
 
