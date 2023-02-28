@@ -191,14 +191,16 @@
             <% end %>
         </div>
 
+        <div class="col-7 mt-4">
+          <% if comment.parent_id %>
+            <%= comment.parent.user.user_name%> さんへのコメント
+          <% end %>
+        </div>
 
         <div class="col-7 mt-4">
           <%# コメント作成日時　%>                         <%# コメント %>
           <%= comment.created_at.strftime('%Y/%m/%d') %> : <%= comment.post_comment %>
         </div>
-
-          <%# コメント詳細 %>
-          <%= link_to "コメント返信", comment_path(comment.id), class: "btn btn btn-primary col-md-2 offset-md-2 mt-3 mb-3" %>
 
           <%# 削除ボタン　%>
           <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
@@ -208,8 +210,25 @@
 
       </div>
     </div>
+      <%= form_with(model:[@illustration,@comment_reply]) do |form| %>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <p><label>リプライ</label></p>
+            <textarea class="form-control input-form" name="comment[post_comment]" rows="2">
+              <%=@comment_reply.post_comment %>
+            </textarea>
+          </div>
+        </div>
+          <%= form.hidden_field :illustration_id, value: @illustration.id %>
+          <%= form.hidden_field :parent_id, value: comment.id%>
+        <div class="actions">
+          <%= form.submit "返信する", class: "btn btn-success col-md-2 mt-4 mb-5" %>
+        </div>
+      <% end %>
     <hr>
   <% end %>
+
+
 
 
   </html>

@@ -1,11 +1,6 @@
 class Public::CommentsController < ApplicationController
  before_action :is_guest_user, only: [:create, :destroy]
 
-  def show
-    @comment = Comment.find(params[:id])
-    @comment_reply = Comment.new #コメントに対する返信用の変数
-  end
-
   def create
     illustration = Illustration.find(params[:illustration_id])
     post_comment = current_user.comments.new(comment_params)
@@ -37,7 +32,8 @@ class Public::CommentsController < ApplicationController
 
 
   def comment_params
-    params.require(:comment).permit(:post_comment, :parent_id)
+    #params.require(:comment).permit(:post_comment, :parent_id)
+    params.require(:comment).permit(:post_comment, :illustration_id, :user_id, :parent_id)
   end
 
 end

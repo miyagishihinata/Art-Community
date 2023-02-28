@@ -22,6 +22,7 @@ class Public::IllustrationsController < ApplicationController
     @comment = Comment.new
     @comment_reply = Comment.new #コメントに対する返信用の変数
     @user = current_user
+    #byebug
   end
 
   def edit
