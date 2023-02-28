@@ -58,6 +58,9 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]     #いいね機能
       resources :comments, only: [:create, :destroy] #コメント機能
     end
+    
+    #コメント
+    resources :comments, only: [:show,:create, :destroy]
 
     #タイムライン
     resources :timelines, only: [:index]

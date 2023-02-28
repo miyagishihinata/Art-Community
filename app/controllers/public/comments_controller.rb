@@ -1,6 +1,8 @@
 class Public::CommentsController < ApplicationController
-before_action :is_matching_login_user, only: [:destroy]
  before_action :is_guest_user, only: [:create, :destroy]
+
+  def show
+  end
 
   def create
     illustration = Illustration.find(params[:illustration_id])
@@ -10,8 +12,10 @@ before_action :is_matching_login_user, only: [:destroy]
     if illustration = Illustration.find(params[:illustration_id])
       post_comment.save
       illustration.create_notice_comment!(current_user, post_comment.id)
+      flash[:notice] = "コメントの投稿に成功しました"
       redirect_to illustration_path(params[:illustration_id])
     else
+      flash[:notice] = "コメントの投稿に失敗しました"
       render 'illustrations/show'
     end
   end
