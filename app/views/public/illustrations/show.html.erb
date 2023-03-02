@@ -192,9 +192,11 @@
         </div>
 
         <div class="col-5">
+          <div class="text-success">
             <% if comment.parent_id %>
               <%= comment.parent.user.user_name%> さんへのコメント<br>
             <% end %>
+          </div>
           <%# コメント %>
           <div class="mt-2">
             <%= comment.post_comment %><br>
@@ -217,24 +219,22 @@
 
       <div class="container">
         <div class = "fruit">
-          <a id="btn-txt" class="btn offset-md-1 col-md-5">▲ コメント返信</a>
+          <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">▲ コメント返信</a>
 
             <ul class="items">
               <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
                 <div class="container">
                   <div class="row">
 
-                    <div class="form-group col-md-6">
-                      <label class="text-muted font-weight-bold">コメント返信</label>
-                        <%= f.text_area :comment_reply, class: "col-md-11 offset-md-1 mt-3 form-control", placeholder: "コメント記入" %>
-
+                    <div class="form-group col-6">
+                      <%= f.text_area :comment_reply, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
                     </div>
 
                      <%= f.hidden_field :illustration_id, value: @illustration.id %>
                      <%= f.hidden_field :parent_id, value: comment.id%>
 
                     <div class="col-5">
-                      <%= f.submit "返信する", class: "btn btn-success col-md-3 mt-4 mb-5" %>
+                      <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
                     </div>
 
                   </div>
@@ -246,17 +246,5 @@
 
     <hr>
   <% end %>
-
-<!--<div class = "fruit">-->
-<!--  <a id="btn-txt" class="btn">▲ 閉じる</a>-->
-<!-- <ul class="items">-->
-<!-- <li>りんご</li>-->
-<!-- <li>みかん</li>-->
-<!-- <li>いちご</li>-->
-<!-- <li>バナナ</li>-->
-<!-- </ul>-->
-<!--</div>-->
-
-
 
   </html>
