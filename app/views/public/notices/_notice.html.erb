@@ -23,13 +23,33 @@
         <% when 'like' then %>
           <%= link_to 'あなたの投稿にいいねしました', n.illustration, style: "font-weight: bold;" %>
 
+
         <%# コメント通知 %>
         <% when 'comment' then %>
-          <%= link_to "あなたの投稿にコメントしました", n.illustration, style: "font-weight: bold;" %>
-          <%# コメント内容%>
-          <p class="text-muted">
-            コメント : <%= Comment.find_by(id: n.comment_id)&.post_comment %>
-          </p>
+          <%# 投稿に対するコメント通知 %>
+          <% if n.illustration.user_id == visited.id %>
+            <%= link_to "あなたの投稿にコメントしました", n.illustration, style: "font-weight: bold;" %>
+          <p class="text-muted.mb-0">
+            <%= Comment.find_by(id: n.comment_id)&.post_comment %>
+           </p>
+
+          <%# コメントへの返信通知 %>
+          <% else %>
+            <span>
+              <%= link_to illustration_path(n.illustration) do %>
+              <%# n.inspect %>
+                <%#= image_tag user.get_profile_picture_url(n.illustration.user).to_s, class: "icon_mini" %>
+                <%= image_tag n.visited.get_profile_picture(100,100), class: "icon_mini" %>
+              <% end %>
+              <%= n.visited.user_name + 'さんのコメントに返信しました' %>
+            </span>
+
+            <p class="text-muted.mb-0">
+              <%= Comment.find_by(id: n.comment_id)&.post_comment %>
+            </p>
+        <% end %>
+
+
 
       <% end %>
     </span>

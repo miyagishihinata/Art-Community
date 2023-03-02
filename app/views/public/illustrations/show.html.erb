@@ -4,7 +4,6 @@
   <html>
     <head>
       <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="style.css" />
     </head>
 
   <div class="container">
@@ -212,19 +211,10 @@
       </div>
     </div>
 
- <ul class="items">
- <li>りんご</li>
- <li>みかん</li>
- <li>いちご</li>
- <li>バナナ</li>
- </ul>
- <a id="btn-txt" class="btn">▲ 閉じる</a>
-
-
       <%= form_with(model:[@illustration,@comment_reply]) do |form| %>
         <div class="row">
           <div class="form-group col-md-6">
-            <p><label>リプライ</label></p>
+            <p><label>コメント返信</label></p>
             <textarea class="form-control input-form" name="comment[post_comment]" rows="2">
               <%=@comment_reply.post_comment %>
             </textarea>
@@ -239,6 +229,16 @@
     <hr>
   <% end %>
 
+<div class = "fruit">
+  <a id="btn-txt" class="btn">▲ 閉じる</a>
+ <ul class="items">
+ <li>りんご</li>
+ <li>みかん</li>
+ <li>いちご</li>
+ <li>バナナ</li>
+ </ul>
+ <!--<a id="btn-txt" class="btn">▲ 閉じる</a>-->
+</div>
 
 
 

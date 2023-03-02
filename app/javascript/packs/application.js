@@ -14,6 +14,20 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
+$(function() {
+  $(".fruit .btn").on('click', function() {
+    $(".items").slideToggle(500,alertFunc);
+  });
+
+  function alertFunc(){
+    if ($(this).css('display') == 'block') {
+      $("#btn-txt").text("▲ 閉じる");
+    }else{
+      $("#btn-txt").text("▼ 開く");
+    }
+  };
+});
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
