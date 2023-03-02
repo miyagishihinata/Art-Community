@@ -11,11 +11,13 @@ class Public::CommentsController < ApplicationController
       illustration.create_notice_comment!(current_user, post_comment.id)
       flash[:notice] = "コメントの投稿に成功しました"
       redirect_to illustration_path(params[:illustration_id])
+
     else
       flash[:notice] = "コメントの投稿に失敗しました"
       render 'illustrations/show'
     end
   end
+
 
   def destroy
     Comment.find(params[:id]).destroy
@@ -32,7 +34,6 @@ class Public::CommentsController < ApplicationController
 
 
   def comment_params
-    #params.require(:comment).permit(:post_comment, :parent_id)
     params.require(:comment).permit(:post_comment, :illustration_id, :user_id, :parent_id)
   end
 

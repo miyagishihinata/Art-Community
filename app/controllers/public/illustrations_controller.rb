@@ -20,9 +20,8 @@ class Public::IllustrationsController < ApplicationController
   def show
     @illustration = Illustration.find(params[:id])
     @comment = Comment.new
-    @comment_reply = Comment.new #コメントに対する返信用の変数
+    @comment_reply = Comment.new
     @user = current_user
-    #byebug
   end
 
   def edit
@@ -49,7 +48,7 @@ class Public::IllustrationsController < ApplicationController
   end
 
   def illustration_params
-    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id)
+    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id)
   end
 
 end
