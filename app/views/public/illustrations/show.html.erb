@@ -191,52 +191,59 @@
             <% end %>
         </div>
 
-        <div class="col-7 mt-4">
-          <% if comment.parent_id %>
-            <%= comment.parent.user.user_name%> さんへのコメント
-          <% end %>
+        <div class="col-5">
+            <% if comment.parent_id %>
+              <%= comment.parent.user.user_name%> さんへのコメント<br>
+            <% end %>
+          <%# コメント %>
+          <div class="mt-2">
+            <%= comment.post_comment %><br>
+          </div>
+          <%# コメント作成日時　%>
+          <h6 class="text-muted mt-2">
+            投稿日 : <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+          </h6>
         </div>
 
-        <div class="col-7 mt-4">
-          <%# コメント作成日時　%>                         <%# コメント %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %> : <%= comment.post_comment %>
-        </div>
-
+        <div class="col-4">
           <%# 削除ボタン　%>
           <% if comment.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
-            <%= link_to "コメント削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-danger col-md-2 ml-4 mt-3 mb-3" %>
+            <%= link_to "コメント削除", illustration_comment_path(comment.illustration, comment), method: :delete, class: "btn btn-danger col-md-5 ml-4 mt-3 mb-3" %>
           <% end %>
-
+        </div>
 
       </div>
     </div>
 
-    <!--<div class = "fruit">-->
-    <!--  <a id="btn-txt" class="btn">▲ コメント返信</a>-->
+      <div class="container">
+        <div class = "fruit">
+          <a id="btn-txt" class="btn offset-md-1 col-md-5">▲ コメント返信</a>
 
-        <!--<ul class="items">-->
-          <%= form_with(model:[@illustration,@comment_reply]) do |form| %>
-            <div class="container">
-              <div class="row">
-                <div class="form-group col-md-6">
-                 <p><label>コメント返信</label></p>
-                  <textarea class="form-control input-form col-md-12 offset-md-1" name="comment[post_comment]" >
-                    <%=@comment_reply.post_comment %>
-                  </textarea>
+            <ul class="items">
+              <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
+                <div class="container">
+                  <div class="row">
+
+                    <div class="form-group col-md-6">
+                      <label class="text-muted font-weight-bold">コメント返信</label>
+                        <%= f.text_area :comment_reply, class: "col-md-11 offset-md-1 mt-3 form-control", placeholder: "コメント記入" %>
+
+                    </div>
+
+                     <%= f.hidden_field :illustration_id, value: @illustration.id %>
+                     <%= f.hidden_field :parent_id, value: comment.id%>
+
+                    <div class="col-5">
+                      <%= f.submit "返信する", class: "btn btn-success col-md-3 mt-4 mb-5" %>
+                    </div>
+
+                  </div>
                 </div>
-              </div>
+              <% end %>
+            </ul>
+        </div>
+      </div>
 
-               <%= form.hidden_field :illustration_id, value: @illustration.id %>
-                <%= form.hidden_field :parent_id, value: comment.id%>
-
-              <div class="actions">
-                <%= form.submit "返信する", class: "btn btn-success col-md-3 mt-4 mb-5" %>
-              </div>
-
-            </div>
-          <% end %>
-      <!--  </ul>-->
-      <!--</div>-->
     <hr>
   <% end %>
 

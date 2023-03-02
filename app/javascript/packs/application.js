@@ -21,9 +21,9 @@ $(function() {
 
   function alertFunc(){
     if ($(this).css('display') == 'block') {
-      $("#btn-txt").text("▲ 閉じる");
+      $("#btn-txt").text("▲ コメント返信");
     }else{
-      $("#btn-txt").text("▼ 開く");
+      $("#btn-txt").text("▼ コメント返信");
     }
   };
 });
