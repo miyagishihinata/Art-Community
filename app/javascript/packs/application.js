@@ -22,7 +22,7 @@ $(function() {
   function alertFunc(){
     if ($(this).css('display') == 'block') {
       $("#btn-txt").text("💬コメント返信");
-    }else{
+    }else {
       $("#btn-txt").text("💬コメント返信");
     }
   };
