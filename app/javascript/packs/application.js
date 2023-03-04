@@ -15,7 +15,7 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 $(function() {
-  $(".fruit .btn").on('click', function() {
+  $(".reply .btn").on('click', function() {
     $(".items").slideToggle(500,alertFunc);
   });
 

@@ -173,8 +173,8 @@
     </div>
   <% end %>
 
-
-  <% @illustration.comments.each do |comment| %><%# コメント表示 %>
+  <%# 親コメント %>
+  <% @comments.each do |comment| %>
     <div class="container">
       <div class="row">
 
@@ -192,18 +192,13 @@
         </div>
 
         <div class="col-5">
-          <div class="text-success">
-            <% if comment.parent_id %>
-              <%= comment.parent.user.user_name%> さんへのコメント<br>
-            <% end %>
-          </div>
           <%# コメント %>
-          <div class="mt-2">
+          <div class="mt-3">
             <%= comment.post_comment %><br>
           </div>
           <%# コメント作成日時　%>
-          <h6 class="text-muted mt-2">
-            投稿日 : <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+          <h6 class="text-secondary mt-3">
+            (<%= comment.created_at.strftime('%Y/%m/%d') %>)<br>
           </h6>
         </div>
 
@@ -217,8 +212,83 @@
       </div>
     </div>
 
-      <div class="container">
-        <div class = "fruit">
+  <%# 親コメントへの返信 %>
+  <div class="container">
+    <div class ="reply">
+      <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">▲ コメント返信</a>
+        <ul class="items">
+
+              <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
+                <div class="container">
+                  <div class="row">
+
+                    <div class="form-group col-6">
+                      <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
+                    </div>
+
+                     <%= f.hidden_field :illustration_id, value: @illustration.id %>
+                     <%= f.hidden_field :parent_id, value: comment.id%>
+
+                    <div class="col-5">
+                      <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
+                    </div>
+
+                  </div>
+                </div>
+              <% end %>
+
+            </ul>
+        </div>
+      </div>
+
+    <%# 返信コメント %>
+    <% @replys = Comment.where(parent_id: comment.id) %>
+    <% @replys.each do |reply| %><%# コメント表示 %>
+    <div class="container mr-2">
+      <div class="row">
+
+        <div class="col-2 ml-3">
+          <div class="text-center">
+            <%# ユーザーアイコン　%>
+            <%= link_to user_path(reply.user.id) do %>
+              <%= image_tag reply.user.get_profile_picture(70,70), class: "border border-2 mt-3" %>
+            <% end %>
+          </div>
+            <%# ユーザー名　%>
+            <%= link_to user_path(reply.user.id) do %>
+              <h5 class="text-center text-dark mb-3"><%= reply.user.user_name %></h5>
+            <% end %>
+        </div>
+
+        <div class="col-5">
+          <div class="text-success">
+            <% if reply.parent_id %>
+              <%= reply.parent.user.user_name%> さんへのコメント<br>
+            <% end %>
+          </div>
+          <%# コメント %>
+          <div class="mt-3">
+            <%= reply.post_comment %><br>
+          </div>
+          <%# コメント作成日時　%>
+          <h6 class="text-secondary mt-3">
+            (<%= reply.created_at.strftime('%Y/%m/%d') %>)<br>
+          </h6>
+        </div>
+
+        <div class="col-4">
+          <%# 削除ボタン　%>
+          <% if reply.user == current_user %><%# コメントしたものがログインユーザーのものであれば削除ボタン表示 %>
+            <%= link_to "コメント削除", illustration_comment_path(reply.illustration, reply), method: :delete, class: "btn btn-danger col-md-5 ml-4 mt-3 mb-3" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+
+      <div class="container mb-2">
+        <div class ="reply">
           <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">▲ コメント返信</a>
 
             <ul class="items">
@@ -227,7 +297,7 @@
                   <div class="row">
 
                     <div class="form-group col-6">
-                      <%= f.text_area :comment_reply, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
+                      <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
                     </div>
 
                      <%= f.hidden_field :illustration_id, value: @illustration.id %>
@@ -244,7 +314,9 @@
         </div>
       </div>
 
-    <hr>
+
+  <% end %>
+  <hr>
   <% end %>
 
   </html>
