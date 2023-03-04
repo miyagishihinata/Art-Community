@@ -139,6 +139,7 @@
     </div>
   </div>
 
+
   <div class="container"><%# コメント %>
     <div class="row">
       <div class="col-2">
@@ -212,37 +213,40 @@
       </div>
     </div>
 
+
   <%# 親コメントへの返信 %>
   <div class="container">
+
+    <%# コメント返信収納ボタン %>
     <div class ="reply">
-      <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">▲ コメント返信</a>
+      <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">💬コメント返信</a>
         <ul class="items">
 
-              <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
-                <div class="container">
-                  <div class="row">
+            <%# 親コメントへの返信 %>
+            <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
+              <div class="container">
+                <div class="row">
 
-                    <div class="form-group col-6">
-                      <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
-                    </div>
-
-                     <%= f.hidden_field :illustration_id, value: @illustration.id %>
-                     <%= f.hidden_field :parent_id, value: comment.id%>
-
-                    <div class="col-5">
-                      <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
-                    </div>
-
+                  <div class="form-group col-6">
+                    <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "返信コメント記入" %>
                   </div>
+
+                  <%= f.hidden_field :illustration_id, value: @illustration.id %>
+                  <%= f.hidden_field :parent_id, value: comment.id%>
+
+                  <%# 返信ボタン %>
+                  <div class="col-5">
+                    <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
+                  </div>
+
                 </div>
-              <% end %>
+              </div>
+            <% end %>
 
-            </ul>
-        </div>
-      </div>
 
-    <%# 返信コメント %>
-    <% @replys = Comment.where(parent_id: comment.id) %>
+
+  <%# 返信コメント %>
+  <% @replys = Comment.where(parent_id: comment.id) %>
     <% @replys.each do |reply| %><%# コメント表示 %>
     <div class="container mr-2">
       <div class="row">
@@ -286,37 +290,38 @@
       </div>
     </div>
 
-
+      <%# 子コメントへの返信 %>
       <div class="container mb-2">
-        <div class ="reply">
-          <a id="btn-txt" class="btn offset-md-2 col-md-5 mb-3">▲ コメント返信</a>
 
-            <ul class="items">
-              <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
-                <div class="container">
-                  <div class="row">
+        <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
+          <div class="container">
+            <div class="row">
 
-                    <div class="form-group col-6">
-                      <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "コメント記入" %>
-                    </div>
+              <div class="form-group col-6">
+                <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "返信コメント記入" %>
+              </div>
 
-                     <%= f.hidden_field :illustration_id, value: @illustration.id %>
-                     <%= f.hidden_field :parent_id, value: comment.id%>
+              <%= f.hidden_field :illustration_id, value: @illustration.id %>
+              <%= f.hidden_field :parent_id, value: comment.id%>
 
-                    <div class="col-5">
-                      <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
-                    </div>
+              <div class="col-5">
+                <%= f.submit "返信する", class: "btn btn-success col-md-3 offset-md-4 mt-4 mb-5" %>
+              </div>
 
-                  </div>
-                </div>
-              <% end %>
-            </ul>
-        </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
 
+    <% end %>
+    <%# コメント返信収納ボタン %>
+        </ul>
+    </div>
+  </div>
 
+    <hr>
   <% end %>
-  <hr>
-  <% end %>
+
 
   </html>
