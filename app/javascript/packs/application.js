@@ -14,16 +14,16 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
-$(function() {
-  $(".reply .btn").on('click', function() {
-    $(".items").slideToggle(500,alertFunc);
+$(document).on('turbolinks:load', function() {
+  $(".reply .btn").on('click', function(e) {
+   $(this).parent().find('.items').slideToggle(500, alertFunc());
   });
 
   function alertFunc(){
     if ($(this).css('display') == 'block') {
-      $("#btn-txt").text("💬コメント返信");
+      $('#btn-txt').text("💬コメント返信");
     }else {
-      $("#btn-txt").text("💬コメント返信");
+      $('#btn-txt').text("💬コメント返信");
     }
   };
 });

@@ -175,7 +175,7 @@
   <% end %>
 
   <%# 親コメント %>
-  <% @comments.each do |comment| %>
+  <% @comments.each_with_index do |comment| %>
     <div class="container">
       <div class="row">
 
@@ -219,8 +219,8 @@
 
     <%# コメント返信収納ボタン %>
     <div class ="reply">
-      <a id="btn-txt" class="btn btn-primary offset-md-2 col-md-5 mb-3">💬コメント返信</a>
-        <ul class="items">
+      <a id="btn-txt" class="btn btn-primary offset-md-2 col-md-5 mb-3 reply-btn">💬コメント返信</a>
+        <ul class="items"  style="display: none;">
 
             <%# 親コメントへの返信 %>
             <%= form_with(model:[@illustration,@comment_reply]) do |f| %>
