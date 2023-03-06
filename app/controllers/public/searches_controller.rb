@@ -7,8 +7,8 @@ class Public::SearchesController < ApplicationController
   end
 
   def index
-    @illustrations = Illustration.search(params[:keyword])
-    @users = User.search(params[:keyword])
+    @illustrations = Illustration.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
+    @users = User.search(params[:keyword]).page(params[:page])
     @search_word = params[:keyword]
   end
 

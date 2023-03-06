@@ -1,4 +1,4 @@
-<%# ユーザー詳細画面 %>
+<%# 管理者側ユーザー詳細画面 %>
 
 <div class="container">
   <div class="row">
@@ -6,8 +6,8 @@
     <div class="col-2">
       <%# ユーザーアイコン　%>
       <div class="text-center">
-        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
-        
+        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-4" %>
+
       </div>
         <%# ユーザー名 %>
         <h4 class="text-center"><%= @user.user_name %></h4>
@@ -17,7 +17,7 @@
     <div class="col-5">
       <h6 class="mt-5"><%= @user.self_introduction %></h6>
     </div>
-    
+
     <%# ユーザー編集ボタン　%>
     <div class="col-5">
       <%= link_to edit_admin_user_path(@user.id) do %>

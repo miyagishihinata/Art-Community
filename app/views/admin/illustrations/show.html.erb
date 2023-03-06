@@ -1,3 +1,5 @@
+<%# 管理者側イラスト詳細画面 %>
+
 <div class="container">
   <div class="row">
 
@@ -5,17 +7,18 @@
       <div class="text-center">
         <%# ユーザーアイコン　%>
         <%= link_to admin_user_path(@illustration.user.id) do %>
-          <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-3" %>
+          <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-4" %>
         <% end %>
       </div>
         <%# ユーザー名　%>
         <%= link_to admin_user_path(@illustration.user.id) do %>
-          <h4 class="text-center"><%= @illustration.user.user_name %></h4>
+          <h4 class="text-center text-dark"><%= @illustration.user.user_name %></h4>
         <% end %>
     </div>
 
     <div class="col-5">
-      <div class="form-group row mt-3">
+      <%# タイトル　%>
+      <div class="form-group row mt-4">
        <h4 class="font-weight-bold"><%= @illustration.title %></h4>
       </div>
 
@@ -28,7 +31,7 @@
 
     <div class="col-5">
       <div class="form-group row">
-        <%= link_to '編集', edit_admin_illustration_path(@illustration.id), class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
+        <%= link_to '編集', edit_admin_illustration_path(@illustration.id), class: "btn btn-success col-md-2 offset-md-3 mt-4" %>
       </div>
     </div>
 
@@ -95,3 +98,4 @@
     </div>
   <% end %>
 </div>
+

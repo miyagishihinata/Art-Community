@@ -7,7 +7,7 @@ class Admin::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:post_comment)
+    params.require(:comment).permit(:post_comment, :illustration_id, :user_id, :parent_id)
   end
 
 end

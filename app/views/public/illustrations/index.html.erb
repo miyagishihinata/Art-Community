@@ -14,15 +14,15 @@
     </div>
 
     <div class="row">
-      <h4 class="font-weight-bold text-muted ml-4 mt-4">
+      <h4 class="font-weight-bold text-muted ml-5 mt-2">
         新着イラスト
       </h4>
     </div>
 
-    <div class="illustrations">
+    <div class="illustrations ml-5">
       <% @illustrations.each do |illustration| %>
         <%= link_to illustration_path(illustration.id) do %>
-          <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+          <%= image_tag illustration.image, class:"ml-2 mt-3", width:'200px', height:'250px' %>
         <% end %>
       <% end %>
     </div>

@@ -1,7 +1,9 @@
 class Admin::IllustrationsController < ApplicationController
   def show
     @illustration = Illustration.find(params[:id])
+    @comments = @illustration.comments.where(parent_id: nil).order(created_at: :desc)
     @comment = Comment.new
+    @comment_reply = Comment.new
   end
 
   def edit
