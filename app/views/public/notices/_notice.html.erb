@@ -6,13 +6,13 @@
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
     <span>
-      <%# アイコン %>
       <%= link_to user_path(visitor) do %>
-        <%= image_tag visitor.get_profile_picture(90,90), class: "border border-2 mt-3 mr-4" %>
+        <%# アイコン %>
+        <%= image_tag visitor.get_profile_picture(60,60), class: "border border-2 mr-2" %>
+        <%# ユーザー名 %>
+        <%= visitor.user_name %>
       <% end %>
-
-      <%# ユーザー名 %>
-      <%= visitor.user_name %>さんが
+      さんが
 
       <% case n.action %>
         <%# フォロー通知 %>
@@ -21,32 +21,32 @@
 
         <%# いいね通知 %>
         <% when 'like' then %>
-          <%= link_to 'あなたの投稿にいいねしました', n.illustration, style: "font-weight: bold;" %>
-
+          <%= link_to 'あなたの投稿', n.illustration, class: "font-weight-bold" %>
+          にいいねしました
 
         <%# コメント通知 %>
         <% when 'comment' then %>
           <%# 投稿に対するコメント通知 %>
           <% if n.illustration.user_id == visited.id %>
-            <%= link_to "あなたの投稿にコメントしました", n.illustration, style: "font-weight: bold;" %>
-          <p class="text-muted.mb-0">
-            <%= Comment.find_by(id: n.comment_id)&.post_comment %>
-           </p>
+            <%= link_to "あなたの投稿", n.illustration, class: "font-weight-bold" %>
+            にコメントしました
+          <p class="text-muted mt-2">
+            コメント：<%= Comment.find_by(id: n.comment_id)&.post_comment %>
+          </p>
 
-          <%# コメントへの返信通知 %>
+          <%# 返信コメント通知 %>
           <% else %>
             <span>
               <%= link_to illustration_path(n.illustration) do %>
-              <%# n.inspect %>
-                <%#= image_tag user.get_profile_picture_url(n.illustration.user).to_s, class: "icon_mini" %>
-                <%= image_tag n.visited.get_profile_picture(90,90), class: "border border-2 mt-3 mr-4" %>
+                <%= image_tag n.visited.get_profile_picture(60,60), class: "border border-2 mr-2" %>
+                <%= n.visited.user_name %>
               <% end %>
-              <%= n.visited.user_name + 'さんのコメントに返信しました' %>
+              さんのコメントに返信しました
             </span>
-
-            <p class="text-muted.mb-0">
-              <%= Comment.find_by(id: n.comment_id)&.post_comment %>
+            <p class="text-muted mt-2">
+              コメント：<%= Comment.find_by(id: n.comment_id)&.post_comment %>
             </p>
+
         <% end %>
 
 
@@ -54,7 +54,7 @@
       <% end %>
     </span>
 
-    <div class="small text-muted text-right">
+    <div class="small text-muted ml-5">
       <%= time_ago_in_words(n.created_at).upcase %>
     </div>
 
