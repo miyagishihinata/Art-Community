@@ -11,6 +11,7 @@
 
   <div class="searches-form">
     <%= form_with url: searches_path, method: :get, local: true do |f| %>
+    <%= f.hidden_field :type, value: "user_name" %>
       <div class="row">
         <label class="font-weight-bold text-muted mr-5 mt-4 ml-5">ユーザー検索</label>
         <%# 入力フォーム %>
@@ -27,6 +28,7 @@
 
   <div class="searches-form mt-3">
     <%= form_with url: searches_path, method: :get, local: true do |f| %>
+    <%= f.hidden_field :type, value: "illustration" %>
       <div class="row">
         <label class="font-weight-bold text-muted mr-5 mt-4 ml-5">イラスト検索</label>
         <%# 入力フォーム %>
@@ -45,7 +47,7 @@
 
 
 <%# イラストの検索結果 %>
-<% if @search_word.present? %>
+<% if @search_word.present? && params[:type] == "illustration" %>
   <div class="container">
     <h6 class="font-weight-bold text-muted mt-5 ml-5">
       <%= @illustrations.count %>件の検索結果(イラスト)
@@ -65,7 +67,7 @@
 
 <%# ユーザーの検索結果 %>
 
-<% if @search_word.present? %>
+<% if @search_word.present? && params[:type] == "user_name" %>
   <div class="container">
 
     <h6 class="font-weight-bold text-muted mt-5 ml-5">
