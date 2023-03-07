@@ -56,21 +56,32 @@
 
             <% if admin_signed_in? %><%# 会員ログイン　%>
 
-              <li>
-                <%= link_to admin_users_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5 ml-5 mt-3">ユーザー覧</button>
+              <li class="nav-item">
+                <%= link_to admin_path do %>
+                  <div class="nav-link ml-5">
+                    <i class="fa-solid fa-house"></i>
+                      投稿一覧(ホーム)
+                  </div>
                 <% end %>
               </li>
 
               <li>
-                <%=link_to admin_path do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5 mt-3">投稿一覧</button>
+                <%= link_to admin_users_path do %>
+                  <div class="nav-link ml-5">
+                    <i class="fa-solid fa-user"></i>
+                    ユーザー覧
+                  </div>
                 <% end %>
               </li>
 
               <li>
                 <%= link_to  destroy_admin_session_path, method: :delete do %>
-                  <button type="button" class="btn btn-outline-secondary mr-5 mt-3">ログアウト</button>
+                  <div class="nav-link ml-5">
+                    <button type="button" class="btn btn-outline-light mr-2">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                      ログアウト
+                    </button>
+                  </div>
                 <% end %>
               </li>
 

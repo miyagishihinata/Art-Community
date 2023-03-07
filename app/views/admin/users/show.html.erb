@@ -21,7 +21,7 @@
     <%# ユーザー編集ボタン　%>
     <div class="col-5">
       <%= link_to edit_admin_user_path(@user.id) do %>
-        <button type="button" class="btn btn-outline-secondary">
+        <button type="button" class="btn btn-outline-secondary mt-4">
           ユーザー編集
         </button>
       <% end %>
@@ -33,16 +33,22 @@
 <hr color="silver">
 
 <%# 投稿一覧 %>
-<div class="container">
-  <div class="row">
-    <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
-  </div>
+<div class="mb-5">
+  <div class="container">
+    <div class="row">
+      <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
+    </div>
 
-  <% @illustrations.each do |illustration| %>
-    <%= link_to admin_illustration_path(illustration.id) do %>
-      <%= image_tag illustration.get_image(300,300) %>
-    <% end %>
-  <% end %>
+    <div class="ml-4">
+      <% @illustrations.each do |illustration| %>
+        <%= link_to admin_illustration_path(illustration.id) do %>
+          <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<div>
+
 </div>
 
 <%# ページ %>

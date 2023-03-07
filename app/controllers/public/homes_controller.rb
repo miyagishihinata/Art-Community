@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
   end
 
   def illustration_params
-    params.require(:home).permit(:image)
+    params.require(:home).permit(:image).order(created_at: :desc)
   end
 
   # ゲストユーザー

@@ -1,7 +1,7 @@
 class Admin::IllustrationsController < ApplicationController
   def show
     @illustration = Illustration.find(params[:id])
-    @comments = @illustration.comments.where(parent_id: nil).order(created_at: :desc)
+    @comments = @illustration.comments.where(parent_id: nil)
     @comment = Comment.new
     @comment_reply = Comment.new
   end
@@ -25,7 +25,7 @@ class Admin::IllustrationsController < ApplicationController
   private
 
   def illustration_params
-    params.require(:illustration).permit(:title, :introduction, :image)
+    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id)
   end
 
 end

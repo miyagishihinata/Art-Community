@@ -245,7 +245,6 @@
             <% end %>
 
 
-
   <%# 返信コメント %>
   <% @replys = Comment.where(parent_id: comment.id) %>
     <% @replys.each do |reply| %><%# コメント表示 %>
