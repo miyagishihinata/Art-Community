@@ -3,7 +3,11 @@ class Public::LikesController < ApplicationController
 
   def create
     @illustration = Illustration.find(params[:illustration_id])
-    @illustration.likes.destroy_all
+    my_like =  @illustration.likes.find_by(user_id: current_user.id)
+    #自分のいいねのみ消す
+    if my_like
+      my_like.destroy
+    end
     like = current_user.likes.new(illustration_id: @illustration.id)
     like.like_stamp = params[:like_stamp].to_i
     like.save
@@ -24,8 +28,10 @@ class Public::LikesController < ApplicationController
   private
 
   def is_guest_user
-    flash[:notice] = "ゲストユーザーはいいねできません。"
-    redirect_to illustration_path(params[:illustration_id]) if current_user.guest?
+    if current_user.guest?
+      flash[:notice] = "ゲストユーザーはいいねできません。"
+      redirect_to illustration_path(params[:illustration_id])
+    end
   end
 
   def like_params

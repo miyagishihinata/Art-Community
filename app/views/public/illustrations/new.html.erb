@@ -1,8 +1,16 @@
 <%# イラスト投稿画面 %>
 
+<%# フラッシュメッセージ %>
+<div class="container">
+  <div class="mt-4 ml-4">
+    <h6 class="text-muted font-weight-bold"><%= flash[:notice] %></h6>
+  </div>
+</div>
+
+
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-5 mb-4  ml-5" style="background-color:silver;">
+    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-3 mb-4  ml-5" style="background-color:silver;">
       &emsp;イラスト投稿&emsp;
     </h5>
   </div>

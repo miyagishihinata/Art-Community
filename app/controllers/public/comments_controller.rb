@@ -28,8 +28,10 @@ class Public::CommentsController < ApplicationController
   private
 
   def is_guest_user
-    flash[:notice] = "ゲストユーザーはコメントの投稿を行うことはできません。"
-    redirect_to illustration_path(params[:illustration_id]) if current_user.guest?
+    if current_user.guest?
+      flash[:notice] = "ゲストユーザーはコメントの投稿を行うことはできません。"
+      redirect_to illustration_path(params[:illustration_id])
+    end
   end
 
 

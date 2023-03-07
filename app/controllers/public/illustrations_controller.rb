@@ -13,8 +13,12 @@ class Public::IllustrationsController < ApplicationController
   def create
     @illustration = Illustration.new(illustration_params)
     @illustration.user_id = current_user.id
-    @illustration.save
-    redirect_to illustration_path(@illustration.id)
+    if @illustration.save
+      redirect_to illustration_path(@illustration.id)
+    else
+      flash[:notice] = "投稿に失敗しました。"
+      render :new
+    end
   end
 
   def show
@@ -32,20 +36,24 @@ class Public::IllustrationsController < ApplicationController
   def update
     illustration = Illustration.find(params[:id])
     illustration.update(illustration_params)
+    flash[:notice] = "イラスト情報を変更しました。"
     redirect_to illustration_path(illustration.id)
   end
 
   def destroy
     illustration = Illustration.find(params[:id])
     illustration.destroy
+    flash[:notice] = "イラストを削除しました。"
     redirect_to user_path(current_user.id)
   end
 
   private
 
   def is_guest_user
-    redirect_to user_path(current_user.id) if current_user.guest?
-    flash[:notice] = "ゲストユーザーはイラスト投稿を行うことはできません。"
+    if current_user.guest?
+      flash[:notice] = "ゲストユーザーはイラスト投稿を行うことはできません。。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def illustration_params

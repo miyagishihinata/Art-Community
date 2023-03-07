@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
     @illustrations = @user.illustrations.page(params[:page]).order(created_at: :desc)
   end
 
+  #いいね一覧
   def likes
     @user = User.find(params[:id])
     likes= Like.where(user_id: @user.id).pluck(:illustration_id)
@@ -21,9 +22,11 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice] = "ユーザー情報を更新しました。"
     redirect_to user_path(@user.id)
   end
 
+  #ゲストユーザー
   def withdraw
     @user = current_user
    if @user.email == 'guest@example.com'

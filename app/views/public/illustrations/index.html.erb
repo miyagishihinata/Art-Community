@@ -7,10 +7,9 @@
   </head>
 
   <div class="container">
-
+    <%# フラッシュメッセージ %>
     <div class="mt-4 ml-4">
-      <%# ゲストユーザーログイン時のメッセージ %>
-      <h5 class="text-muted"><%= flash[:notice] %></h5>
+      <h6 class="text-muted font-weight-bold"><%= flash[:notice] %></h6>
     </div>
 
     <div class="row">

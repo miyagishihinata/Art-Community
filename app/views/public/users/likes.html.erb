@@ -1,7 +1,9 @@
 <%# いいね一覧 %>
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted ml-5  mt-3">いいね</h5>
+    <h4 class="font-weight-bold text-muted mt-4 ml-5">
+      いいね
+    </h4>
   </div>
 </div>
 
@@ -9,11 +11,13 @@
 
   <div class="container">
     <%# イラスト一覧 %>
-    <% @like_posts.each do |post|%>
-      <%= link_to illustration_path(post.id) do %>
-        <%= image_tag post.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+    <div class="ml-4">
+      <% @like_posts.each do |post|%>
+        <%= link_to illustration_path(post.id) do %>
+          <%= image_tag post.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <% else %><%# いいねがない場合 %>
