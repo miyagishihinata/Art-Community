@@ -32,8 +32,10 @@ class Public::RelationshipsController < ApplicationController
   private
 
   def is_guest_user
-    redirect_to user_path(params[:user_id]) if current_user.guest?
-    flash[:notice] = "ゲストユーザーはフォローできません"
+    if current_user.guest?
+      flash[:notice] = "ゲストユーザーはフォローできません"
+      redirect_to user_path(params[:user_id])
+    end
   end
 
 

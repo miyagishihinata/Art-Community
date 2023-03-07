@@ -1,4 +1,6 @@
 class Public::LikesController < ApplicationController
+ before_action :is_guest_user, only: [:create, :destroy]
+
   def create
     @illustration = Illustration.find(params[:illustration_id])
     @illustration.likes.destroy_all
@@ -19,5 +21,15 @@ class Public::LikesController < ApplicationController
     redirect_to illustration_path(illustration.id)
   end
 
+  private
+
+  def is_guest_user
+    flash[:notice] = "ゲストユーザーはいいねできません。"
+    redirect_to illustration_path(params[:illustration_id]) if current_user.guest?
+  end
+
+  def like_params
+    params.require(:like).permit(:like_stamp, :illustration_id, :user_id)
+  end
 
 end
