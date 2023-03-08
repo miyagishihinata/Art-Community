@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   def likes
     @user = User.find(params[:id])
     likes= Like.where(user_id: @user.id).pluck(:illustration_id)
-    @like_posts = Illustration.where(id: likes).page(params[:page])
+    @like_posts = Illustration.where(id: likes).page(params[:page]).order(created_at: :desc)
     @illustration = Illustration.find(params[:id])
   end
 

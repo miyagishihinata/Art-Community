@@ -38,14 +38,16 @@
           </div>
 
         <%# イラスト %>
-          <div class="col-5">
+        <div class="timeline_art">
+          <div class="col-7">
             <%= link_to illustration_path(illustration.id) do %>
               <%= image_tag illustration.get_image(300,300), class:"mt-2" %>
             <% end %>
             <h6 class="text-muted mt-2 ml-2">
-              投稿日: <%= illustration.created_at.strftime('%Y/%m/%d') %><br>
+              投稿日: <%= illustration.created_at.strftime('%Y/%m/%d') %>
             </h6>
           </div>
+        </div>
 
       </div>
     </div>
