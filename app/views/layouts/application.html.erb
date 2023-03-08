@@ -21,29 +21,24 @@
         <div class="container">
 
 
-        <%# ロゴ　%>
+      <%# ロゴ　%>
+      <div class="logo">
         <% if admin_signed_in? %><%# 会員ログイン　%>
-          <div class="logo">
-            <%= link_to admin_path, class:"navbar-brand" do %>
-              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
-            <% end %>
-          </div>
+          <%= link_to admin_path, class:"navbar-brand" do %>
+            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+          <% end %>
 
         <% elsif user_signed_in? %><%# ユーザーログイン　%>
-          <div class="logo">
-            <%= link_to illustrations_path, class:"navbar-brand" do %>
-              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
-            <% end %>
-          </div>
+          <%= link_to illustrations_path, class:"navbar-brand" do %>
+            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+          <% end %>
 
         <% else %><%# ログイン前 %>
-          <div class="logo">
-            <%= link_to root_path, class:"navbar-brand" do %>
-              <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
-            <% end %>
-          </div>
+          <%= link_to root_path, class:"navbar-brand" do %>
+            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+          <% end %>
         <% end %>
-
+      </div>
 
         <!-- ハンバーガーメニュー -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

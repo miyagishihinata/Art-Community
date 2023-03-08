@@ -93,11 +93,13 @@
       <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
     </div>
 
+  <div class="ml-4">
     <% @illustrations.each do |illustration| %>
       <%= link_to illustration_path(illustration.id) do %>
         <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
       <% end %>
     <% end %>
+  </div>
 
   </div>
 </div>
