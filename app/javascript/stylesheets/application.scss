@@ -46,18 +46,39 @@
   border-radius:5px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 415px) {
   .logo {
     font-size: 50px;
   }
 
+  .new_button .btn{
+    margin-bottom: 20px;
+    margin-left: 40%;
+  }
+
+  .login_button .btn{
+    margin-bottom: 20px;
+  }
+
+  .guest_button .btn{
+    margin-left: 30%;
+  }
+
+  .guest_explanation{
+    margin-left: 26%;
+  }
+
   .profile_picture {
-    width: 50px;
-    height: 50px;
+    width: 5px;
+    height: 5px;
   }
 
   .user_name {
     text-align: center;
+  }
+
+  .self_introduction{
+    margin-left: 30%;
   }
 
   .timeline_art {

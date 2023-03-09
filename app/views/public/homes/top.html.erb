@@ -26,27 +26,27 @@
   <div class="container">
     <div class="row">
 
-      <div class="new_button col-5">
+      <div class="new_button col-6 col-md-5">
         <%= link_to new_user_registration_path do %>
           <button type="button" class="btn btn-secondary offset-md-8">新規登録</button>
         <% end %>
       </div>
 
-      <div class="login_button col-2">
+      <div class="login_button col-5 col-md-2">
         <%= link_to user_session_path do %>
           <button type="button" class="btn btn-secondary offset-md-1">ログイン</button>
         <% end %>
       </div>
 
-      <div class="guest_button col-3">
+      <div class="guest_button col-12 col-md-3">
         <%=link_to homes_guest_sign_in_path, method: :post do %>
           <button type="button" class="btn btn-secondary">ゲストログイン</button>
         <% end %>
       </div>
 
-      <h6 class="text-muted mt-3 offset-md-7">
+      <div class="guest_explanation h6 text-muted mt-3 offset-md-7">
         お試しでご利用される方
-      </h6>
+      </div>
 
     </div>
   </div>
