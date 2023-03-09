@@ -10,24 +10,20 @@
   <div class="row">
 
     <%# ユーザーアイコン　%>
-    <div class="col-2">
-      <div class="text-center">
-        <div class="profile_picture">
-          <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-2" %>
-        </div>
+    <div class="col-3  col-md-2">
+      <div class="profile_picture text-center">
+        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-2" %>
       </div>
         <%# ユーザー名 %>
-        <div class="user_name">
-          <h4 class="text-center"><%= @user.user_name %></h4>
-        </div>
+        <div class="user_name h4 text-center"><%= @user.user_name %></div>
       </div>
 
     <%# 自己紹介文　%>
-    <div class="col-5">
+    <div class="col-8 col-md-5">
       <div class="self_introduction h6 mt-5"><%= @user.self_introduction %></div>
     </div>
 
-    <div class="col-5">
+    <div class="user_button col-md-5">
       <% if @user == current_user %><%# 自分のみ表示 %>
 
         <%# 新規投稿ボタン　%>
@@ -67,21 +63,21 @@
   <div class="row">
 
     <%# フォロー一覧リンク %>
-    <div class="offset-md-3">
+    <div class="followings offset-md-3">
       <%= link_to user_followings_path(@user) do %>
         <h5 class="font-weight-bold text-muted">フォロー</h5>
       <% end %>
     </div>
 
     <%# フォロワー一覧リンク %>
-    <div class="offset-md-1">
+    <div class="followers offset-md-1">
       <%= link_to user_followers_path(@user) do %>
         <h5 class="font-weight-bold text-muted">フォロワー</h5>
       <% end %>
     </div>
 
     <%# いいね一覧リンク %>
-    <div class="offset-md-1">
+    <div class="likes offset-md-1">
       <%= link_to likes_user_path(@user) do %>
         <h5 class="font-weight-bold text-muted">いいね</h5>
       <% end %>

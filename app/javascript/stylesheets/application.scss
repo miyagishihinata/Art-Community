@@ -51,34 +51,48 @@
     font-size: 50px;
   }
 
-  .new_button .btn{
+  .new_button .btn {
     margin-bottom: 20px;
     margin-left: 40%;
   }
 
-  .login_button .btn{
+  .login_button .btn {
     margin-bottom: 20px;
   }
 
-  .guest_button .btn{
+  .guest_button .btn {
     margin-left: 30%;
   }
 
-  .guest_explanation{
+  .guest_explanation {
     margin-left: 26%;
   }
 
   .profile_picture {
-    width: 5px;
-    height: 5px;
+    width: 5%;
+    height: 5%;
   }
 
   .user_name {
-    text-align: center;
+    margin-top: 100px;
+    margin-left: 15px;
   }
 
-  .self_introduction{
-    margin-left: 30%;
+  .self_introduction {
+    margin-left: 10%;
+  }
+
+  .user_button {
+    margin-left: 13%;
+  }
+
+  .followings {
+    margin-left: 10%;
+    margin-right: 9%;
+  }
+
+  .followers {
+    margin-right: 9%;
   }
 
   .timeline_art {
