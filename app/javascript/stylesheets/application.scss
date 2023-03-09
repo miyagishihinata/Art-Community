@@ -38,6 +38,10 @@
   border-color: #9fc24d;
 }
 
+.illustrations {
+  margin-left: 3%;
+}
+
 .reply .btn{
   display: inline-block;
   text-align: center;
@@ -50,6 +54,8 @@
   .logo {
     font-size: 50px;
   }
+
+
 
   .new_button .btn {
     margin-bottom: 20px;
@@ -68,13 +74,10 @@
     margin-left: 26%;
   }
 
-  .profile_picture {
-    width: 5%;
-    height: 5%;
-  }
+
 
   .user_name {
-    margin-top: 100px;
+    margin-top: 5%;
     margin-left: 15px;
   }
 
@@ -93,6 +96,24 @@
 
   .followers {
     margin-right: 9%;
+  }
+
+  .illustrations {
+    margin-left: 5%;
+  }
+
+
+  .illustration {
+    width: 20%;
+    height: 20%;
+  }
+
+  .title {
+    margin-left: 10%;
+  }
+
+  .illustration_button {
+    margin-left: 25%;
   }
 
   .timeline_art {

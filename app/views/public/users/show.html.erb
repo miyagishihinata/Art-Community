@@ -19,9 +19,10 @@
       </div>
 
     <%# 自己紹介文　%>
-    <div class="col-8 col-md-5">
+    <div class="col-9 col-md-5">
       <div class="self_introduction h6 mt-5"><%= @user.self_introduction %></div>
     </div>
+
 
     <div class="user_button col-md-5">
       <% if @user == current_user %><%# 自分のみ表示 %>
@@ -94,7 +95,7 @@
       <h5 class="font-weight-bold text-muted ml-5">投稿イラスト</h5>
     </div>
 
-  <div class="ml-4">
+  <div class="illustrations">
     <% @illustrations.each do |illustration| %>
       <%= link_to illustration_path(illustration.id) do %>
         <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>

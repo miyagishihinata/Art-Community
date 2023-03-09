@@ -1,11 +1,5 @@
 <%# イラスト詳細画面 %>
 
-<!DOCTYPE html>
-  <html>
-    <head>
-      <script src="https://kit.fontawesome.com/4a01096b3c.js" crossorigin="anonymous"></script>
-    </head>
-
   <div class="container">
     <%# フラッシュメッセージ %>
     <div class="mt-4 ml-4">
@@ -16,7 +10,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-2"><%# 投稿ユーザー %>
+      <div class="col-3  col-md-2"><%# 投稿ユーザー %>
         <div class="text-center">
           <%# ユーザーアイコン　%>
           <%= link_to user_path(@illustration.user.id) do %>
@@ -25,11 +19,11 @@
         </div>
         <%# ユーザー名　%>
         <%= link_to user_path(@illustration.user.id) do %>
-          <h4 class="text-center text-dark"><%= @illustration.user.user_name %></h4>
+          <div class="user_name h4 text-center text-dark"><%= @illustration.user.user_name %></div>
         <% end %>
       </div>
 
-      <div class="col-5">
+      <div class="title col-7 col-md-5">
         <%# タイトル　%>
         <div class="form-group row mt-4">
          <h4 class="font-weight-bold"><%= @illustration.title %></h4>
@@ -42,7 +36,7 @@
 
       </div>
 
-      <div class="col-5"><%# 編集ボタン　%>
+      <div class="illustration_button col-5"><%# 編集ボタン　%>
         <div class="form-group row">
           <% if @illustration.user == current_user %>
             <%= link_to 'イラスト編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-4 offset-md-3 mt-4" %>
@@ -59,8 +53,10 @@
     <div class="row">
       <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
 
-        <div class="form-group row">
-          <%= image_tag @illustration.get_image(500,500) %>
+        <div class="illustration">
+          <div class="form-group row">
+            <%= image_tag @illustration.get_image(500,500) %>
+          </div>
         </div>
 
       </div>
@@ -299,5 +295,3 @@
     <hr>
   <% end %>
 
-
-  </html>
