@@ -51,7 +51,7 @@ class Public::IllustrationsController < ApplicationController
 
   def is_guest_user
     if current_user.guest?
-      flash[:notice] = "ゲストユーザーはイラスト投稿を行うことはできません。。"
+      flash[:notice] = "ゲストユーザーはイラスト投稿を行うことはできません。"
       redirect_to user_path(current_user.id)
     end
   end

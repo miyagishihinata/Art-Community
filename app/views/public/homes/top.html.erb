@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
 <div class="container">
 
@@ -18,34 +12,46 @@
         Connect   Through   Art
       </h1>
 
+    <div class="introduction">
       <h5 class="font-weight-bold text-muted mt-4 mb-5 text-center">
        イラストで交流を深める、シンプルなSNSサイト
       </h5>
     </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 mx-auto text-center">
-      <%= link_to new_user_registration_path do %>
-        <button type="button" class="btn btn-outline-secondary">新規登録</button>
-      <% end %>
-
-      <%= link_to user_session_path do %>
-        <button type="button" class="btn btn-outline-secondary offset-md-1">ログイン</button>
-      <% end %>
-
-      <%=link_to homes_guest_sign_in_path, method: :post do %>
-        <button type="button" class="btn btn-outline-secondary offset-md-1">ゲストログイン</button>
-      <% end %>
-
-      <h6 class="text-muted mt-3 offset-md-4">
-        お試しでご利用される方
-      </h6>
     </div>
   </div>
 </div>
+
+<div class="top_button">
+  <div class="container">
+    <div class="row">
+
+      <div class="new_button col-5">
+        <%= link_to new_user_registration_path do %>
+          <button type="button" class="btn btn-secondary offset-md-8">新規登録</button>
+        <% end %>
+      </div>
+
+      <div class="login_button col-2">
+        <%= link_to user_session_path do %>
+          <button type="button" class="btn btn-secondary offset-md-1">ログイン</button>
+        <% end %>
+      </div>
+
+      <div class="guest_button col-3">
+        <%=link_to homes_guest_sign_in_path, method: :post do %>
+          <button type="button" class="btn btn-secondary">ゲストログイン</button>
+        <% end %>
+      </div>
+
+      <h6 class="text-muted mt-3 offset-md-7">
+        お試しでご利用される方
+      </h6>
+
+    </div>
+  </div>
+</div>
+
 
 
   <%# イラスト一覧 %>
@@ -55,10 +61,15 @@
         <h5 class="font-weight-bold text-muted ml-5 mt-5">新着イラスト</h5>
       </div>
 
-      <% @illustrations.each do |illustration| %>
-        <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
-      <% end %>
+        <div class="ml-4">
+          <% @illustrations.each do |illustration| %>
+            <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+          <% end %>
+        </div>
+
     </div>
   </div>
 
-</html>
+
+
+
