@@ -3,12 +3,12 @@
 <% visitor = n.visitor %>
 <% visited = n.visited %>
 
-<div class="col-md-6 mx-auto">
+<div class="col-12 col-md-6 mx-auto">
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
         <%# アイコン %>
-        <%= image_tag visitor.get_profile_picture(60,60), class: "border border-2 mr-2" %>
+        <%= image_tag visitor.get_profile_picture(50,50), class: "border border-2 mr-2" %>
         <%# ユーザー名 %>
         <%= visitor.user_name %>
       <% end %>
@@ -54,8 +54,8 @@
       <% end %>
     </span>
 
-    <div class="small text-muted ml-5">
-      <%= time_ago_in_words(n.created_at).upcase %>
+    <div class="small text-muted ml-5"><br>
+      <%= time_ago_in_words(n.created_at).upcase %><br>
     </div>
 
   </div>

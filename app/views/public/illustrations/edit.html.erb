@@ -2,20 +2,22 @@
 
 <div class="container">
   <div class="row">
-    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-4 mb-4  ml-5" style="background-color:#bce2e8;">
-      &emsp;投稿イラスト編集&emsp;
+    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-5 mb-4  ml-5" style="background-color:silver;">
+      &emsp;イラスト編集&emsp;
     </h5>
   </div>
+</div>
 
-
+<div class="container">
   <div class="row ml-4">
-    <div class="col-9">
+    <div class="illustration_edit col-11 col-md-9">
 
     <%= form_with model: @illustration, url:illustration_path(@illustration.id) do |f| %>
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-3">イラスト</label>
-          <%= f.file_field :image, accept: "image/*" %>
+          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
+          <%= f.file_field :image, class: "image_form" %>
       </div>
 
       <div class="form-group row">
@@ -28,15 +30,24 @@
           <%= f.text_area :introduction, class: "col-md-6 form-control" %>
       </div>
 
-      <div class="form-group row">
-        <%= f.submit '変更を保存', class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
+    </div>
+  </div>
+</div>
 
-        <% if @illustration.user == current_user %>
-          <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger col-md-2 offset-md-3 mt-3 ml-3", "data-confirm" => "本当に削除しますか？" %>
-        <% end %>
-      </div>
+<div class="container">
+  <div class="illustration_edit_button row">
+
+    <div class="col-md-4 col-5">
+        <%= f.submit '変更を保存', class: "btn btn-success col-md-5 offset-md-8 mt-3" %>
+    </div>
+
+        <div class="illustration_delete_button col-md-6 col-5">
+          <% if @illustration.user == current_user %>
+            <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger col-md-3 mt-3 ml-3", "data-confirm" => "本当に削除しますか？" %>
+          <% end %>
+        </div>
+
     <% end %>
 
-    </div>
   </div>
 </div>
