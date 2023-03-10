@@ -53,7 +53,7 @@
     <div class="row">
       <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
 
-        <div class="illustration">
+        <div class="show_illustration">
           <div class="form-group row">
             <%= image_tag @illustration.get_image(500,500) %>
           </div>
@@ -67,10 +67,10 @@
     <div class="row">
 
       <%# いいね %>
-      <div class="col-2">
-        <h5 class="font-weight-bold text-muted mt-5 ml-5">
+      <div class="col-4 col-md-2">
+        <div class="like h5 font-weight-bold text-muted mt-5">
           いいね
-        </h5>
+        </div>
       </div>
 
     <%# いいねボタン %>
@@ -114,22 +114,21 @@
     <% end %>
 
       <%# 共有 %>
-      <div class="col-2">
-        <h5 class="font-weight-bold text-muted mt-5 ml-5">
+      <div class="col-3 col-md-1">
+        <div class="share h5 font-weight-bold text-muted mt-5">
           共有
-        </h5>
+        </div>
       </div>
 
-      <%# Twitter共有ボタン %>
-      <div class="col-1 mt-5">
+      <div class="col-4 col-md-3 mt-5">
+        <%# Twitter共有ボタン %>
         <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
-          <h3><i class="fa-brands fa-square-twitter"></i></h3>
+          <i class="h3 fa-brands fa-square-twitter mr-4 ml-4"></i>
         <% end %>
-      </div>
-      <%# Instagram共有ボタン %>
-      <div class="col-1 mt-5">
+
+        <%# Instagram共有ボタン %>
         <%= link_to "https://instagram.com/share?url=#{request.url}", title: 'Instagram', target: '_blank' do %>
-          <h3><i class="fa-brands fa-instagram"></i></h3>
+          <i class="h3 fa-brands fa-instagram"></i>
         <% end %>
       </div>
 
@@ -139,8 +138,8 @@
 
   <div class="container"><%# コメント %>
     <div class="row">
-      <div class="col-2">
-        <h5 class="font-weight-bold text-muted mt-5 ml-5">
+      <div class="col-4 col-md-2">
+        <h5 class="comment font-weight-bold text-muted mt-5">
           コメント
         </h5>
       </div>
@@ -159,7 +158,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-7">
+        <div class="col-12 col-md-7">
           <%= f.text_area :post_comment, class: "col-md-11 offset-md-1 mt-3 form-control", placeholder: "コメント記入" %>
         </div>
 
@@ -176,7 +175,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-2 ml-3">
+        <div class="col-3 col-md-2 ml-3">
           <div class="text-center">
             <%# ユーザーアイコン　%>
             <%= link_to user_path(comment.user.id) do %>
@@ -185,7 +184,7 @@
           </div>
             <%# ユーザー名　%>
             <%= link_to user_path(comment.user.id) do %>
-              <h5 class="text-center text-dark mb-3"><%= comment.user.user_name %></h5>
+              <div class="comment_user h5 text-center text-dark mb-3"><%= comment.user.user_name %></div>
             <% end %>
         </div>
 
@@ -224,7 +223,7 @@
               <div class="container">
                 <div class="row">
 
-                  <div class="form-group col-6">
+                  <div class="form-group col-12 col-md-6">
                     <%= f.text_area :post_comment, class: "col-md-11 offset-md-4 mt-3 form-control", placeholder: "返信コメント記入" %>
                   </div>
 
@@ -247,7 +246,7 @@
     <div class="container mr-5">
       <div class="row">
 
-        <div class="col-2 ml-3">
+        <div class="col-3 col-md-2 ml-3">
           <div class="text-center">
             <%# ユーザーアイコン　%>
             <%= link_to user_path(reply.user.id) do %>
@@ -256,11 +255,11 @@
           </div>
             <%# ユーザー名　%>
             <%= link_to user_path(reply.user.id) do %>
-              <h5 class="text-center text-dark mb-3"><%= reply.user.user_name %></h5>
+              <div class="comment_user h5 text-center text-dark mb-3"><%= reply.user.user_name %></div>
             <% end %>
         </div>
 
-        <div class="col-5">
+        <div class="col-8 col-md-5">
           <div class="text-primary">
             <% if reply.parent_id %>
               <%= reply.parent.user.user_name%> さんへのコメント<br>

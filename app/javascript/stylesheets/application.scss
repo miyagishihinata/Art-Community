@@ -42,6 +42,20 @@
   margin-left: 3%;
 }
 
+.comment {
+  margin-left: 30%;
+}
+
+.like {
+  margin-left: 30%;
+}
+
+.share {
+  margin-left: 30%;
+}
+
+
+
 .reply .btn{
   display: inline-block;
   text-align: center;
@@ -78,7 +92,7 @@
 
   .user_name {
     margin-top: 5%;
-    margin-left: 15px;
+    margin-left: 28%;
   }
 
   .self_introduction {
@@ -103,7 +117,7 @@
   }
 
 
-  .illustration {
+  .show_illustration {
     width: 20%;
     height: 20%;
   }
@@ -115,6 +129,24 @@
   .illustration_button {
     margin-left: 25%;
   }
+
+
+  .comment_user {
+    margin-left: 3%;
+  }
+
+  .comment {
+    margin-left: 2%;
+  }
+
+  .like {
+    margin-left: 2%;
+  }
+
+  .share {
+    margin-left: 10%;
+  }
+
 
   .timeline_art {
     width: 20%;

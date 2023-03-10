@@ -1,9 +1,9 @@
-<%# 投稿編集画面 %
+<%# 投稿編集画面 %>
 
 <div class="container">
   <div class="row">
     <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-4 mb-4  ml-5" style="background-color:#bce2e8;">
-      &emsp;投稿編集&emsp;
+      &emsp;投稿イラスト編集&emsp;
     </h5>
   </div>
 
@@ -32,7 +32,7 @@
         <%= f.submit '変更を保存', class: "btn btn-success col-md-2 offset-md-3 mt-3" %>
 
         <% if @illustration.user == current_user %>
-          <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger offset-md-3 mt-3 ml-3", "data-confirm" => "本当に削除しますか？" %>
+          <%= link_to "削除する", illustration_path(@illustration), method: :delete, class: "btn btn-danger col-md-2 offset-md-3 mt-3 ml-3", "data-confirm" => "本当に削除しますか？" %>
         <% end %>
       </div>
     <% end %>
