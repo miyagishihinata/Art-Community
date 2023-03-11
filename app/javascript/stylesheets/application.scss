@@ -49,9 +49,10 @@
   height : 250px;
 }
 
+// イラスト表示
 .show_illustration {
-  width : 0%;
-  height : 50%;
+  width : 500px;
+  height : auto;
 }
 
 .comment {
@@ -193,10 +194,11 @@
     height : 200px;
   }
 
-
+  // イラスト表示
   .show_illustration {
-    width: 20%;
-    height: 20%;
+    width : 350px;
+    height : auto;
+    margin-left: 6px;
   }
 
   .title {
@@ -254,6 +256,10 @@
   .timeline_art {
     width: 20%;
     height: 20%;
+  }
+
+  .paginate {
+    margin-left: 35%;
   }
 
 }

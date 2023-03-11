@@ -1,37 +1,30 @@
-<%# イラスト一覧画面 %>
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<%# 新着イラスト一覧画面 %>
+<div class="container">
 
-  <div class="container">
-    <%# フラッシュメッセージ %>
-    <div class="mt-4 ml-4">
-      <h6 class="text-muted font-weight-bold"><%= flash[:notice] %></h6>
-    </div>
+  <%# フラッシュメッセージ %>
+  <div class="mt-4 ml-4">
+    <h6 class="text-muted font-weight-bold"><%= flash[:notice] %></h6>
+  </div>
 
-    <div class="new_illustrations row">
-      <h4 class="font-weight-bold text-muted ml-5 mt-2">
-        新着イラスト
-      </h4>
-    </div>
+  <div class="new_illustrations row">
+    <h4 class="font-weight-bold text-muted ml-5 mt-2">
+      新着イラスト
+    </h4>
+  </div>
 
-    <div class="illustrations">
-      <% @illustrations.each do |illustration| %>
-        <%= link_to illustration_path(illustration.id) do %>
-          <%= image_tag illustration.image, class:"illustration ml-2 mt-3" %>
-        <% end %>
+  <div class="illustrations">
+    <% @illustrations.each do |illustration| %>
+      <%= link_to illustration_path(illustration.id) do %>
+        <%= image_tag illustration.image, class:"illustration ml-2 mt-3" %>
       <% end %>
-    </div>
-
+    <% end %>
   </div>
 
-  <div class="container">
-    <div class="col-12 offset-md-5 mb-3 mt-3">
-      <%= paginate @illustrations %>
-    </div>
-  </div>
+</div>
 
-</html>
+<div class="container">
+  <div class="paginate col-12 col-md-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @illustrations %>
+  </div>
+</div>
+

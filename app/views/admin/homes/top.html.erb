@@ -1,20 +1,21 @@
+<%# 投稿イラスト一覧画面 %>
 <div class="container">
 
+  <%# フラッシュメッセージ %>
   <div class="mt-4 ml-4">
-    <%# フラッシュメッセージ %>
     <h5 class="font-weight-bold text-muted"><%= flash[:notice] %></h5>
   </div>
 
-  <div class="row">
+  <div class="new_illustrations row">
     <h4 class="font-weight-bold text-muted ml-5 mt-2">
       投稿イラスト
     </h4>
   </div>
 
-  <div class="illustrations ml-5">
+  <div class="illustrations">
     <% @illustrations.each do |illustration| %>
       <%= link_to admin_illustration_path(illustration.id) do %>
-        <%= image_tag illustration.image, class:"ml-2 mt-3", width:'200px', height:'250px' %>
+        <%= image_tag illustration.image, class:"illustration ml-2 mt-3" %>
       <% end %>
     <% end %>
   </div>
@@ -22,7 +23,7 @@
 </div>
 
 <div class="container">
-  <div class="col-12 offset-md-5 mb-3 mt-3">
+  <div class="paginate col-12 offset-md-5 mb-3 mt-5">
     <%= paginate @illustrations %>
   </div>
 </div>
