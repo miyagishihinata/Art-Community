@@ -3,20 +3,20 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-2"><%# 投稿ユーザー　%>
+    <div class="col-2 col-md-2"><%# 投稿ユーザー　%>
       <div class="text-center">
         <%# ユーザーアイコン　%>
         <%= link_to admin_user_path(@illustration.user.id) do %>
-          <%= image_tag @illustration.user.get_profile_picture(100,100), class: "border border-2 mt-4" %>
+          <%= image_tag @illustration.user.profile_picture, class: "profile_picture border border-2 mt-4" %>
         <% end %>
       </div>
         <%# ユーザー名　%>
         <%= link_to admin_user_path(@illustration.user.id) do %>
-          <h4 class="text-center text-dark"><%= @illustration.user.user_name %></h4>
+          <div class="user_name h4 text-center text-dark"><%= @illustration.user.user_name %></div>
         <% end %>
     </div>
 
-    <div class="col-5">
+    <div class="title col-7 col-md-5">
       <%# タイトル　%>
       <div class="form-group row mt-4">
        <h4 class="font-weight-bold"><%= @illustration.title %></h4>
@@ -40,22 +40,20 @@
 
 <hr color="silver"><%# イラスト %>
 
-<div class="container">
-  <div class="row">
-    <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
+  <div class="container"><%# イラスト　%>
+    <div class="row">
+      <div class="px-3 mx-auto col-12 col-sm-10 col-lg-8 col-xl-6 mt-4">
 
-      <div class="form-group row">
-        <%= image_tag @illustration.get_image(500,500) %>
+        <%= image_tag @illustration.image, class:"show_illustration" %>
+
       </div>
-
     </div>
   </div>
-</div>
 
 <div class="container"><%# コメント %>
   <div class="row">
 
-    <div class="col-2">
+    <div class="col-4 col-md-2">
       <h5 class="font-weight-bold mt-5 ml-5">
         コメント
       </h5>
@@ -75,7 +73,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-2 ml-3">
+      <div class="col-3 col-md-2 ml-3">
         <div class="text-center">
           <%# ユーザーアイコン　%>
           <%= link_to admin_user_path(comment.user.id) do %>
@@ -84,7 +82,7 @@
         </div>
           <%# ユーザー名　%>
           <%= link_to admin_user_path(comment.user.id) do %>
-            <h5 class="text-center text-dark mb-3"><%= comment.user.user_name %></h5>
+            <div class="comment_user_name h5 text-center text-dark mb-3"><%= comment.user.user_name %></div>
           <% end %>
       </div>
 
@@ -114,7 +112,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-2 ml-5 mt-2">
+        <div class="col-3 col-md-2 ml-5 mt-2">
           <div class="text-center">
             <%# ユーザーアイコン %>
             <%= link_to admin_user_path(reply.user.id) do %>
@@ -123,11 +121,11 @@
           </div>
             <%# ユーザー名 %>
             <%= link_to admin_user_path(reply.user.id) do %>
-              <h5 class="text-center text-dark mb-3"><%= reply.user.user_name %></h5>
+              <div class="comment_user_name h5 text-center text-dark mb-3"><%= reply.user.user_name %></div>
             <% end %>
         </div>
 
-        <div class="col-5">
+        <div class="col-8 col-md-5">
           <div class="text-primary">
             <% if reply.parent_id %>
               <%= reply.parent.user.user_name%> さんへのコメント<br>

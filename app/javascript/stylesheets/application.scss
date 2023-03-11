@@ -38,6 +38,13 @@
   border-color: #9fc24d;
 }
 
+//アイコン
+.profile_picture {
+  width: 100px;
+  height: auto;
+}
+
+
 // イラスト一覧
 .illustrations {
   margin-left: 3%;
@@ -149,10 +156,17 @@
   }
 
 
+  //アイコン
+  .profile_picture {
+    width: 70px;
+    height: auto;
+  }
+
   // ユーザー名
   .user_name {
     margin-top: 5%;
-    margin-left: 28%;
+    font-size: 20px;
+    margin-left: 30px;
   }
 
   // 自己紹介文
@@ -196,7 +210,7 @@
 
   // イラスト表示
   .show_illustration {
-    width : 350px;
+    width : 380px;
     height : auto;
     margin: 0 auto;
   }
@@ -209,9 +223,10 @@
     margin-left: 25%;
   }
 
-
-  .comment_user {
+  //コメントしたユーザーの名前
+  .comment_user_name {
     margin-left: 3%;
+    font-size: 18px;
   }
 
   .comment {
@@ -261,5 +276,18 @@
   .paginate {
     margin-left: 35%;
   }
+
+}
+
+
+@media screen and (max-width: 376px) {
+
+    // イラスト表示
+  .show_illustration {
+    width : 350px;
+    height : auto;
+    margin: 0 auto;
+  }
+
 
 }
