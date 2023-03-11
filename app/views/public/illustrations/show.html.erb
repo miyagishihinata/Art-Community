@@ -53,11 +53,9 @@
     <div class="row">
       <div class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-4">
 
-        <div class="show_illustration">
           <div class="form-group row">
-            <%= image_tag @illustration.get_image(500,500) %>
+            <%= image_tag @illustration.get_image, class: "show_illustration" %>
           </div>
-        </div>
 
       </div>
     </div>
@@ -120,7 +118,7 @@
         </div>
       </div>
 
-      <div class="col-4 col-md-3 mt-5">
+      <div class="col-5 col-md-3 mt-5">
         <%# Twitter共有ボタン %>
         <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
           <i class="h3 fa-brands fa-square-twitter mr-4 ml-4"></i>
