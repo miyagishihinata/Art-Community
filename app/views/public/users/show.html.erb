@@ -10,26 +10,26 @@
   <div class="row">
 
     <%# ユーザーアイコン　%>
-    <div class="col-3  col-md-2">
-      <div class="profile_picture text-center">
-        <%= image_tag @user.get_profile_picture(100,100), class: "border border-2 mt-2" %>
+    <div class="col-12 col-md-2">
+      <div class="text-center">
+        <%= image_tag @user.profile_picture, class: "profile_picture border border-2" %>
       </div>
         <%# ユーザー名 %>
         <div class="user_name h4 text-center"><%= @user.user_name %></div>
       </div>
 
     <%# 自己紹介文　%>
-    <div class="col-9 col-md-5">
-      <div class="self_introduction h6 mt-5"><%= @user.self_introduction %></div>
+    <div class="col-12 col-md-6">
+      <div class="self_introduction h6"><%= @user.self_introduction %></div>
     </div>
 
 
-    <div class="user_button col-md-5">
+    <div class="user_button col-md-4">
       <% if @user == current_user %><%# 自分のみ表示 %>
 
         <%# 新規投稿ボタン　%>
         <%= link_to new_illustration_path do %>
-          <button type="button" class="btn btn-success mr-3 offset-md-4 mt-4">
+          <button type="button" class="btn btn-success mr-3 offset-md-1 mt-4">
             イラスト投稿
           </button>
         <% end %>
@@ -98,7 +98,7 @@
   <div class="illustrations">
     <% @illustrations.each do |illustration| %>
       <%= link_to illustration_path(illustration.id) do %>
-        <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+        <%= image_tag illustration.image, class:"illustration ml-2 mt-3" %>
       <% end %>
     <% end %>
   </div>

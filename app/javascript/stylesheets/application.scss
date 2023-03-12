@@ -42,8 +42,13 @@
 .profile_picture {
   width: 100px;
   height: auto;
+  margin-top: 10px;
 }
 
+//自己紹介文
+.self_introduction {
+  margin-top: 10%;
+}
 
 // イラスト一覧
 .illustrations {
@@ -61,6 +66,7 @@
   width : 500px;
   height : auto;
 }
+
 
 .comment {
   margin-left: 30%;
@@ -158,15 +164,13 @@
 
   //アイコン
   .profile_picture {
-    width: 70px;
+    width: 75px;
     height: auto;
   }
 
   // ユーザー名
   .user_name {
-    margin-top: 5%;
-    font-size: 20px;
-    margin-left: 30px;
+    font-size: 22px;
   }
 
   // 自己紹介文
@@ -208,6 +212,11 @@
     height : 200px;
   }
 
+  //イラストタイトル
+  .illustration_title {
+    text-align: center;
+  }
+
   // イラスト表示
   .show_illustration {
     width : 380px;
@@ -215,12 +224,14 @@
     margin: 0 auto;
   }
 
-  .title {
-    margin-left: 10%;
+  //イラストタイトル
+  .introduction {
+    margin-left: 5%;
   }
 
+  //イラスト編集ボタン
   .illustration_button {
-    margin-left: 25%;
+    margin: 0 auto;
   }
 
   //コメントしたユーザーの名前

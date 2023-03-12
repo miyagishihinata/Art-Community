@@ -10,11 +10,11 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-2 col-md-2"><%# 投稿ユーザー %>
+      <div class="col-12 col-md-2"><%# 投稿ユーザー %>
         <div class="text-center">
           <%# ユーザーアイコン　%>
           <%= link_to user_path(@illustration.user.id) do %>
-            <%= image_tag @illustration.user.profile_picture, class: "profile_picture border border-2 mt-4" %>
+            <%= image_tag @illustration.user.profile_picture, class: "profile_picture border border-2" %>
           <% end %>
         </div>
         <%# ユーザー名　%>
@@ -23,23 +23,23 @@
         <% end %>
       </div>
 
-      <div class="title col-7 col-md-5">
+      <div class="col-12 col-md-5">
         <%# タイトル　%>
-        <div class="form-group row mt-4">
-         <h4 class="font-weight-bold"><%= @illustration.title %></h4>
+        <div class="mb-4 mt-4">
+         <div class="illustration_title h4 font-weight-bold"><%= @illustration.title %></div>
         </div>
 
-        <div class="form-group row">
+        <div class="introduction form-group row">
           説明  : <%= @illustration.introduction %><br>
           投稿日: <%= @illustration.created_at.strftime('%Y/%m/%d') %><br>
         </div>
 
       </div>
 
-      <div class="illustration_button col-5"><%# 編集ボタン　%>
+      <div class="illustration_button col-12 col-md-5"><%# 編集ボタン　%>
         <div class="form-group row">
           <% if @illustration.user == current_user %>
-            <%= link_to 'イラスト編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-4 offset-md-3 mt-4" %>
+            <%= link_to 'イラスト編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-4 offset-md-4 mt-4" %>
           <% end %>
         </div>
       </div>
@@ -58,6 +58,8 @@
       </div>
     </div>
   </div>
+
+
 
   <div class="container">
     <div class="row">
@@ -289,4 +291,12 @@
 
     <hr>
   <% end %>
+
+
+<%# ページ %>
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @comments %>
+  </div>
+</div>
 
