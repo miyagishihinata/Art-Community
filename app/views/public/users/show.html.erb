@@ -15,7 +15,7 @@
         <%= image_tag @user.profile_picture, class: "profile_picture border border-2" %>
       </div>
         <%# ユーザー名 %>
-        <div class="user_name h4 text-center"><%= @user.user_name %></div>
+        <div class="user_name h4 text-center font-weight-bold"><%= @user.user_name %></div>
       </div>
 
     <%# 自己紹介文　%>
@@ -29,14 +29,14 @@
 
         <%# 新規投稿ボタン　%>
         <%= link_to new_illustration_path do %>
-          <button type="button" class="btn btn-success mr-3 offset-md-1 mt-4">
+          <button type="button" class="new_illustration_button btn btn-success mr-3 offset-md-1 mt-4">
             イラスト投稿
           </button>
         <% end %>
 
         <%# ユーザー編集ボタン　%>
         <%= link_to edit_user_path(current_user.id) do %>
-          <button type="button" class="btn btn-outline-secondary mt-4">
+          <button type="button" class="edit_user_button btn btn-outline-secondary mt-4">
             ユーザー編集
           </button>
         <% end %>
@@ -46,9 +46,9 @@
       <%# フォローボタン %>
       <% unless @user == current_user %><%# 自分以外に表示 %>
         <% if current_user.following?(@user) %>
-          <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-dark offset-md-5 mt-4" %>
+          <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete, class: "unfollow_button btn btn-dark offset-md-5 mt-4" %>
         <% else %>
-          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-primary offset-md-5 mt-4" %>
+          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "follow_button btn btn-primary offset-md-5 mt-4" %>
         <% end %>
       <% end %>
 

@@ -81,7 +81,6 @@
 }
 
 
-
 .reply .btn{
   display: inline-block;
   text-align: center;
@@ -89,6 +88,14 @@
   padding: 5px 0px;
   border-radius:5px;
 }
+
+
+//フォロー、フォロワー一覧ユーザーアイコン
+.follow_profile_picture {
+  width : 80px;
+  height : auto;
+}
+
 
 
 .image_input_btn {
@@ -175,12 +182,24 @@
 
   // 自己紹介文
   .self_introduction {
-    margin-left: 10%;
+    text-align: center;
+    margin-bottom: 5%;
   }
 
   // ユーザー編集ボタン、イラスト投稿ボタン
   .user_button {
     margin-left: 13%;
+  }
+
+  //フォローボタン
+  .follow_button {
+    margin-left: 20%;
+  }
+
+
+  //フォロー解除ボタン
+  .unfollow_button {
+    margin-left: 20%;
   }
 
   // フォロー一覧リンク
@@ -195,6 +214,17 @@
     margin-right: 9%;
   }
 
+  //フォロー、フォロワー一覧 ユーザーアイコン
+  .follow_profile_picture {
+    width : 60px;
+    height : auto;
+  }
+
+  //フォロー、フォロワー一覧 ユーザー名
+  .follow_user_name {
+    font-size: 1rem;
+  }
+
 
   // 新着イラスト
   .new_illustrations {
@@ -202,7 +232,7 @@
   }
 
   // イラスト一覧
-  .illustration {
+  .illustrations {
     margin-left: 5%;
   }
 

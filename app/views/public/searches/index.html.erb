@@ -111,10 +111,10 @@
       <%= @illustrations.count %>件の検索結果(イラスト)
     </div>
 
-    <div class="illustration-list mt-4 ml-5">
+    <div class="illustration-list mt-4">
       <% @illustrations.each do |illustration| %>
         <%= link_to illustration_path(illustration.id) do %>
-          <%= image_tag illustration.image, class:"ml-2", width:'200px', height:'250px' %>
+          <%= image_tag illustration.image, class:"illustration ml-2 mt-2" %>
         <% end %>
       <% end %>
     </div>

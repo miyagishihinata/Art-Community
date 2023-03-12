@@ -11,10 +11,10 @@
 
   <div class="container">
     <%# イラスト一覧 %>
-    <div class="ml-4">
+    <div class="illustrations">
       <% @like_posts.each do |post|%>
         <%= link_to illustration_path(post.id) do %>
-          <%= image_tag post.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+          <%= image_tag post.image, class:"illustration ml-2 mt-3" %>
         <% end %>
       <% end %>
     </div>
