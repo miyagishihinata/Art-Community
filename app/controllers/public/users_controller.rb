@@ -26,12 +26,14 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  #ゲストユーザー
-  def withdraw
+
+  def withdrawl
     @user = current_user
+   #ゲストユーザー
    if @user.email == 'guest@example.com'
       reset_session
       redirect_to root_path
+   #ユーザー退会
    else
     @user.update(is_deleted: true)
     reset_session

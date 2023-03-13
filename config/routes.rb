@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     #ユーザーページ
     get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
-    patch 'users/withdraw' => 'users#withdraw'     #ユーザー退会処理
+    patch 'users/withdrawl' => 'users#withdrawl'     #ユーザー退会処理
     resources :users, only: [:show, :edit, :update] do
 
       resource :relationships, only: [:create, :destroy]                #フォロー機能

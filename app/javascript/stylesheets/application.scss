@@ -123,15 +123,22 @@
   margin-left: 5%;
 }
 
+//検索
 .searche {
   margin-left: 5%;
 }
+
+// タイムライン
+.timeline {
+  margin-left: 5%;
+}
+
 
 //自己紹介文
 .self_introduction{
     display: table;
     width: 100%;
-  }
+}
 
 //自己紹介文内
 .self_introduction_inner{
@@ -323,7 +330,6 @@
 
   // タイムライン
   .timeline {
-    font-size: 2rem;
     text-align: center;
   }
 
@@ -333,7 +339,7 @@
     height: auto;
   }
 
-  //タイムラインイラスト
+  //タイムラインイラストタイトル
   .timeline_illustration_title {
     font-size: 1rem;
   }
@@ -343,6 +349,24 @@
   }
 
 }
+
+
+ // 退会画面テキスト
+ .withdrawl_text {
+   font-size: 1rem;
+ }
+
+ // 退会ボタン
+ .withdrawl_button {
+   width: 50%;
+   margin-left: 25%;
+ }
+
+ // 退会しないボタン
+ .not_withdrawl_button {
+   width: 50%;
+   margin-left: 25%;
+ }
 
 
 @media screen and (max-width: 376px) {

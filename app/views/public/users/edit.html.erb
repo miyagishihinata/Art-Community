@@ -12,7 +12,9 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
-          <%= f.file_field :image, accept: "image/*", class: "hidden" %>
+          <%#= f.file_field :image, accept: "image/*", class: "hidden" %>
+          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
+          <%= f.file_field :image, class: "image_form" %>
       </div>
 
       <div class="form-group row">
@@ -44,15 +46,17 @@
         <%= f.password_field :password_confirmation,  class: "col-md-6 form-control" %>
       </div>
 
-      <div class="actions">
+      <div class="actions col-12 mb-5">
         <%# 保存ボタン %>
         <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
 
         <%# マイページボタン %>
-        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-3" %>
+        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-3 col-10 col-md-3" %>
+      </div>
 
+      <div class="actions mb-5 col-12">
         <%# 退会ボタン %>
-        <%= link_to '退会する', users_unsubscribe_path, class: "btn btn-danger mt-3 ml-3" %>
+        <%= link_to '退会する', users_unsubscribe_path, class: "btn btn-danger col-12 col-md-3 offset-md-4" %>
       </div>
     <% end %>
 

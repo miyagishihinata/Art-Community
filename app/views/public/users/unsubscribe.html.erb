@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="px-2 mx-auto">
+    <div class="mx-auto">
 
-      <h4 class="text-center mt-5 mb-5">本当に退会しますか？</h4>
+      <h4 class="text-center font-weight-bold mt-5 mb-5">本当に退会しますか？</h4>
 
-      <h5 class="text-center">
+      <div class="withdrawl_text h5 text-center col-12">
         退会すると、ユーザー登録情報や<br>
         これまでの投稿イラストが削除されます。<br>
         退会する場合は「退会する」をクリックししてください。<br>
-      </h5>
+      </div>
 
 
-        <div class="form-group row ml-5">
-          <%= link_to '退会しない', user_path(current_user.id), class: "btn btn-primary col-md-3 mr-5 ml-5" %>
-          <%= link_to '退会する', users_withdraw_path, method: :patch, class: "btn btn-danger col-md-3", "data-confirm" => "本当に削除しますか？" %>
+        <div class="form-group col-12">
+          <%= link_to '退会しない', user_path(current_user.id), class: "not_withdrawl_button btn btn-primary col-md-5 mt-4" %>
+          <%= link_to '退会する', users_withdrawl_path, method: :patch, class: "withdrawl_button btn btn-danger col-md-5 mt-4", "data-confirm" => "本当に削除しますか？" %>
         </div>
 
     </div>
