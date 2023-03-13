@@ -6,27 +6,27 @@
       <h6 class="text-muted font-weight-bold"><%= flash[:notice] %></h6>
     </div>
 
-    <h5 class="font-weight-bold text-muted offset-md-2 text-center mt-5 mb-4 ml-5" style="background-color:gainsboro;">
+    <div class="h5 font-weight-bold text-muted text-center mt-5 mb-4 ml-1" style="background-color:gainsboro;">
       &emsp;ログイン&emsp;
-    </h5>
+    </div>
   </div>
 
     <div class="row">
-      <div class="px-3 offset-md-1 col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div class="px-3 ml-5 col-10 col-md-12 col-lg-8">
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group row">
-          <label class="col-md-4 font-weight-bold text-muted" for="email">メールアドレス</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-md-8 form-control" %>
+        <div class="email_field form-group row">
+          <label class="col-md-3 font-weight-bold text-muted" for="email">メールアドレス</label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-md-6 col-11 form-control" %>
         </div>
 
-        <div class="form-group row">
-          <label class="col-md-4 font-weight-bold text-muted" for="encrypted_password">パスワード</label>
-          <%= f.password_field :password, autocomplete: "current-password", class: "col-md-8 form-control" %>
+        <div class="password_field form-group row">
+          <label class="col-md-3 font-weight-bold text-muted" for="encrypted_password">パスワード</label>
+          <%= f.password_field :password, autocomplete: "current-password", class: "col-md-6 col-11 form-control" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary col-md-3 offset-md-4 mt-3" %>
+          <%= f.submit "ログイン", class: "btn btn-primary col-md-3 offset-md-3 mt-3" %>
         </div>
 
       <% end %>
