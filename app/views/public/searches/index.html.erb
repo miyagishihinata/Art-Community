@@ -57,30 +57,30 @@
 
     <div class="row">
       <% @users.each do |user| %>
-        <div class="col-3 col-md-1 offset-md-1">
+        <div class="col-4 col-md-1 offset-md-1">
           <%# ユーザーアイコン　%>
           <div class="text-center">
             <%= link_to user_path(user.id) do %>
-              <%= image_tag user.get_profile_picture(80,80), class: "border border-2 mt-3" %>
+              <%= image_tag user.get_profile_picture(80,80), class: "mini_user_icon border border-2 mt-5" %>
             <% end %>
           </div>
 
           <%# ユーザー名　%>
           <%= link_to user_path(user.id) do %>
-            <h5 class="text-dark text-center mb-4">
+            <div class="mini_user_name h5 font-weight-bold text-dark text-center mb-4">
               <%= user.user_name %>
-            </h5>
+            </div>
           <% end %>
         </div>
 
 
         <%# 自己紹介文　%>
-        <div class="col-7 col-md-6">
-          <h6 class="mt-5"><%= user.self_introduction %></h6>
+        <div class="self_introduction col-8 col-md-6">
+          <div class="self_introduction_inner h6"><%= user.self_introduction %></div>
         </div>
 
         <%# フォローボタン %>
-        <div class="searche_follow_button col-6 col-md-3">
+        <div class="follow_button_2 col-6 col-md-3">
           <% unless user == current_user %><%# 自分以外に表示 %>
             <% if current_user.following?(user) %>
               <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete, class: "btn btn-dark offset-md-5 mt-4" %>

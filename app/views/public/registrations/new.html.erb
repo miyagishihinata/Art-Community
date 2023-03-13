@@ -13,7 +13,9 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
-          <%= f.file_field :image, accept: "image/*", class: "hidden" %>
+          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
+          <%= f.file_field :image, class: "image_form" %>
+          <%#= f.file_field :image, accept: "image/*", class: "hidden" %>
       </div>
 
       <div class="form-group row">

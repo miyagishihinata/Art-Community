@@ -182,7 +182,7 @@
           </div>
             <%# ユーザー名　%>
             <%= link_to user_path(comment.user.id) do %>
-              <div class="comment_user_name h5 text-center text-dark mb-3"><%= comment.user.user_name %></div>
+              <div class="mini_user_name h5 text-center text-dark font-weight-bold mb-3"><%= comment.user.user_name %></div>
             <% end %>
         </div>
 
@@ -253,7 +253,7 @@
           </div>
             <%# ユーザー名　%>
             <%= link_to user_path(reply.user.id) do %>
-              <div class="comment_user_name h5 text-center text-dark font-weight-bold mb-3"><%= reply.user.user_name %></div>
+              <div class="mini_user_name h5 text-center text-dark font-weight-bold mb-3"><%= reply.user.user_name %></div>
             <% end %>
         </div>
 
@@ -295,7 +295,7 @@
 
 <%# ページ %>
 <div class="container">
-  <div class="col-12 offset-md-5 mb-3 mt-3">
+  <div class="paginate col-12 offset-md-5 mb-3 mt-3">
     <%= paginate @comments %>
   </div>
 </div>

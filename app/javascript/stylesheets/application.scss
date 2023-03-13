@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+// ヘッダーロゴ
 .logo {
   font-family: 'Oleo Script', cursive;
 }
@@ -23,20 +24,29 @@
 }
 
 
+// 新規登録ボタン
 .new_button .btn{
   background-color: #68a4d9;
   border-color: #68a4d9;
 }
 
+// ログインボタン
 .login_button .btn{
   background-color: #82cddd;
   border-color: #82cddd;
 }
 
+// ゲストログインボタン
 .guest_button .btn{
   background-color: #9fc24d;
   border-color: #9fc24d;
 }
+
+// ゲストログイン説明
+.guest_text {
+   margin-left: 58%;
+}
+
 
 //アイコン
 .profile_picture {
@@ -45,10 +55,6 @@
   margin-top: 10px;
 }
 
-//自己紹介文
-.self_introduction {
-  margin-top: 10%;
-}
 
 // イラスト一覧
 .illustrations {
@@ -121,6 +127,19 @@
   margin-left: 5%;
 }
 
+//自己紹介文
+.self_introduction{
+    display: table;
+    width: 100%;
+  }
+
+//自己紹介文内
+.self_introduction_inner{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
 .user_search {
   margin-left: 6%;
 }
@@ -163,17 +182,18 @@
     margin-left: 30%;
   }
 
-　// ゲストログイン説明
-  .guest_explanation {
+  // ゲストログイン説明
+  .guest_text {
     margin-left: 26%;
   }
 
 
-  //アイコン
+  // アイコン
   .profile_picture {
     width: 75px;
     height: auto;
   }
+
 
   // ユーザー名
   .user_name {
@@ -191,13 +211,18 @@
     margin-left: 13%;
   }
 
-  //フォローボタン
+
+  // フォローボタン×2
+  .follow_button_2 {
+    margin-left: 30%;
+  }
+
+  // フォローボタン
   .follow_button {
     margin-left: 20%;
   }
 
-
-  //フォロー解除ボタン
+  // フォロー解除ボタン
   .unfollow_button {
     margin-left: 20%;
   }
@@ -208,21 +233,9 @@
     margin-right: 9%;
   }
 
-
   // フォロワー一覧リンク
   .followers {
     margin-right: 9%;
-  }
-
-  //フォロー、フォロワー一覧 ユーザーアイコン
-  .follow_profile_picture {
-    width : 60px;
-    height : auto;
-  }
-
-  //フォロー、フォロワー一覧 ユーザー名
-  .follow_user_name {
-    font-size: 1rem;
   }
 
 
@@ -231,12 +244,12 @@
     margin-left: 15%;
   }
 
-  // イラスト一覧
+  //イラスト一覧
   .illustrations {
     margin-left: 5%;
   }
 
-  // イラストリンク
+  //イラストリンク
   .illustration {
     width : 150px;
     height : 200px;
@@ -247,7 +260,7 @@
     text-align: center;
   }
 
-  // イラスト表示
+  //イラスト表示
   .show_illustration {
     width : 380px;
     height : auto;
@@ -262,12 +275,6 @@
   //イラスト編集ボタン
   .illustration_button {
     margin: 0 auto;
-  }
-
-  //コメントしたユーザーの名前
-  .comment_user_name {
-    margin-left: 3%;
-    font-size: 18px;
   }
 
   .comment {
@@ -290,9 +297,20 @@
     margin-left: 40%;
   }
 
-
+  //検索
   .searche {
     margin-left: 40%;
+  }
+
+  //ユーザーアイコン（小）
+  .mini_user_icon {
+    width : 65%;
+    height : auto;
+  }
+
+  //ユーザー名（小）
+  .mini_user_name {
+    font-size: 1rem;
   }
 
   .user_search_results {
@@ -303,15 +321,21 @@
     margin-left: 20%;
   }
 
-  .searche_follow_button {
-    margin-left: 30%;
+  // タイムライン
+  .timeline {
+    font-size: 2rem;
+    text-align: center;
   }
 
+  //タイムラインイラスト
+  .timeline_illustration {
+    width: 60%;
+    height: auto;
+  }
 
-
-  .timeline_art {
-    width: 20%;
-    height: 20%;
+  //タイムラインイラスト
+  .timeline_illustration_title {
+    font-size: 1rem;
   }
 
   .paginate {

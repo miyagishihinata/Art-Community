@@ -23,7 +23,8 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-3">イラスト</label>
-          <%= f.file_field :image, accept: "image/*" %>
+          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
+          <%= f.file_field :image, class: "image_form" %>
       </div>
 
       <div class="form-group row">
@@ -32,7 +33,7 @@
       </div>
 
       <div class="form-group row">
-        <label class="font-weight-bold text-muted col-md-3 mb-4">説明文</label>
+        <label class="font-weight-bold text-muted col-md-3">説明文</label>
           <%= f.text_area :introduction, class: "col-md-6 form-control", placeholder: "ここに説明文を記述します" %>
       </div>
 

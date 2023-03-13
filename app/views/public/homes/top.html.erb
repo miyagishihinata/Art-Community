@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class="top_button">
+
   <div class="container">
     <div class="row">
 
@@ -44,13 +44,16 @@
         <% end %>
       </div>
 
-      <div class="guest_explanation h6 text-muted mt-3 offset-md-7">
+      <div class="guest_text h6 text-muted mt-3">
         お試しでご利用される方
       </div>
 
     </div>
+
+
   </div>
-</div>
+
+
 
 
 
@@ -58,12 +61,12 @@
   <div class="mb-5">
     <div class="container">
       <div class="row">
-        <h5 class="font-weight-bold text-muted ml-5 mt-5">新着イラスト</h5>
+        <div class="h5 font-weight-bold text-muted ml-5 mt-5">新着イラスト</div>
       </div>
 
-        <div class="ml-4">
+        <div class="illustrations">
           <% @illustrations.each do |illustration| %>
-            <%= image_tag illustration.image, class:"ml-3 mt-3", width:'200px', height:'250px' %>
+            <%= image_tag illustration.image, class:"illustration ml-2 mt-3" %>
           <% end %>
         </div>
 
