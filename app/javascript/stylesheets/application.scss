@@ -366,26 +366,32 @@
     margin-left: 35%;
   }
 
+
+
+  // 退会画面テキスト
+   .withdrawl_text {
+     font-size: 1rem;
+  }
+
+  // 退会ボタン
+   .withdrawl_button {
+     width: 50%;
+     margin-left: 25%;
+   }
+
+  // 退会しないボタン
+  .not_withdrawl_button {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+
+  // 管理者側ユーザー編集ボタン
+  .admin_edit_user_button {
+    margin-left: 32%;
+  }
+
 }
-
-
- // 退会画面テキスト
- .withdrawl_text {
-   font-size: 1rem;
- }
-
- // 退会ボタン
- .withdrawl_button {
-   width: 50%;
-   margin-left: 25%;
- }
-
- // 退会しないボタン
- .not_withdrawl_button {
-   width: 50%;
-   margin-left: 25%;
- }
-
 
 @media screen and (max-width: 376px) {
 
