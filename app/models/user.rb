@@ -8,7 +8,7 @@ class User < ApplicationRecord
     length: { in: 1..20 }
 
   validates :self_introduction,
-    length: { in: 1..200 }
+    length: { minimum: 0, maximum: 10 }
 
   validates :email, presence: true, uniqueness: true
 
