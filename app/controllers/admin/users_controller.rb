@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+ 
   def index
     @users = User.page(params[:page])
   end
@@ -15,12 +16,15 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice] = "ユーザー情報を更新しました。"
     redirect_to admin_user_path(@user.id)
   end
 
+  private
 
   def user_params
     params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :image)
   end
+  
 
 end

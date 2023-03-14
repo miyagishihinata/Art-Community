@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update, :withdrawl]
   before_action :is_guest_user, only: [:edit, :update]
 
   def show
@@ -42,7 +42,13 @@ class Public::UsersController < ApplicationController
    end
   end
 
+
   private
+
+  def user_params
+    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :email)
+  end
+
 
   def is_matching_login_user
     user_id = params[:id].to_i
@@ -58,9 +64,5 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
-  def user_params
-    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :email)
-  end
 
 end

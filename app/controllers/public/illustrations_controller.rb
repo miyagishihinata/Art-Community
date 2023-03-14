@@ -1,5 +1,5 @@
 class Public::IllustrationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :is_guest_user, only: [:new, :create]
 
   def index
@@ -49,6 +49,19 @@ class Public::IllustrationsController < ApplicationController
 
   private
 
+  def illustration_params
+    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id)
+  end
+  
+  
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to user_path(@user.id)
+    end
+  end
+
+
   def is_guest_user
     if current_user.guest?
       flash[:notice] = "ゲストユーザーはイラスト投稿を行うことはできません。"
@@ -56,8 +69,5 @@ class Public::IllustrationsController < ApplicationController
     end
   end
 
-  def illustration_params
-    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id)
-  end
 
 end
