@@ -48,7 +48,7 @@
 }
 
 
-//アイコン
+// アイコン
 .profile_picture {
   width: 100px;
   height: auto;
@@ -74,19 +74,22 @@
 }
 
 
+// コメント
 .comment {
   margin-left: 30%;
 }
 
+// いいね
 .like {
   margin-left: 30%;
 }
 
+// 共有
 .share {
   margin-left: 30%;
 }
 
-
+// コメント返信ボタン
 .reply .btn{
   display: inline-block;
   text-align: center;
@@ -103,7 +106,7 @@
 }
 
 
-
+// ファイル選択ボタン
 .image_input_btn {
   display: block;
   width: 150px;
@@ -115,15 +118,18 @@
   text-align: center;
 }
 
+// ファイル選択ボタン
 .image_form{
    display: none;
 }
 
+
+// 通知
 .notice {
   margin-left: 5%;
 }
 
-//検索
+// 検索
 .searche {
   margin-left: 5%;
 }
@@ -134,32 +140,35 @@
 }
 
 
-//自己紹介文
+// 自己紹介文
 .self_introduction{
     display: table;
     width: 100%;
 }
 
-//自己紹介文内
+// 自己紹介文内
 .self_introduction_inner{
   display: table-cell;
   vertical-align: middle;
 }
 
 
+// ユーザー検索
 .user_search {
   margin-left: 6%;
 }
 
+// ユーザー検索結果
 .user_search_results {
   margin-left: 6%;
 }
 
-
+// イラスト検索
 .illustration_search {
   margin-left: 6%;
 }
 
+// イラスト検索結果
 .illustration_search_results {
   margin-left: 6%;
 }
@@ -274,56 +283,59 @@
     margin: 0 auto;
   }
 
-  //イラストタイトル
-  .introduction {
+  //イラスト説明
+  .illustration_introduction {
     margin-left: 5%;
   }
 
   //イラスト編集ボタン
-  .illustration_button {
+  .illustration_edit_button {
     margin: 0 auto;
   }
 
+  // コメント
   .comment {
     margin-left: 2%;
   }
 
+  // いいね
   .like {
     margin-left: 2%;
   }
 
+  // 共有
   .share {
     margin-left: 10%;
   }
 
-  .illustration_edit_button {
-    margin-left: 10%;
-  }
 
+  // 通知
   .notice {
     margin-left: 40%;
   }
 
-  //検索
+  // 検索
   .searche {
     margin-left: 40%;
   }
 
-  //ユーザーアイコン（小）
+  // ユーザーアイコン（小）
   .mini_user_icon {
     width : 65%;
     height : auto;
   }
 
-  //ユーザー名（小）
+  // ユーザー名（小）
   .mini_user_name {
     font-size: 1rem;
   }
 
+  // ユーザー検索結果
   .user_search_results {
     margin-left: 20%;
   }
 
+  // イラスト検索結果
   .illustration_search_results {
     margin-left: 20%;
   }
@@ -344,6 +356,7 @@
     font-size: 1rem;
   }
 
+  // ページ
   .paginate {
     margin-left: 35%;
   }

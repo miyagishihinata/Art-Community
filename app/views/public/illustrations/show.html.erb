@@ -19,24 +19,30 @@
         </div>
         <%# ユーザー名　%>
         <%= link_to user_path(@illustration.user.id) do %>
-          <div class="user_name h4 text-center text-dark font-weight-bold"><%= @illustration.user.user_name %></div>
+          <div class="user_name h4 text-center text-dark font-weight-bold">
+            <%= @illustration.user.user_name %>
+          </div>
         <% end %>
       </div>
 
       <div class="col-12 col-md-5">
         <%# タイトル　%>
         <div class="mb-4 mt-4">
-         <div class="illustration_title h4 font-weight-bold"><%= @illustration.title %></div>
+          <div class="illustration_title h4 font-weight-bold">
+            <%= @illustration.title %>
+          </div>
         </div>
 
-        <div class="introduction form-group row">
+        <%# イラスト説明 %>
+        <div class="illustration_introduction form-group row">
           説明  : <%= @illustration.introduction %><br>
           投稿日: <%= @illustration.created_at.strftime('%Y/%m/%d') %><br>
         </div>
 
       </div>
 
-      <div class="illustration_button col-5 col-md-5"><%# 編集ボタン　%>
+      <%# 編集ボタン　%>
+      <div class="illustration_edit_button col-5 col-md-5">
         <div class="form-group row">
           <% if @illustration.user == current_user %>
             <%= link_to 'イラスト編集', edit_illustration_path(@illustration.id), class: "btn btn-success col-md-4 offset-md-4 mt-4" %>
