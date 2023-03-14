@@ -13,8 +13,8 @@
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
           <%#= f.file_field :image, accept: "image/*", class: "hidden" %>
-          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
-          <%= f.file_field :image, class: "image_form" %>
+          <%= f.label :profile_picture, "ファイルを選択", class: "image_input_btn btn btn-secondary hidden" %>
+          <%= f.file_field :profile_picture, accept: "profile_picture/*", class: "image_form hidden" %>
       </div>
 
       <div class="form-group row">
@@ -36,14 +36,12 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
-        <% if @minimum_password_length %>
-        <% end %>
-        <%= f.password_field :password, class: "col-md-6 form-control" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
       </div>
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
-        <%= f.password_field :password_confirmation,  class: "col-md-6 form-control" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
       </div>
 
       <div class="actions col-12 mb-5">

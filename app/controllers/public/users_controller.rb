@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :withdrawl]
+  before_action :is_matching_login_user, only: [:edit, :update]
   before_action :is_guest_user, only: [:edit, :update]
 
+  #ユーザー詳細画面
   def show
     @user = User.find(params[:id])
     @illustrations = @user.illustrations.page(params[:page]).order(created_at: :desc)
@@ -22,6 +23,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    bypass_sign_in @user if @user.valid?
     flash[:notice] = "ユーザー情報を更新しました。"
     redirect_to user_path(@user.id)
   end
@@ -46,7 +48,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :email)
+    params.require(:user).permit(:user_name,  :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation)
   end
 
 

@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+
   def top
     @illustrations = Illustration.order('id DESC').limit(10)
   end

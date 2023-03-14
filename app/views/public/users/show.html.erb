@@ -12,7 +12,7 @@
     <%# ユーザーアイコン　%>
     <div class="col-12 col-md-2">
       <div class="text-center">
-        <%= image_tag @user.profile_picture, class: "profile_picture border border-2" %>
+        <%= image_tag @user.get_profile_picture(100,100), class: "profile_picture border border-2" %>
       </div>
         <%# ユーザー名 %>
         <div class="user_name h5 text-center font-weight-bold">

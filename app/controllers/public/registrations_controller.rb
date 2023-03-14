@@ -10,7 +10,7 @@ before_action :configure_sign_up_params, only: [:create,:new]
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :user_name, :self_introduction, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :user_name, :self_introduction, :profile_picture])
   end
 
   private
