@@ -50,10 +50,18 @@
 
 // アイコン
 .profile_picture {
-  width: 100px;
-  height: auto;
+  width: 90px;
+  height: 90px;
   margin-top: 10px;
 }
+
+
+// フォローアイコン
+.follow_profile_picture {
+  width: 90px;
+  height: 90px;
+}
+
 
 
 // イラスト一覧
@@ -139,6 +147,11 @@
   margin-left: 5%;
 }
 
+// ページタイトル
+.page_title {
+  margin-left: 5%;
+}
+
 
 // 自己紹介文
 .self_introduction{
@@ -207,7 +220,7 @@
   // アイコン
   .profile_picture {
     width: 75px;
-    height: auto;
+    height: 75px;
   }
 
 
@@ -252,6 +265,12 @@
   // フォロワー一覧リンク
   .followers {
     margin-right: 9%;
+  }
+
+  // フォローアイコン
+  .follow_profile_picture {
+    width: 65px;
+    height: 65px;
   }
 
 
@@ -326,8 +345,8 @@
 
   // ユーザーアイコン（小）
   .mini_user_icon {
-    width : 65%;
-    height : auto;
+    width : 65px;
+    height : 65px;
   }
 
   // ユーザー名（小）
@@ -360,6 +379,12 @@
   .timeline_illustration_title {
     font-size: 1rem;
   }
+
+  // ページタイトル
+  .page_title {
+    text-align: center;
+  }
+
 
   // ページ
   .paginate {

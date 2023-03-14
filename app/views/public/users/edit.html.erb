@@ -5,7 +5,7 @@
     </h5>
   </div>
 
-  <div class="row ml-4">
+  <div class="row ml-5">
     <div class="col-9">
 
     <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
@@ -49,7 +49,7 @@
         <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
 
         <%# マイページボタン %>
-        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-3 col-10 col-md-3" %>
+        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-2 col-11 col-md-3" %>
       </div>
 
       <div class="actions mb-5 col-12">
