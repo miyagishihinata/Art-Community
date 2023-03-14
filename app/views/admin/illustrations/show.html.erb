@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<hr color="silver"><%# イラスト %>
+<hr color="silver">
 
   <div class="container"><%# イラスト　%>
     <div class="row">
@@ -67,14 +67,14 @@
   <div class="row">
 
     <div class="col-4 col-md-2">
-      <h5 class="font-weight-bold mt-5 ml-5">
+      <h5 class="comment font-weight-bold text-muted mt-5">
         コメント
       </h5>
     </div>
 
-    <div class="col-2">
-      <h6 class="mt-5">
-        コメント件数：<%= @illustration.comments.count %>
+    <div class="col-6 col-md-2">
+      <h6 class="mt-5 text-muted">
+        コメント件数：<%= @illustration.comments.count %> 件
       </h6>
     </div>
 
@@ -95,7 +95,7 @@
         </div>
           <%# ユーザー名　%>
           <%= link_to admin_user_path(comment.user.id) do %>
-            <div class="comment_user_name h5 text-center text-dark mb-3"><%= comment.user.user_name %></div>
+            <div class="mini_user_name h5 text-center text-dark font-weight-bold mb-3"><%= comment.user.user_name %></div>
           <% end %>
       </div>
 
@@ -111,8 +111,8 @@
         </div>
 
         <%# 削除ボタン　%>
-      <div class="col-4">
-        <%= link_to "コメント削除", admin_illustration_comment_path(comment.illustration, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-md-5 offset-md-3 mt-5 mb-5" %>
+      <div class="col-6 col-md-4">
+        <%= link_to "コメント削除", admin_illustration_comment_path(comment.illustration, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-secondary col-md-5 offset-md-3 mt-4 mb-5" %>
       </div>
 
     </div>
@@ -125,16 +125,16 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-3 col-md-2 ml-5 mt-2">
+        <div class="col-3 col-md-2 mt-2 ml-3">
           <div class="text-center">
             <%# ユーザーアイコン %>
             <%= link_to admin_user_path(reply.user.id) do %>
-              <%= image_tag reply.user.get_profile_picture(70,70), class: "border border-2 mt-3" %>
+              <%= image_tag reply.user.get_profile_picture(60,60), class: "border border-2 mt-3" %>
             <% end %>
           </div>
             <%# ユーザー名 %>
             <%= link_to admin_user_path(reply.user.id) do %>
-              <div class="comment_user_name h5 text-center text-dark mb-3"><%= reply.user.user_name %></div>
+              <div class="comment_user_name h6 text-center text-dark mb-3"><%= reply.user.user_name %></div>
             <% end %>
         </div>
 
@@ -154,9 +154,9 @@
           </h6>
         </div>
 
-        <div class="col-4">
+        <div class="col-6 col-md-4">
           <%# 削除ボタン　%>
-          <%= link_to "コメント削除", admin_illustration_comment_path(reply.illustration, reply), method: :delete, class: "btn btn-danger col-md-5 offset-md-2 mt-3 mb-3" %>
+          <%= link_to "コメント削除", admin_illustration_comment_path(reply.illustration, reply), method: :delete, class: "btn btn-secondary col-md-5 offset-md-3 mt-3 mb-3" %>
         </div>
 
       </div>
