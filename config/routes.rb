@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy] #コメント機能
     end
 
+    #検索ページ
+    resources :searches, only: [:index, :post]
+
     #トップページ
     get '/' => 'homes#top'
   end

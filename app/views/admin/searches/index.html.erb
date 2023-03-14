@@ -1,4 +1,5 @@
-<%# 検索ページ %>
+<%# 管理者側検索ページ %>
+
 <div class="container">
   <div class="row">
     <div class="searche h3 font-weight-bold text-muted mt-4">
@@ -60,13 +61,13 @@
         <div class="col-4 col-md-1 offset-md-1">
           <%# ユーザーアイコン　%>
           <div class="text-center">
-            <%= link_to user_path(user.id) do %>
-              <%= image_tag user.profile_picture, class: "mini_user_icon border border-2 mt-4" %>
+            <%= link_to admin_user_path(user.id) do %>
+              <%= image_tag user.get_profile_picture(80,80), class: "mini_user_icon border border-2 mt-5" %>
             <% end %>
           </div>
 
           <%# ユーザー名　%>
-          <%= link_to user_path(user.id) do %>
+          <%= link_to admin_user_path(user.id) do %>
             <div class="mini_user_name h5 font-weight-bold text-dark text-center mb-4">
               <%= user.user_name %>
             </div>
@@ -79,16 +80,6 @@
           <div class="self_introduction_inner h6"><%= user.self_introduction %></div>
         </div>
 
-        <%# フォローボタン %>
-        <div class="follow_button_2 col-6 col-md-3">
-          <% unless user == current_user %><%# 自分以外に表示 %>
-            <% if current_user.following?(user) %>
-              <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete, class: "btn btn-dark offset-md-5 mt-4" %>
-            <% else %>
-              <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-primary offset-md-5 mt-4" %>
-            <% end %>
-          <% end %>
-        </div>
       <% end %>
     </div>
 
@@ -113,7 +104,7 @@
 
     <div class="illustration-list mt-4">
       <% @illustrations.each do |illustration| %>
-        <%= link_to illustration_path(illustration.id) do %>
+        <%= link_to admin_illustration_path(illustration.id) do %>
           <%= image_tag illustration.image, class:"illustration ml-2 mt-2" %>
         <% end %>
       <% end %>
@@ -127,8 +118,4 @@
     <%= paginate @illustrations %>
   </div>
 </div>
-
-
-
-
 

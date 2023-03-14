@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :user_name, presence: true, uniqueness: true,
+    length: { in: 1..20 }
+
+  validates :self_introduction,
+    length: { in: 1..200 }
+
+  validates :email, presence: true, uniqueness: true
+
+
   has_one_attached :profile_picture            #アイコン
   has_many :illustrations, dependent: :destroy #イラスト
   has_many :comments, dependent: :destroy      #コメント
