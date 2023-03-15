@@ -2,19 +2,19 @@
 <div class="container">
   <div class="row">
     <h4 class="page_title font-weight-bold text-muted col-11 mt-4 mb-">
-      いいね <%= @illustration.likes.count %>
+      いいね <%= @likes.size %>
     </h4>
   </div>
 </div>
 
 <hr>
 
-<% if @like_posts.exists? %>
+<% if @like_illustrations.exists? %>
 
   <div class="container">
     <%# イラスト一覧 %>
     <div class="illustrations">
-      <% @like_posts.each do |post|%>
+      <% @like_illustrations.each do |post|%>
         <%= link_to illustration_path(post.id) do %>
           <%= image_tag post.image, class:"illustration ml-2 mt-3" %>
         <% end %>
@@ -32,6 +32,6 @@
 
 <div class="container">
   <div class="col-12 offset-md-5 mb-3 mt-3">
-    <%= paginate @like_posts %>
+    <%= paginate @like_illustrations %>
   </div>
 </div>

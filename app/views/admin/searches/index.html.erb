@@ -11,7 +11,7 @@
 <div class="container">
 
   <div class="searches-form">
-    <%= form_with url: searches_path, method: :get, local: true do |f| %>
+    <%= form_with url: admin_searches_path, method: :get, local: true do |f| %>
     <%= f.hidden_field :type, value: "user_name" %>
       <div class="row">
         <div class="user_search font-weight-bold text-muted mr-5 mt-4">ユーザー検索</div>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="searches-form mt-3">
-    <%= form_with url: searches_path, method: :get, local: true do |f| %>
+    <%= form_with url: admin_searches_path, method: :get, local: true do |f| %>
     <%= f.hidden_field :type, value: "illustration" %>
       <div class="row">
         <div class="illustration_search font-weight-bold text-muted mr-5 mt-4">イラスト検索</div>

@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:user_name, :email, :create, :login_form, :login]}
-  before_action :autheniticate_user, {only: [:show, :edit, :update, :withdrawl]}
   before_action :is_matching_login_user, only: [:edit, :update, :withdrawl]
   before_action :is_guest_user, only: [:edit, :update]
 
@@ -13,11 +12,11 @@ class Public::UsersController < ApplicationController
   #いいね一覧
   def likes
     @user = User.find(params[:id])
-    likes= Like.where(user_id: @user.id).pluck(:illustration_id)
-    @like_posts = Illustration.where(id: likes).page(params[:page]).order(created_at: :desc)
-    @illustration = Illustration.find(params[:id])
+    @likes= Like.where(user_id: @user.id).pluck(:illustration_id)
+    @like_illustrations = Illustration.where(id: @likes).page(params[:page]).order(created_at: :desc)
   end
 
+  #ユーザー編集画面
   def edit
     @user = User.find(params[:id])
   end
