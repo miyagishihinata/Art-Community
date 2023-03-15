@@ -3,7 +3,7 @@ class Admin::SearchesController < ApplicationController
     @illustrations = Illustration.search(params[:keyword])
     @users = User.search(params[:keyword])
     @keyword = params[:keyword]
-    render "index"
+    render "admin/searches/index"
   end
 
   def index

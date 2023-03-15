@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
- 
+
   def index
     @users = User.page(params[:page])
   end
@@ -23,8 +23,8 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :profile_image, :self_introduction, :is_deleted, :image)
+    params.require(:user).permit(:user_name,  :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation)
   end
-  
+
 
 end

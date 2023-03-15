@@ -62,7 +62,7 @@
           <%# ユーザーアイコン　%>
           <div class="text-center">
             <%= link_to admin_user_path(user.id) do %>
-              <%= image_tag user.get_profile_picture(80,80), class: "mini_user_icon border border-2 mt-5" %>
+              <%= image_tag user.profile_picture, class: "mini_user_icon border border-2 mt-5" %>
             <% end %>
           </div>
 

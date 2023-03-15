@@ -57,6 +57,7 @@ class Public::IllustrationsController < ApplicationController
   def ensure_user
     @illustrations = current_user.illustrations
     @illustration = @illustrations.find_by(id: params[:id])
+    flash[:notice]="権限がありません"
     redirect_to new_illustrations_path unless @illustration
   end
 

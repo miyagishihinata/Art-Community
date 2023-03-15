@@ -17,8 +17,8 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
-          <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
-          <%= f.file_field :image, class: "image_form" %>
+          <%= f.label :profile_picture, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
+          <%= f.file_field :profile_picture, class: "image_form" %>
       </div>
 
       <div class="form-group row">
@@ -40,8 +40,6 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
-        <% if @minimum_password_length %>
-        <% end %>
         <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
       </div>
 
