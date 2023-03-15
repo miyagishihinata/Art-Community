@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :forbid_login_user, {only: [:user_name, :email, :create, :login_form, :login]}
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :is_guest_user, only: [:edit, :update]
 
