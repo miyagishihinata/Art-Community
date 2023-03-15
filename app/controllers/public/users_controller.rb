@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :forbid_login_user, {only: [:user_name, :email, :create, :login_form, :login]}
-  before_action :is_matching_login_user, only: [:edit, :update, :withdrawl]
+  before_action :is_matching_login_user, only: [:edit, :update]
   before_action :is_guest_user, only: [:edit, :update]
 
   #ユーザー詳細画面
@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
   end
 
 
-  def withdrawl
+  def withdraw
     @user = current_user
    #ゲストユーザー
    if @user.email == 'guest@example.com'
@@ -49,7 +49,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name,  :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation)
+    params.require(:user).permit(:user_name,  :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation, :is_deleted)
   end
 
 

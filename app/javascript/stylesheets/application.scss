@@ -197,6 +197,11 @@
   margin-left: 5%;
 }
 
+// 退会しないボタン
+.not_withdraw_button {
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 
 @media screen and (max-width: 415px) {
@@ -417,13 +422,13 @@
   }
 
   // 退会ボタン
-   .withdrawl_button {
+   .withdraw_button {
      width: 50%;
      margin-left: 25%;
    }
 
   // 退会しないボタン
-  .not_withdrawl_button {
+  .not_withdraw_button {
     width: 50%;
     margin-left: 25%;
   }

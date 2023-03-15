@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :show, :update, :destroy]
 
     #イラストページ
-    resources :illustrations, only: [:show, :edit, :update] do
-      resources :comments, only: [:create, :destroy] #コメント機能
+    resources :illustrations, only: [:show, :edit, :update, :destroy] do
+      resources :comments, only: [:destroy] #コメント機能
     end
 
     #検索ページ
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
     #ユーザーページ
     get 'users/unsubscribe' => 'users#unsubscribe' #ユーザー退会画面
-    patch 'users/withdrawl' => 'users#withdrawl'     #ユーザー退会処理
+    patch 'users/withdraw' => 'users#withdraw'     #ユーザー退会処理
     resources :users, only: [:show, :edit, :update] do
 
       resource :relationships, only: [:create, :destroy]                #フォロー機能

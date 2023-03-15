@@ -19,7 +19,7 @@ class Admin::IllustrationsController < ApplicationController
   def destroy
     illustration = Illustration.find(params[:id])
     illustration.destroy
-    redirect_to admin_user_path(@user.id)
+    redirect_to admin_path
   end
 
   private
