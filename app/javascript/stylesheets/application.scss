@@ -192,6 +192,12 @@
   margin-left: 6%;
 }
 
+// イラスト検索結果イラスト
+.illustration-list {
+  margin-left: 5%;
+}
+
+
 
 @media screen and (max-width: 415px) {
 
@@ -369,6 +375,12 @@
   .illustration_search_results {
     margin-left: 20%;
   }
+
+  // イラスト検索結果イラスト
+  .illustration-list {
+    margin-left: 1%;
+  }
+
 
   // タイムライン
   .timeline {

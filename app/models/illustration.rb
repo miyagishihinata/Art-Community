@@ -2,7 +2,7 @@ class Illustration < ApplicationRecord
   has_one_attached :image
 
   validates :introduction,
-    length: { minimum: 0, maximum: 10 }
+    length: { minimum: 0, maximum: 140 }
 
 
   belongs_to :user                        #ユーザー

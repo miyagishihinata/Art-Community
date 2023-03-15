@@ -15,7 +15,6 @@ class Public::LikesController < ApplicationController
     #いいね通知
     @illustration.create_notice_like!(current_user)
     redirect_to request.referer
-
   end
 
   def destroy
@@ -27,15 +26,16 @@ class Public::LikesController < ApplicationController
 
   private
 
+  def like_params
+    params.require(:like).permit(:like_stamp, :illustration_id, :user_id)
+  end
+
+
   def is_guest_user
     if current_user.guest?
       flash[:notice] = "ゲストユーザーはいいねできません。"
       redirect_to illustration_path(params[:illustration_id])
     end
-  end
-
-  def like_params
-    params.require(:like).permit(:like_stamp, :illustration_id, :user_id)
   end
 
 end
