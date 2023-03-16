@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :forbid_login_user, {only: [:user_name, :email, :create, :login_form, :login]}
+  before_action :move_to_signed_in
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :is_guest_user, only: [:edit, :update]
 
@@ -35,6 +35,7 @@ class Public::UsersController < ApplicationController
    #ゲストユーザー
    if @user.email == 'guest@example.com'
       reset_session
+      flash[:notice] = "退会処理を実行いたしました"
       redirect_to root_path
    #ユーザー退会
    else
@@ -49,9 +50,15 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name,  :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation, :is_deleted)
+    params.require(:user).permit(:user_name, :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation)
   end
 
+  def move_to_signed_in
+    unless user_signed_in?
+     #サインインしていないユーザーはトップページが表示される
+     redirect_to  root_path
+    end
+  end
 
   def is_matching_login_user
     user_id = params[:id].to_i

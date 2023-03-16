@@ -1,4 +1,5 @@
 class Public::IllustrationsController < ApplicationController
+  before_action :move_to_signed_in
   before_action :ensure_user, only: [:edit, :update, :destroy]
   before_action :is_guest_user, only: [:new, :create]
 
@@ -50,9 +51,15 @@ class Public::IllustrationsController < ApplicationController
   private
 
   def illustration_params
-    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id)
+    params.require(:illustration).permit(:user_name, :profile_image, :title, :introduction, :image, :user_id, :post_comment, :parent_id, :like_stamp)
   end
 
+    def move_to_signed_in
+      unless user_signed_in?
+       #サインインしていないユーザーはトップページが表示される
+        redirect_to  root_path
+      end
+    end
 
   def ensure_user
     @illustrations = current_user.illustrations
