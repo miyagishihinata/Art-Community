@@ -9,8 +9,6 @@
 
 <hr>
 
-<% if @like_illustrations.exists? %>
-
   <div class="container">
     <%# イラスト一覧 %>
     <div class="illustrations">
@@ -22,14 +20,6 @@
     </div>
   </div>
 
-  <% else %><%# いいねがない場合 %>
-  <div class="container">
-    <h5 class="font-weight-bold text-muted text-center mt-5 ml-2">
-      いいねはありません
-    </h5>
-  </div>
-
-<% end %>
 
 <div class="container">
   <div class="col-12 offset-md-5 mb-3 mt-3">

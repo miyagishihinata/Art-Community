@@ -6,13 +6,13 @@ class Public::UsersController < ApplicationController
   #ユーザー詳細画面
   def show
     @user = User.find(params[:id])
-    @illustrations = @user.illustrations.page(params[:page]).order(created_at: :desc)
+    @illustrations = @user.illustrations.joins(:user).where("is_deleted = false").page(params[:page]).order(created_at: :desc)
   end
 
   #いいね一覧
   def likes
     @user = User.find(params[:id])
-    @likes= Like.where(user_id: @user.id).pluck(:illustration_id)
+    @likes= Like.where(user_id: @user.id).joins(:user).where("is_deleted = false").pluck(:illustration_id)
     @like_illustrations = Illustration.where(id: @likes).joins(:user).where("is_deleted = false").page(params[:page]).order(created_at: :desc)
   end
 
