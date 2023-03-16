@@ -57,6 +57,7 @@
 
     <div class="row">
       <% @users.each do |user| %>
+
         <div class="col-4 col-md-1 offset-md-1">
           <%# ユーザーアイコン　%>
           <div class="text-center">
@@ -77,7 +78,7 @@
         <%# 自己紹介文　%>
         <div class="self_introduction col-8 col-md-6">
           <div class="self_introduction_inner h6">
-            <% if @user.is_deleted == false %>
+            <% if user.is_deleted == false %>
               <%= user.self_introduction %>
             <% else %>
                退会済みユーザー
@@ -91,7 +92,9 @@
             <% if current_user.following?(user) %>
               <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete, class: "btn btn-dark offset-md-5 mt-4" %>
             <% else %>
-              <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-primary offset-md-5 mt-4" %>
+              <% if user.is_deleted == false %>
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-primary offset-md-5 mt-4" %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -119,9 +122,11 @@
 
     <div class="illustration-list mt-4">
       <% @illustrations.each do |illustration| %>
+
         <%= link_to illustration_path(illustration.id) do %>
           <%= image_tag illustration.image, class:"illustration ml-2 mt-2" %>
         <% end %>
+
       <% end %>
     </div>
   </div>

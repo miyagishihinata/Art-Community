@@ -3,14 +3,16 @@
 <% visitor = n.visitor %>
 <% visited = n.visited %>
 
+
 <div class="col-12 col-md-6 mx-auto">
   <div class="form-inline">
     <span>
+
       <%= link_to user_path(visitor) do %>
         <%# アイコン %>
-        <%= image_tag visitor.get_profile_picture(50,50), class: "border border-2 mr-2" %>
+        <%= image_tag visitor.get_profile_picture(50,50), class: "notice_icon border border-2 mr-2" %>
         <%# ユーザー名 %>
-        <%= visitor.user_name %>
+          <%= visitor.user_name %>
       <% end %>
       さんが
 
@@ -38,7 +40,7 @@
           <% else %>
             <span>
               <%= link_to illustration_path(n.illustration) do %>
-                <%= image_tag n.visited.get_profile_picture(60,60), class: "border border-2 mr-2" %>
+                <%= image_tag n.visited.get_profile_picture(50,50), class: "notice_icon border border-2 mr-2" %>
                 <%= n.visited.user_name %>
               <% end %>
               さんのコメントに返信しました
@@ -53,13 +55,13 @@
 
       <% end %>
     </span>
-
     <div class="small text-muted ml-5"><br>
       <%= time_ago_in_words(n.created_at).upcase %><br>
     </div>
 
   </div>
 </div>
+
 
 <hr>
 
