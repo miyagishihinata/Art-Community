@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @user.update!(user_params)
     flash[:notice] = "ユーザー情報を更新しました。"
     redirect_to admin_user_path(@user.id)
   end
@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :self_introduction, :is_deleted, :email, :profile_picture, :password, :password_confirmation, :is_deleted)
+    params.require(:user).permit(:user_name, :self_introduction, :is_deleted, :email, :profile_picture)
   end
 
 

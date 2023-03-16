@@ -4,8 +4,9 @@ class Public::IllustrationsController < ApplicationController
   before_action :is_guest_user, only: [:new, :create]
 
   def index
-    @illustrations = Illustration.page(params[:page]).order(created_at: :desc)
+    @illustrations = Illustration.joins(:user).where("is_deleted = false").page(params[:page]).order(created_at: :desc)
   end
+
 
   def new
     @illustration = Illustration.new

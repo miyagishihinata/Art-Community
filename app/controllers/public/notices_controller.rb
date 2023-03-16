@@ -2,7 +2,7 @@ class Public::NoticesController < ApplicationController
   before_action :move_to_signed_in
 
   def index
-    @notices = current_user.passive_notices.page(params[:page]).per(20)
+    @notices = current_user.passive_notices.page(params[:page])
     #自分の投稿に対するいいね、コメントは通知に表示しない↓
     @notices = @notices.where.not(visitor_id: current_user.id)
     @notices.where(checked: false).each do |notice|

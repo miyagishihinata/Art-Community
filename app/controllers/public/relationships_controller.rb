@@ -20,13 +20,13 @@ class Public::RelationshipsController < ApplicationController
   # フォロー一覧
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings.page(params[:page]).order(created_at: :desc)
+    @users = @user.followings.joins(:user).where("is_deleted = false").page(params[:page]).order(created_at: :desc)
   end
 
   # フォロワー一覧
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers.page(params[:page]).order(created_at: :desc)
+    @users = @user.followers.joins(:user).where("is_deleted = false").page(params[:page]).order(created_at: :desc)
   end
 
   private

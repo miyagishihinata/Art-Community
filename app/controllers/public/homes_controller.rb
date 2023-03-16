@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
   before_action :forbid_login_user, {only: [:top]}
 
   def top
-    @illustrations = Illustration.order('id DESC').limit(10)
+    @illustrations = Illustration.joins(:user).where("is_deleted = false").order('id DESC').limit(10)
   end
 
   def illustration_params

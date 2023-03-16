@@ -39,25 +39,15 @@
 
 
       <div class="form-group row">
-        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
-      </div>
-
-      <div class="form-group row">
-        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
-      </div>
-
-      <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">ユーザーステータス</label>
 
           <div class="form-check form-check-inline">
-            <%= f.radio_button :is_deleted, false, checked: true %>
+            <%= f.radio_button :is_deleted, :false, checked: true %>
             <label class="form-check-label" for="inlineRadio1">有効</label>
           </div>
 
           <div class="form-check form-check-inline">
-            <%= f.radio_button :is_deleted, true %>
+            <%= f.radio_button :is_deleted, :true %>
             <label class="form-check-label" for="inlineRadio2">退会</label>
           </div>
       </div>

@@ -2,7 +2,7 @@ class Public::TimelinesController < ApplicationController
   before_action :move_to_signed_in
 
   def index
-    @illustrations = Illustration.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).page(params[:page])
+    @illustrations = Illustration.joins(:user).where("is_deleted = false").where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).page(params[:page])
     @users = User.where(user_id: [current_user.id, *current_user.following_ids])
   end
 
