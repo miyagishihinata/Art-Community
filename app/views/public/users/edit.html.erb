@@ -12,7 +12,7 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
-          <%#= f.file_field :image, accept: "image/*", class: "hidden" %>
+          <%#= f.file_field :profile_picture, accept: "image/*", class: "hidden" %>
           <%= f.label :profile_picture, "ファイルを選択", class: "image_input_btn btn btn-secondary hidden" %>
           <%= f.file_field :profile_picture, accept: "profile_picture/*", class: "image_form hidden" %>
       </div>
@@ -34,22 +34,28 @@
       </div>
 
 
-      <div class="form-group row">
-        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>
-      </div>
+      <!--<div class="form-group row">-->
+      <!--  <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(6文字以上)</label>-->
+      <!--  <%= f.password_field :password, autocomplete: "new-password", class: "col-md-6 form-control" %>-->
+      <!--</div>-->
 
-      <div class="form-group row">
-        <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>
-      </div>
+      <!--<div class="form-group row">-->
+      <!--  <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(確認用)</label>-->
+      <!--  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6 form-control" %>-->
+      <!--</div>-->
 
       <div class="actions col-12 mb-5">
         <%# 保存ボタン %>
         <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
 
+        <%# パスワード変更 %>
+        <%= link_to 'パスワード変更', edit_user_registration_path, class: "btn btn-success active mt-3 ml-2 col-11 col-md-3" %>
+
+      </div>
+
+      <div class="actions mb-5 col-12">
         <%# マイページボタン %>
-        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary mt-3 ml-2 col-11 col-md-3" %>
+        <%= link_to 'マイページに戻る', user_path(current_user.id), class: "btn btn-primary col-12 col-md-3 offset-md-4" %>
       </div>
 
       <div class="actions mb-5 col-12">

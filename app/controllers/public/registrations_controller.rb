@@ -7,10 +7,14 @@ before_action :configure_sign_up_params, only: [:create,:new]
     user_path(resource)
   end
 
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
+
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :user_name, :self_introduction, :profile_picture])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :user_name, :self_introduction, :profile_picture, :password, :password_confirmation])
   end
 
   private
