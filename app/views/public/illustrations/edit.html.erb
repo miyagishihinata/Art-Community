@@ -19,6 +19,7 @@
         <label class="font-weight-bold text-muted col-md-3">イラスト</label>
           <%= f.label :image, "ファイルを選択", class: "image_input_btn btn btn-secondary" %>
           <%= f.file_field :image, class: "image_form" %>
+          <input id="filename" readonly type="text" value="" >
       </div>
 
       <div class="form-group row">
@@ -52,3 +53,9 @@
 </div>
 
 <% end %>
+
+<script type="text/javascript">
+$(document).on('change', '.image_form', function() {
+$('#filename').val($(this).val().replace(/^.*\\/, ""));
+ })
+</script>

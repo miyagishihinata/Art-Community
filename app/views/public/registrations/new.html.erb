@@ -18,9 +18,9 @@
 
       <div class="form-group row">
         <label class="font-weight-bold text-muted col-md-4">プロフィール画像</label>
-          <%= f.label :profile_picture, "ファイルを選択", class: "image_input_btn btn btn-secondary hidden" %>
+          <%= f.label :profile_picture, "ファイルを選択", class: "btn btn-secondary hidden" %>
           <%= f.file_field :profile_picture, accept: "profile_picture/*", class: "image_form hidden" %>
-          <%#= f.file_field :profile_picture, accept: "profile_picture/*", class: "hidden" %>
+          <input id="filename" readonly type="text" value="" >
       </div>
 
       <div class="form-group row">
@@ -61,3 +61,9 @@
   </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$(document).on('change', '.image_form', function() {
+$('#filename').val($(this).val().replace(/^.*\\/, ""));
+ })
+</script>
