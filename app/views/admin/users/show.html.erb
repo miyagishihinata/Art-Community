@@ -45,6 +45,35 @@
 
 <hr color="silver">
 
+<div class="container">
+  <div class="row">
+
+    <%# フォロー一覧リンク %>
+    <div class="followings offset-md-3">
+      <%= link_to admin_user_followings_path(@user.id) do %>
+        <h5 class="font-weight-bold text-muted">フォロー</h5>
+      <% end %>
+    </div>
+
+    <%# フォロワー一覧リンク %>
+    <div class="followers offset-md-1">
+      <%= link_to admin_user_followers_path(@user.id) do %>
+        <h5 class="font-weight-bold text-muted">フォロワー</h5>
+      <% end %>
+    </div>
+
+    <%# いいね一覧リンク %>
+    <div class="likes offset-md-1">
+      <%= link_to likes_admin_user_path(@user.id) do %>
+        <h5 class="font-weight-bold text-muted">いいね</h5>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr color="silver">
+
+
 <%# 投稿一覧 %>
 <div class="mb-5">
   <div class="container">

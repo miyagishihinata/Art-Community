@@ -21,7 +21,15 @@ Rails.application.routes.draw do
   # 管理者側
   namespace :admin do
     #ユーザーページ
-    resources :users, only: [:index, :edit, :show, :update, :destroy]
+    resources :users, only: [:index, :edit, :show, :update, :destroy] do
+
+      get 'followings' => 'relationships#followings', as: 'followings'  #フォロー一覧
+      get 'followers' => 'relationships#followers', as: 'followers'     #フォロワー一覧
+
+      member do
+        get :likes #いいね一覧
+      end
+    end
 
     #イラストページ
     resources :illustrations, only: [:show, :edit, :update, :destroy] do

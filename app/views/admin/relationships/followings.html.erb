@@ -1,0 +1,12 @@
+<%# フォロー一覧 %>
+<div class="container">
+  <div class="row">
+    <h4 class="page_title font-weight-bold text-muted col-11 mt-4 mb-2">
+      フォロー <%= @user.followings.count %>
+    </h4>
+  </div>
+</div>
+
+<hr>
+
+<%= render 'admin/relationships/follow_list', users: @users %>

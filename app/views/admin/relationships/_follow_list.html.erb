@@ -1,0 +1,59 @@
+<% if users.exists? %><%# フォロー、フォロワーがいる場合 %>
+
+
+  <%# ユーザー一覧 %>
+  <% users.each do |user| %>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-4 col-md-2">
+          <%# ユーザーアイコン　%>
+          <div class="text-center">
+            <%= link_to admin_user_path(user.id) do %>
+              <%= image_tag user.profile_picture, class: "follow_profile_picture border border-2 mt-3" %>
+            <% end %>
+          </div>
+
+          <%# ユーザー名　%>
+          <%= link_to admin_user_path(user.id) do %>
+            <h5 class="mini_user_name text-dark font-weight-bold text-center">
+              <%= user.user_name %>
+            </h5>
+          <% end %>
+        </div>
+
+        <%# 自己紹介文　%>
+        <div class="self_introduction col-8 col-md-6">
+          <div class="self_introduction_inner h6">
+            <% if user.is_deleted == false %>
+              <%= user.self_introduction %>
+            <% else %>
+               退会済みユーザー
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+
+  <% end %><%# each %>
+
+  <% else %><%# フォロー、フォロワーがいない場合 %>
+  <div class="container">
+    <h5 class="font-weight-bold text-muted text-center mt-5 ml-2">
+      ユーザーはいません
+    </h5>
+  </div>
+
+<% end %><%# if %>
+
+<%# ページ %>
+<div class="container">
+  <div class="col-12 offset-md-5 mb-3 mt-3">
+    <%= paginate @users %>
+  </div>
+</div>
+
+
