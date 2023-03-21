@@ -77,8 +77,15 @@
 
         <%# 自己紹介文　%>
         <div class="self_introduction col-8 col-md-6">
-          <div class="self_introduction_inner h6"><%= user.self_introduction %></div>
+          <div class="self_introduction_inner h6">
+            <% if user.is_deleted == false %>
+              <%= user.self_introduction %>
+            <% else %>
+               退会済みユーザー
+            <% end %>
+          </div>
         </div>
+
 
       <% end %>
     </div>
