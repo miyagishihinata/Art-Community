@@ -206,6 +206,16 @@
   height: 50px;
 }
 
+// パスワード変更画面
+.password-change {
+  margin-left: 4%;
+}
+
+// ユーザー編集に戻るボタン
+.edit-buck-button {
+  margin-left: 1%;
+}
+
 @media screen and (max-width: 415px) {
 
   // ヘッダーロゴ
@@ -451,6 +461,10 @@
     margin-left: 10%;
   }
 
+  // パスワード変更画面
+  .password-change {
+    margin-left: 20%;
+  }
 }
 
 @media screen and (max-width: 376px) {

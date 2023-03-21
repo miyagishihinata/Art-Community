@@ -5,7 +5,7 @@
   </div>
 
   <div class="row">
-    <h5 class="font-weight-bold text-muted offset-md-1 text-center mt-5 mb-4 ml-5" style="background-color:gainsboro;">
+    <h5 class="password-change font-weight-bold text-muted offset-md-1 text-center mt-5 mb-4" style="background-color:gainsboro;">
       &emsp;パスワード変更&emsp;
     </h5>
   </div>
@@ -27,13 +27,13 @@
         </div>
 
         <div class="form-group row">
-          <label class="font-weight-bold text-muted col-md-4" for="encrypted_password">パスワード(現在のパスワード)</label>
+          <label class="font-weight-bold text-muted col-md-4 col-12" for="encrypted_password">現在のパスワード</label>
           <%= f.password_field :current_password, autocomplete: "current-password", class: "col-md-6 form-control" %>
         </div>
 
         <div class="actions col-12 mb-5">
           <%= f.submit "編集を保存", class: "btn btn-success col-md-2 offset-md-4 mt-3" %>
-          <%= link_to 'ユーザー編集に戻る', edit_user_path(current_user.id), class: "btn btn-primary mt-3 ml-2 col-12 col-md-3" %>
+          <%= link_to 'ユーザー編集に戻る', edit_user_path(current_user.id), class: "edit-buck-button btn btn-primary mt-3 col-12 col-md-3" %>
         </div>
 
       <% end %>
