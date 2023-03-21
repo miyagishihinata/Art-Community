@@ -25,16 +25,38 @@
 - 絵を見て楽しみたい時
 - 自分好みのイラストを探したい時
 
+## サイトURL
+
+
+## 機能一覧
+- イラスト投稿機能
+- 投稿検索機能(キーワード検索)
+- ユーザ検索機能
+- フォロー機能
+- いいね(ブックマーク)機能
+- いいね(ブックマーク)一覧表示機能
+- コメント機能
+- 通知機能
+- タイムライン機能
+
+## 認証機能
+- ユーザー登録
+- ログイン
+- ログアウト
+- ゲストログイン
+- 会員ログイン
+- パスワードの再設定
+
 ## 設計書
-使用検討中です
+https://drive.google.com/file/d/18kef8HrjKbPQ8g-ESXMJ8Ge9-PxOxQko/view?usp=share_link
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,SCSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
-
+Font Awesome
+https://fontawesome.com/
