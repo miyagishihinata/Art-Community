@@ -41,7 +41,6 @@
 - ログイン
 - ログアウト
 - ゲストログイン
-- 会員ログイン
 - パスワードの再設定
 
 ## 設計書
@@ -52,7 +51,9 @@ https://drive.google.com/file/d/18kef8HrjKbPQ8g-ESXMJ8Ge9-PxOxQko/view?usp=share
 - 言語：HTML,SCSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
-- IDE：Cloud9
+
+## AWS構成
+https://drive.google.com/file/d/11CbwhIDh1Xc1V23Dcb0HG82nqSPEQM3V/view?usp=sharing
 
 ## 使用素材
 Font Awesome
