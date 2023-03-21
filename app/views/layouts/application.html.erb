@@ -18,27 +18,28 @@
 
     <header>
       <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
+        <div class="container col-12 col-md-3 offset-md-1">
 
+        <%# ロゴ　%>
+        <div class="logo">
+          <% if admin_signed_in? %><%# 会員ログイン　%>
+            <%= link_to admin_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2">Art Community</div>
+            <% end %>
 
-      <%# ロゴ　%>
-      <div class="logo">
-        <% if admin_signed_in? %><%# 会員ログイン　%>
-          <%= link_to admin_path, class:"navbar-brand" do %>
-            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
+          <% elsif user_signed_in? %><%# ユーザーログイン　%>
+            <%= link_to illustrations_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2">Art Community</div>
+            <% end %>
+
+          <% else %><%# ログイン前 %>
+            <%= link_to root_path, class:"navbar-brand" do %>
+              <div class="h1 text-white mb-2">Art Community</div>
+            <% end %>
           <% end %>
+        </div>
 
-        <% elsif user_signed_in? %><%# ユーザーログイン　%>
-          <%= link_to illustrations_path, class:"navbar-brand" do %>
-            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
-          <% end %>
 
-        <% else %><%# ログイン前 %>
-          <%= link_to root_path, class:"navbar-brand" do %>
-            <div class="h1 text-white mb-2 offset-md-1">Art Community</div>
-          <% end %>
-        <% end %>
-      </div>
 
         <!-- ハンバーガーメニュー -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -197,6 +198,7 @@
 
             </ul>
           </div><!-- ナビゲーションメニュー -->
+
         </div><!-- container -->
       </nav>
     </header>
